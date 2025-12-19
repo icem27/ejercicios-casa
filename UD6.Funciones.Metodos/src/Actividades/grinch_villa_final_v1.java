@@ -1,7 +1,7 @@
 package Actividades;
 
 public class grinch_villa_final_v1 {
-	// Reset
+	// Reset /"CHANIE ERES UN CABRONAZO"/
 	public static final String RESET = "\u001B[0m";
 
 	// Colores básicos
