@@ -17,7 +17,6 @@ public class Ejercicio_9 {
 	public static void main(String[] args) {
 		String[] letras = {"T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};
 		int nif=56948568;
-		
 		System.out.println(nif+formula(nif, letras));
 		
 	}
