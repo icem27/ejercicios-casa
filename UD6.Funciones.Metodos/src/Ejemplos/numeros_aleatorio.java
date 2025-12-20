@@ -1,7 +1,5 @@
 package Ejemplos;
 
-import java.util.Arrays;
-
 public class numeros_aleatorio {
 	public static void main(String[] args) {
 //		int cantidad=5;

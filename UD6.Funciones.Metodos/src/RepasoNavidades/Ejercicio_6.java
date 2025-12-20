@@ -10,12 +10,12 @@ public class Ejercicio_6 {
 	 * programa ejecutará la función de manera repetida mientras el usuario quiera
 	 * continuar
 	 */
-
+/* 
 	public static void main(String[] args) {
 		String[] trineo = {"cometa", "relámpago", "estrella"};
 		String[] objetivos = {"veloz", "fugaz", "brillante"};
 	}
-	
+	*/
 	public static void aleatorio(String[] trineo, String[] objetivos) {
 		
 	}

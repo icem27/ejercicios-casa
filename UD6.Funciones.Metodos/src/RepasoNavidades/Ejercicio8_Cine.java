@@ -1,6 +1,5 @@
 package RepasoNavidades;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ejercicio8_Cine {
@@ -23,6 +22,7 @@ public class Ejercicio8_Cine {
 		inicializarPrecios(preciosAsientos, 9, 12.5);
 
 		mostrarMenu(recaudado, sala, preciosAsientos);
+		
 	}
 
 	public static void inicializarPrecios(double[][] preciosAsientos, double precioMin, double precioMax) {
@@ -73,6 +73,7 @@ public class Ejercicio8_Cine {
 			System.out.println("Opción incorrecta");
 		}
 		} while(letra!='S');
+		sc.close();
 	}
 
 	private static void contarAsientos(boolean[][] sala) {
@@ -151,6 +152,7 @@ public class Ejercicio8_Cine {
 		}
 		System.out.println("La clave introducida no es correcta");
 		//Se pedirá al usuario la contraseña, si es correcta se le pedirá la posición del asiento para liberarlo
+		sc.close();
 	}
 
 //El método reservarAsiento se encarga de llamar al método pedirPosicionAsiento, si éste le devuelve el array con la posición, la marcaremos como ocupada
