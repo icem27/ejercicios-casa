@@ -3,7 +3,7 @@ package RepasoNavidades;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
+/*Cambios en visual*/
 public class Examen_golosinas {
 	static double totalVentas=0;
 	public static void main(String[] args) {
