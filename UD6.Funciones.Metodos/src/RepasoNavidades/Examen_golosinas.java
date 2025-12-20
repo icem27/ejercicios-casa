@@ -33,7 +33,7 @@ public class Examen_golosinas {
 				rellenarGolosinas(sc, posicion(sc, cantidad), cantidad);
 				break;
 			case 4:
-				System.out.printf("El total de ventas ha sido de %.2f", totalVentas );
+				System.out.printf("El total de ventas ha sido de %.2f€", totalVentas );
 				break;
 			default:
 				System.out.println("la opción seleciona no existe.");
