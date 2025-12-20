@@ -17,8 +17,14 @@ public class Examen_golosinas {
 				};
 		int[][] cantidad=new int[golosinas.length][golosinas[0].length];
 		double[][] precio=new double[golosinas.length][golosinas[0].length];
-		cantidadGolosinas(cantidad);
-		precioGolosinas(precio);
+		//Inicializamos la cantidad del stock para las golosinas y su precio
+		for(int i=0;i<cantidad.length;i++) {
+			Arrays.fill(cantidad[i], 5);
+			for(int j=0;j<precio[i].length;j++) {
+				precio[i][j] = (j % 2 == 0) ? 0.85 : 1.15;
+			}
+		}
+		
 		int opcion;
 		do {
 			opcion=menu(sc);
@@ -30,31 +36,18 @@ public class Examen_golosinas {
 				mostrarGolosinas(cantidad, golosinas, precio);
 				break;
 			case 3:
-				rellenarGolosinas(sc, posicion(sc, cantidad), cantidad);
+				rellenarGolosinas(sc, cantidad, golosinas);
 				break;
 			case 4:
 				System.out.printf("El total de ventas ha sido de %.2f€", totalVentas );
 				break;
 			default:
-				System.out.println("la opción seleciona no existe.");
+				System.out.println("La opción introducida no es correcta.");
 			}
 		} while(opcion!=4);
+		sc.close();
 	}
-
-	public static int[][] cantidadGolosinas(int[][] cantidad) {
-		for(int i=0;i<cantidad.length;i++) {
-			Arrays.fill(cantidad[i], 5);
-		}
-		return cantidad;
-	}
-	public static double[][] precioGolosinas(double[][] precio){
-		for(int i=0;i<precio.length;i++) {
-			for(int j=0;j<precio[i].length;j++) {
-				precio[i][j] = (i % 2 == 0) ? 0.85 : 1.15;
-			}
-		}
-		return precio;
-	}
+	
 	public static int menu(Scanner sc) {
 		System.out.println("Bienvenid@ a Daw Candy 2025. Selecciona una opción:");
 		System.out.println("1. Pedir golosina");
@@ -63,13 +56,15 @@ public class Examen_golosinas {
 		System.out.println("4. Apagar");
 		return sc.nextInt();
 	}
+	//Solicitud de la golosina
 	public static void pedirGolosina(Scanner sc, int[][] cantidad, String[][] golosinas, double[][] precio) {
-		int[] pos = posicion(sc, cantidad);
-		modificarInventario(pos, cantidad, -1);
+		int[] pos = posicionGolosina(sc, cantidad, golosinas);
+		cantidad[pos[0]][pos[1]]--;
 		System.out.printf("Aqui tienes tu %s. Importe: %.2f€\n", golosinas[pos[0]][pos[1]], precio[pos[0]][pos[1]]);
 		totalVentas+=precio[pos[0]][pos[1]];
 		System.out.println("*******************************************************");
 	}
+	//Desplegable para mostrar las golosinas con su precio y cantidad
 	public static void mostrarGolosinas(int[][] cantidad, String[][] golosinas, double[][] precio) {
 		System.out.println("Golosinas disponibles");
 		System.out.println("*******************************************************");
@@ -83,62 +78,63 @@ public class Examen_golosinas {
 		}
 		System.out.println("*******************************************************");
 	}
-	public static int[][] modificarInventario(int[] pos, int[][] array, int cantidad) {
-			array[pos[0]][pos[1]]+=cantidad;
-		return array;
+	//Verificación de stock
+	public static boolean sinStock(int fila, int columna, int[][] cantidad) {
+		return cantidad[fila][columna]==0;
 	}
-	public static boolean inventarioGolosinas(int fila, int columna, int[][] array) {
-		if(array[fila][columna]==0) {
-			return true;
+	//Para hacerlo mas eficiente, se crea una función para validar la posición y asi no hace falta duplicar el codigo cada vez que se pida la posición
+	public static int[] posicionGolosina(Scanner sc, int[][] cantidad, String[][] golosinas) {
+		int[] pos = new int[2];
+		boolean correcto;
+		String posicion;
+		do {
+		correcto=true;
+		System.out.println("Introduce la posición de la golosina");
+		posicion=sc.next();
+		if(posicion.length() !=2 || !Character.isDigit(posicion.charAt(0)) || !Character.isDigit(posicion.charAt(1))) {
+			System.out.println("Formato incorrecto, solo se admiten 2 digitos enteros");
+			correcto=false;
 		} else {
-			return false;
+			pos[0] = Character.getNumericValue(posicion.charAt(0));
+			pos[1] = Character.getNumericValue(posicion.charAt(1));
+			
+			if((pos[0]<0 || pos[0]>=cantidad.length) || (pos[1]<0 || pos[1]>=cantidad[0].length)) {
+				System.out.println("La posición introducida no es correcta");
+				correcto=false;
+			} else if(sinStock(pos[0], pos[1], cantidad)) {
+				System.out.println("Ya no quedan " + golosinas[pos[0]][pos[1]] + " elige otras.");
+				correcto=false;
+			}
 		}
+		} while(!correcto);
+		
+		return pos;
 	}
-	public static void rellenarGolosinas(Scanner sc, int[] pos, int[][] array) {
-		int disponible=array[pos[0]][pos[1]];
+	//Punto 3. Rellenar el stock de las golosinas
+	public static void rellenarGolosinas(Scanner sc, int[][] cantidadGolosinas, String[][] golosinas) {
+		System.out.print("Introduce la clave: ");
+		String clave=sc.next();
+		String contra="1DAWCHUCHE2025";
+		if(!contra.equals(clave)) {
+			System.out.println("La clave introducida no es correcta. Intentelo de nuevo.");
+			return;
+		} 
+		
+		int[] pos = posicionGolosina(sc, cantidadGolosinas, golosinas);
+		int disponible=cantidadGolosinas[pos[0]][pos[1]];
 		System.out.println("Cuantas golosinas quieres añadir? Tienes " + disponible + " golosinas");
 		int cantidad=sc.nextInt();
 		int max=5;
 		if(disponible==max) {		
 			System.out.println("Ya tienes la cantidad máxima, no puedes añadir más");
 		} else if(disponible + cantidad <= max) {
-			modificarInventario(pos, array, cantidad);
-			System.out.println("Se han añadido " + cantidad + " de golosinas");
+			cantidadGolosinas[pos[0]][pos[1]]+=cantidad;
+			System.out.println("Se han añadido " + cantidad + " de " + golosinas[pos[0]][pos[1]]);
 		} else {
-			int cuantas = max - disponible;
-			modificarInventario(pos, array, cuantas);
-			System.out.println("La cantidad máxima es de " + max + " por lo cual solo se han añadido "  + cuantas);
-			
+			int resto = max - disponible;
+			cantidadGolosinas[pos[0]][pos[1]]+=resto;
+			System.out.println("La cantidad máxima es de " + max + " por lo cual solo se han añadido "  + resto + " de " + golosinas[pos[0]][pos[1]]);
 		}
-	}
-	public static int[] posicion(Scanner sc, int[][] cantidad) {
-		int[] pos = new int[2];
-		boolean correcto=true;
-		String posicion;
-		do {
-		correcto=true;
-		System.out.println("Introduce la posición de la golosina");
-		posicion=sc.next();
-		if(posicion.length()>2 || posicion.length()<2) {
-			System.out.println("Debes introducir dos números enteros");
-			correcto=false;
-		} else if(!Character.isDigit(posicion.charAt(0)) && !Character.isDigit(posicion.charAt(1))) {
-			System.out.println("Formato incorrecto, intentalo de nuevo");
-			correcto=false;
-		} else {
-			pos[0] = Integer.parseInt(Character.toString(posicion.charAt(0)));
-			pos[1] = Integer.parseInt(Character.toString(posicion.charAt(1)));
-			
-			if((pos[0]<0 || pos[0]>=cantidad.length) || (pos[1]<0 || pos[1]>=cantidad[0].length)) {
-				System.out.println("La posición introducida no es correcta");
-				correcto=false;
-			} else if(inventarioGolosinas(pos[0], pos[1], cantidad)) {
-				System.out.println("Ya no quedan");
-			}
-		}
-		} while(!correcto);
-		
-		return pos;
 	}
 
 }
