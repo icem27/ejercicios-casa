@@ -50,11 +50,7 @@ public class Examen_golosinas {
 	public static double[][] precioGolosinas(double[][] precio){
 		for(int i=0;i<precio.length;i++) {
 			for(int j=0;j<precio[i].length;j++) {
-				if(i%2==0) {
-					precio[i][j]=0.85;
-				} else {
-					precio[i][j]=1.15;
-				}
+				precio[i][j] = (i % 2 == 0) ? 0.85 : 1.15;
 			}
 		}
 		return precio;
