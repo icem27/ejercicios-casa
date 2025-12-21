@@ -94,7 +94,7 @@ public class Ejercicio_8 {
 			} else {
 				fila = Character.getNumericValue(reserva.charAt(1));
 				asiento = Character.getNumericValue(reserva.charAt(2));
-				if ((fila < 0 || fila >= entradas.length) || (asiento < 0 || asiento >= entradas[0].length)) {
+				if ((fila < 0 || fila >= MAX_FILAS) || (asiento < 0 || asiento >= MAX_ASIENTOS)) {
 					System.out.println("El asiento que estas intentando reservar no existe");
 					correcto = false;
 				} 
