@@ -18,7 +18,7 @@ public class Ejercicio_8 {
 				{ false, false, false, false, false, true, true, false, false },
 				{ false, false, false, false, false, false, false, false, false },
 				{ false, false, false, false, false, false, false, false, false } };
-		double[][] precio_entradas = preciosEntradas(8.5, 12);
+		double[][] precio_entradas = preciosEntradas(9, 12.5);
 		
 		char opcion;
 		do {
@@ -78,7 +78,7 @@ public class Ejercicio_8 {
 		return sc.next().toUpperCase().charAt(0);
 	}
 	
-	public static int[] busca_asiento(Scanner sc, boolean[][] entradas, double[][] precio) {
+	public static int[] busca_asiento(Scanner sc, boolean[][] entradas) {
 		boolean correcto;
 		int[] pos = new int[2];
 		int fila;
@@ -86,8 +86,8 @@ public class Ejercicio_8 {
 		do {
 			correcto = true;
 			System.out.println("Introduce el código del asiento:");
-			String reserva = sc.next();
-			if (reserva.length() != 3 || !Character.isAlphabetic(reserva.charAt(0))
+			String reserva = sc.next().toUpperCase();
+			if (reserva.length() != 3 || reserva.charAt(0)!='S'
 					|| !(Character.isDigit(reserva.charAt(1)) && Character.isDigit(reserva.charAt(2)))) {
 				System.out.println("El formato introducido no es correcto");
 				correcto = false;
@@ -106,7 +106,7 @@ public class Ejercicio_8 {
 
 	}
 	public static void reserva_asiento(Scanner sc, boolean[][] entradas, double[][] precio) {
-		int[] pos=busca_asiento(sc, entradas, precio);
+		int[] pos=busca_asiento(sc, entradas);
 		if (estadoEntradas(entradas, pos[0], pos[1]).equals("Ocupado")) {
 			System.out.println("El asiento S" + pos[0] + pos[1] + " ya esta ocupado, por favor, selecione otra butaca\n");
 			return;
@@ -120,11 +120,9 @@ public class Ejercicio_8 {
 		int ocupado=0;
 		for(int i=0;i<sala.length;i++) {
 			for(int j=0;j<sala[i].length;j++) {
-				if(sala[i][j]) {
-					ocupado++;
-				} else {
-					libre++;
-				}
+				if(sala[i][j]) ocupado++;
+				else libre++;
+			
 			}
 		}
 		System.out.println("Hay un total de "+ocupado+" asientos ocupados y " + libre +  " asientos libres");
@@ -133,11 +131,11 @@ public class Ejercicio_8 {
 		String clave_acceso="Polis1DAWM";
 		System.out.print("Introduce la clave: ");
 		String clave=sc.next();
-		while(!clave.equals(clave_acceso)) {
-			System.out.print("La clave introducida no es correcta, introducela de nuevo: ");
-			clave=sc.next();
+		if(!clave.equals(clave_acceso)) {
+			System.out.println("La clave introducida no es correcta.");
+			return;
 		}
-		int[] pos=busca_asiento(sc, entradas, precio);
+		int[] pos=busca_asiento(sc, entradas);
 		String estado = estadoEntradas(entradas, pos[0], pos[1]);
 		if(estado.equals("Ocupado")) {
 			System.out.printf("Reserva cancelada: -%.2f€\n", precio[pos[0]][pos[1]]);
