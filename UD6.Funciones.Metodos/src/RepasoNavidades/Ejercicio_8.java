@@ -25,14 +25,7 @@ public class Ejercicio_8 {
 			opcion=menu(sc);
 			switch(opcion) {
 			case 'M':
-				System.out.printf("%5s %5s %5s\n", "Código", "Estado", "Precio");
-				System.out.println("----------------------");
-				for (int i = 0; i < precio_entradas.length; i++) {
-					for(int j=0;j<precio_entradas[i].length;j++) {
-						System.out.printf("%4s %7s %6.2f€", "S"+i+j, estadoEntradas(sala, i, j), precio_entradas[i][j] );
-						System.out.println();
-					}
-				}
+				mostrarAsientos(sala, precio_entradas);
 				break;
 			case 'R':
 				reserva_asiento(sc, sala, precio_entradas);
@@ -50,7 +43,17 @@ public class Ejercicio_8 {
 				System.out.println("La opción seleciona es errorea");
 			}
 		}while(opcion!='S');
-
+		sc.close();
+	}
+	public static void mostrarAsientos(boolean[][] sala, double[][] precio_entradas) {
+		System.out.printf("%5s %5s %5s\n", "Código", "Estado", "Precio");
+		System.out.println("----------------------");
+		for (int i = 0; i < precio_entradas.length; i++) {
+			for(int j=0;j<precio_entradas[i].length;j++) {
+				System.out.printf("%4s %7s %6.2f€", "S"+i+j, estadoEntradas(sala, i, j), precio_entradas[i][j] );
+				System.out.println();
+			}
+		}
 	}
 
 	public static double[][] preciosEntradas(double precioMin, double precioMax) {
