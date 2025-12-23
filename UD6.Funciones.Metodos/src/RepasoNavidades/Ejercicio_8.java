@@ -50,7 +50,8 @@ public class Ejercicio_8 {
 		System.out.println("----------------------");
 		for (int i = 0; i < precio_entradas.length; i++) {
 			for(int j=0;j<precio_entradas[i].length;j++) {
-				System.out.printf("%4s %7s %6.2f€", "S"+i+j, estadoEntradas(sala, i, j), precio_entradas[i][j] );
+				String estadoEntradas = sala[i][j] ? "Ocupado":"Libre";
+				System.out.printf("%4s %7s %6.2f€", "S"+i+j, estadoEntradas, precio_entradas[i][j] );
 				System.out.println();
 			}
 		}
@@ -65,9 +66,6 @@ public class Ejercicio_8 {
 		}
 		return precio;
 	}
-	public static String estadoEntradas(boolean[][] entradas, int fila, int asiento) {
-		return entradas[fila][asiento] ? "Ocupado":"Libre";
-	}
 	
 	public static char menu(Scanner sc) {
 		System.out.println("*********************************************************");
@@ -81,7 +79,7 @@ public class Ejercicio_8 {
 		return sc.next().toUpperCase().charAt(0);
 	}
 	
-	public static int[] busca_asiento(Scanner sc, boolean[][] entradas) {
+	public static int[] busca_asiento(Scanner sc) {
 		boolean correcto;
 		int[] pos = new int[2];
 		int fila;
@@ -109,8 +107,8 @@ public class Ejercicio_8 {
 
 	}
 	public static void reserva_asiento(Scanner sc, boolean[][] entradas, double[][] precio) {
-		int[] pos=busca_asiento(sc, entradas);
-		if (estadoEntradas(entradas, pos[0], pos[1]).equals("Ocupado")) {
+		int[] pos=busca_asiento(sc);
+		if (entradas[pos[0]][pos[1]]) {
 			System.out.println("El asiento S" + pos[0] + pos[1] + " ya esta ocupado, por favor, selecione otra butaca\n");
 			return;
 		}
@@ -138,9 +136,8 @@ public class Ejercicio_8 {
 			System.out.println("La clave introducida no es correcta.");
 			return;
 		}
-		int[] pos=busca_asiento(sc, entradas);
-		String estado = estadoEntradas(entradas, pos[0], pos[1]);
-		if(estado.equals("Ocupado")) {
+		int[] pos=busca_asiento(sc);
+		if(entradas[pos[0]][pos[1]]) {
 			System.out.printf("Reserva cancelada: -%.2f€\n", precio[pos[0]][pos[1]]);
 			entradas[pos[0]][pos[1]]=false;
 		} else {
