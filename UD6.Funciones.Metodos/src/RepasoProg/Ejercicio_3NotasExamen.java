@@ -20,9 +20,10 @@ public class Ejercicio_3NotasExamen {
 	}
 	
 	public static String[] nombreAlumnos(Scanner sc) {
-		System.out.println("¿Cuantos alumnos son?");
-		int cantidad = sc.nextInt();
-		sc.nextLine();
+//		System.out.println("¿Cuantos alumnos son?");
+//		int cantidad = sc.nextInt();
+		int cantidad = esNumero(sc, "¿Cuantos alumnos son?");
+//		sc.nextLine();
 		String[] nombreAlumnos=new String[cantidad];
 		for(int i=0;i<cantidad;i++) {
 			System.out.print("Nombre del alumno número " + (i+1) + ": ");
@@ -82,6 +83,15 @@ public class Ejercicio_3NotasExamen {
 			}
 		}
 		return notas;
+	}
+	
+	public static int esNumero(Scanner sc, String mensaje) {
+		System.out.println(mensaje);
+		String texto = sc.nextLine();
+		if(texto.length()!=0 || !Character.isDigit(texto.charAt(0))) {
+			System.out.println("Debes introducir número");
+		}
+		return Character.getNumericValue(texto.charAt(0));
 	}
 
 }
