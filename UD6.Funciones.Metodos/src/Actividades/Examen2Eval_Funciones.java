@@ -7,9 +7,10 @@ public class Examen2Eval_Funciones {
 	public static final String INICIALES = "ICEM";
 	public static void main(String[] args) {
 		final int NUM_AGENTES = 6;
+		int puntosAgenteApto=20;
 		int[][] matriz = obtenerMatriz(NUM_AGENTES, NUM_AGENTES);
 		int[] puntuaciones = obtenerPuntuaciones(matriz);
-		String[] agentesAptos = obtenerAgentesAptos(puntuaciones, 20);
+		String[] agentesAptos = obtenerAgentesAptos(puntuaciones, puntosAgenteApto);
 		double promedioGeneral = obtenerPromedioGeneral(matriz);
 		double[] promedioMision = obtenerPromedioMision(matriz);
 		int misionCompleja = ObtenerMisionCompleja(puntuaciones);
@@ -30,16 +31,16 @@ public class Examen2Eval_Funciones {
             System.out.println("Agente " + (i+1) + ": " + puntuaciones[i] + " puntos");
         }
 
-        System.out.println("\n===== AGENTES APTOS PARA SALTO CRÍTICO (>20 puntos) =====");
+        System.out.println("\n===== AGENTES APTOS PARA SALTO CRÍTICO (>"+puntosAgenteApto+ " puntos) =====");
         if (agentesAptos.length == 0) {
-            System.out.println("Ningún agente supera los 20 puntos");
+            System.out.println("Ningún agente supera los "+ puntosAgenteApto +" puntos");
         } else {
             System.out.println(Arrays.toString(agentesAptos));
         }
 
         System.out.println("\n===== ESTADÍSTICAS =====");
         System.out.printf("Promedio general de calificaciones: %.2f\n", promedioGeneral);
-        System.out.println("Misión más difícil: misión " + (misionCompleja) +
+        System.out.println("Misión más difícil: misión " + (misionCompleja+1) +
                            " (promedio = " + String.format("%.2f", promedioMision[misionCompleja]) + ")");
         System.out.println("Agente con mayor puntuación: Agente " + INICIALES+(mejorAgente+1)
                            + " (" + puntuaciones[mejorAgente] + " puntos)");
@@ -143,7 +144,7 @@ public class Examen2Eval_Funciones {
                 misionMasDificil = i;
             }
         }
-        return misionMasDificil+1;
+        return misionMasDificil;
 	}
 	public static int ObtenerMejorAgente(int[] puntos) {
 		int mejorAgente = 0;
