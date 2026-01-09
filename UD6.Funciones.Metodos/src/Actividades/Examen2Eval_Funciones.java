@@ -41,7 +41,7 @@ public class Examen2Eval_Funciones {
         System.out.printf("Promedio general de calificaciones: %.2f\n", promedioGeneral);
         System.out.println("Misión más difícil: misión " + (misionCompleja) +
                            " (promedio = " + String.format("%.2f", promedioMision[misionCompleja]) + ")");
-        System.out.println("Agente con mayor puntuación: Agente " + INICIALES+(mejorAgente)
+        System.out.println("Agente con mayor puntuación: Agente " + INICIALES+(mejorAgente+1)
                            + " (" + puntuaciones[mejorAgente] + " puntos)");
 		
 
@@ -155,6 +155,6 @@ public class Examen2Eval_Funciones {
                 mejorAgente = i;
             }
         }
-        return mejorAgente+1;
+        return mejorAgente;
 	}
 }
