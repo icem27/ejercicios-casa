@@ -55,7 +55,7 @@ public class CrearCuenta {
 		}while(opcion!=5);
 		
 		
-
+		sc.close();
 	}
 
 }

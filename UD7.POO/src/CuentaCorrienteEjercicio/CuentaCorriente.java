@@ -11,6 +11,10 @@ public class CuentaCorriente {
 	double saldo;
 	
 	double ingresarDinero(double importe) {
+		while(importe-saldo>0) {
+			System.out.println("No puede sacar dinero que no tienes");
+		}
+		
 		saldo+=importe;
 		return saldo;
 	}
@@ -56,7 +60,6 @@ public class CuentaCorriente {
 			break;
 		default:
 			System.out.println("Opción no valida");
-		
 		}
 	}
 	
