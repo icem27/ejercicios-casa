@@ -25,6 +25,9 @@ public class Principal {
 		System.out.println("El perro " + perro2.nombre + " está ");
 		perro2.comer();
 		perro2.jugar();
+		
+		Perro perro3=new Perro("Chiuaua", "Gris", "Jack", "Pequeño");
+		System.out.println("El perro " + perro3.nombre + " es de tamaño " + perro3.tamanio);
 	}
 
 }

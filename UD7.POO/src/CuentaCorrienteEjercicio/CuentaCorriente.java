@@ -15,16 +15,11 @@ public class CuentaCorriente {
 		return saldo;
 	}
 	double sacarDinero(double importe) {
-		while(importe-saldo>0) {
-			System.out.println("No puede sacar dinero que no tienes");
-			return saldo;
-		}
-		
 		saldo -= importe;
 		return saldo;
 	}
 	void mostrarSaldo() {
-		System.out.println("Su salgo actual es de: " + String.format("%.2f€", saldo));
+		System.out.println("Su saldo actual es de: " + String.format("%.2f€", saldo));
 	}
 	void modificarDatosCuenta() {
 		System.out.println("Datos de la cuenta: ");
@@ -33,7 +28,7 @@ public class CuentaCorriente {
 		System.out.println("DNI titular: " + dni);
 		System.out.println("Dirección titular: " + direccion);
 		System.out.println("Número de la cuenta: " + numCuenta);
-		System.out.println("Salgo actual: " + String.format("%.2f€", saldo));
+		System.out.println("Saldo actual: " + String.format("%.2f€", saldo));
 		Scanner leer=new Scanner(System.in);
 		System.out.println("¿Qué quieres modificar? (1-Nombre, 2-Apellidos, 3-DNI, 4-Dirección)" );
 		int opcion=leer.nextInt();
