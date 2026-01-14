@@ -3,7 +3,7 @@ package Examen;
 public class Ejercicio6 {
 
 	public static void main(String[] args) {
-		repiteMensaje("FUTURO", 5);
+		repiteMensaje("FUTURO", -1);
 
 	}
 	public static void repiteMensaje(String mensaje, int repetir) {
