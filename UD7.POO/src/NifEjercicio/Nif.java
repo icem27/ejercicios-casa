@@ -2,24 +2,21 @@ package NifEjercicio;
 
 public class Nif {
 	long dni;
-	String letra;
+	char letra;
 	
 	Nif(){
 		this.dni=0;
-		this.letra="";
+		this.letra=' ';
 	}
 	
 	Nif(int numDni){
-		String[] letras = {"T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};
-		int num = numDni%23;
-		this.letra=letras[num];
+		this.letra = CalcularLetra(numDni);
 		this.dni = numDni;
 	}
-	public void CalcularLetra(int numDni) {
-		String[] letras = {"T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};
+	public char CalcularLetra(int numDni) {
+		char[] letras = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
 		int num = numDni%23;
-		this.letra=letras[num];
-		this.dni = numDni;
+		return this.letra=letras[num];
 	}
 	public void mostrar() {
 		System.out.println(this.dni + "-" + this.letra);
