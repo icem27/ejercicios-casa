@@ -1,15 +1,14 @@
 package NifEjercicio;
 
 public class Nif {
-	long numero;
-	char letra;
-	
-	Nif(){
+	public long numero;
+	public char letra;
+	public Nif(){
 		this.numero=0;
 		this.letra=' ';
 	}
 	
-	Nif(long numero, char letra){
+	public Nif(long numero, char letra){
 		this.numero = numero;
 		this.letra = letra;
 	}
