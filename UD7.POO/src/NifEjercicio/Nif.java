@@ -1,25 +1,26 @@
 package NifEjercicio;
 
 public class Nif {
-	long dni;
+	long numero;
 	char letra;
 	
 	Nif(){
-		this.dni=0;
+		this.numero=0;
 		this.letra=' ';
 	}
 	
-	Nif(int numDni){
-		this.letra = CalcularLetra(numDni);
-		this.dni = numDni;
+	Nif(long numero, char letra){
+		this.numero = numero;
+		this.letra = letra;
 	}
-	public char CalcularLetra(int numDni) {
+	public char CalcularLetra() {
 		char[] letras = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
-		int num = numDni%23;
-		return this.letra=letras[num];
+		int num =(int) (this.numero%23);
+		this.letra=letras[num];
+		return letras[num];
 	}
 	public void mostrar() {
-		System.out.println(this.dni + "-" + this.letra);
+		System.out.println(String.format("%08d-%s", this.numero, this.letra));
 	}
 
 }
