@@ -30,6 +30,7 @@ public class Persona {
 		this.sexo = sexo;
 		this.peso=peso;
 		this.altura=altura;
+		this.nif = generarDNI();
 	}
 	public int calcularIMC() {
 		final int POR_DEBAJO=-1, PESO_IDEA=0, SOBREPESO=1;
