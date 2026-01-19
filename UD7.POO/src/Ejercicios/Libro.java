@@ -5,6 +5,7 @@ public class Libro {
 	private String autor;
 	private int ejemplares;
 	private int prestados;
+	
 	Libro(){
 	}
 
@@ -15,9 +16,8 @@ public class Libro {
 		this.prestados=numeroEjemplaresPrestados;
 	}
 	
-	
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -25,7 +25,7 @@ public class Libro {
 	}
 
 	public String getAutor() {
-		return autor;
+		return this.autor;
 	}
 
 	public void setAutor(String autor) {
@@ -33,7 +33,7 @@ public class Libro {
 	}
 
 	public int getEjemplares() {
-		return ejemplares;
+		return this.ejemplares;
 	}
 
 	public void setEjemplares(int ejemplares) {
@@ -41,7 +41,7 @@ public class Libro {
 	}
 
 	public int getPrestados() {
-		return prestados;
+		return this.prestados;
 	}
 
 	public void setPrestados(int prestados) {

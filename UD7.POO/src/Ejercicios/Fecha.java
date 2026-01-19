@@ -42,7 +42,7 @@ public class Fecha {
 	}
 
 	public int getDia() {
-		return dia;
+		return this.dia;
 	}
 
 	public void setDia(int dia) {
@@ -50,7 +50,7 @@ public class Fecha {
 	}
 
 	public int getMes() {
-		return mes;
+		return this.mes;
 	}
 
 	public void setMes(int mes) {
@@ -58,11 +58,12 @@ public class Fecha {
 	}
 
 	public int getAnio() {
-		return anio;
+		return this.anio;
 	}
 
 	public void setAnio(int anio) {
 		this.anio = anio;
 	}
+	
 	
 }

@@ -14,34 +14,33 @@ public class Electrodomestico {
 		this.potencia=potencia;
 	}
 	public String getTipo() {
-		return tipo;
+		return this.tipo;
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	public String getMarca() {
-		return marca;
+		return this.marca;
 	}
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
 	public double getPotencia() {
-		return potencia;
+		return this.potencia;
 	}
 	public void setPotencia(double potencia) {
 		this.potencia = potencia;
 	}
 	@Override
 	public String toString() {
-		return "Electrodomestico [tipo=" + tipo + ", marca=" + marca + ", potencia=" + potencia + "]";
+		return "Electrodoméstico [tipo=" + tipo + ", marca=" + marca + ", potencia=" + potencia + "]";
 	}
 	public double getConsumo(int tiempo) {
-		double consumo=tiempo*this.potencia;
-		return consumo;
+		return tiempo*this.potencia;
 	}
+	
 	public double getCosteConsumo(int tiempo, double precio) {
-		double coste=tiempo*precio;
-		return coste;
+		return getConsumo(tiempo)*precio;
 	}
 	
 	

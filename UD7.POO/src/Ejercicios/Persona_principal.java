@@ -11,11 +11,9 @@ public class Persona_principal {
 		miPersona.setSexo('H');
 		int pesoIdeal = miPersona.calcularIMC();
 		boolean mayorEdad = miPersona.esMayorDeEdad();
-		boolean sexoCorrecto = miPersona.comprobarSexo('H');
 		Persona miPersona1 = new Persona("Chaniel", 22, 'M', 89, 170);
 		int pesoIdeal1 = miPersona1.calcularIMC();
 		boolean mayorEdad1 = miPersona1.esMayorDeEdad();
-		boolean sexoCorrecto1 = miPersona1.comprobarSexo('H');
 		//Datos de la persona
 		System.out.println(miPersona);
 		//Comprobación del peso
@@ -26,7 +24,7 @@ public class Persona_principal {
 		if(mayorEdad) System.out.println("Eres mayor de edad");
 		else System.out.println("Eres menor de edad");
 		//Comprobar sexo
-		if(sexoCorrecto) System.out.println("El sexo es correcto");
+		if(miPersona.sexoCorrecto(miPersona.getSexo())) System.out.println("El sexo es correcto");
 		else System.out.println("El sexo es incorrecto");
 		//Datos de la persona1
 		System.out.println(miPersona1);
@@ -38,7 +36,7 @@ public class Persona_principal {
 		if(mayorEdad1) System.out.println("Eres mayor de edad");
 		else System.out.println("Eres menor de edad");
 		//Comprobar sexo
-		if(sexoCorrecto1) System.out.println("El sexo es correcto");
+		if(miPersona1.sexoCorrecto(miPersona.getSexo())) System.out.println("El sexo es correcto");
 		else System.out.println("El sexo es incorrecto");
 	}
 
