@@ -8,9 +8,9 @@ public class Nif {
 		this.letra=' ';
 	}
 	
-	public Nif(long numero, char letra){
+	public Nif(long numero){
 		this.numero = numero;
-		this.letra = letra;
+		this.letra = CalcularLetra();
 	}
 	public char CalcularLetra() {
 		char[] letras = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
@@ -18,8 +18,8 @@ public class Nif {
 		this.letra=letras[num];
 		return letras[num];
 	}
-	public void mostrar() {
-		System.out.println(String.format("%08d-%s", this.numero, this.letra));
+	public String mostrar() {
+		return String.format("%08d-%s", this.numero, this.letra);
 	}
 
 }

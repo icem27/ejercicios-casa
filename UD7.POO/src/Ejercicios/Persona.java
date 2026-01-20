@@ -8,12 +8,13 @@ public class Persona {
 	
 	private String nombre;
 	private int edad=0;
-	private Nif dni ;
+	private Nif dni;
 	private char sexo=HOMBRE;
 	private double peso=0;
 	private double altura=0;
 	
 	Persona(){
+		generarDNI();
 	}
 	
 	Persona(String nombre, int edad, char sexo){
@@ -28,6 +29,7 @@ public class Persona {
 		this.sexo = sexo;
 		this.peso=peso;
 		this.altura=altura;
+		generarDNI();
 	}
 	public int calcularIMC() {
 		double calcula=this.peso/Math.pow(this.altura, 2);
@@ -48,14 +50,14 @@ public class Persona {
 	}
 	@Override
 	public String toString() {
-		return "Persona [dni=" + dni + ", nombre=" + nombre + ", edad=" + edad + ", SEXO=" + sexo + ", peso=" + peso
+		return "Persona [dni=" + dni.mostrar() + ", nombre=" + nombre + ", edad=" + edad + ", SEXO=" + sexo + ", peso=" + peso
 				+ ", altura=" + altura + "]";
 	}
 	private void generarDNI() {
 		long numeroAleatorio = (long) (Math.random() * 90000000 + 10000000);
-		char letra=dni.CalcularLetra();
-		dni=new Nif(numeroAleatorio, letra);
+		this.dni=new Nif(numeroAleatorio);
 	}
+	
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -90,5 +92,7 @@ public class Persona {
 		boolean esCorrecto=comprobarSexo(sexo)==this.sexo;
 		return esCorrecto;
 	}
+	
+	
 	
 }
