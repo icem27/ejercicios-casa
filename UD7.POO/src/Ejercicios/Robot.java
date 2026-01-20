@@ -3,7 +3,7 @@ package Ejercicios;
 public class Robot {
 	private int peso=3;
 	
-	Robot(){
+	Robot(){	
 	}
 	
 	Robot(int peso){
@@ -11,11 +11,14 @@ public class Robot {
 	}
 	
 	
-	Robot recogerPieza(Robot robot) {
-		return new Robot(this.peso=(this.peso+(robot.peso-1)));
+	public Robot recogerPieza(Robot otroRobot) {
+		int nuevoValor = this.peso=this.peso+(otroRobot.peso-1);
+		otroRobot.peso=0;
+		return new Robot(nuevoValor);
 	}
-	public int recogerPieza(int peso) {
-		return this.peso=(this.peso+(peso-1));
+	
+	public Robot recogerPieza(int peso) {
+		return new Robot(this.peso=(this.peso+(peso-1)));
 	}
 
 	@Override
