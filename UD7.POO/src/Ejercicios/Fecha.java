@@ -6,7 +6,6 @@ public class Fecha {
 	private int anio;
 	
 	public Fecha() {
-		
 	}
 	
 	public Fecha(int dia, int mes, int anio) {
@@ -95,6 +94,7 @@ public class Fecha {
 			} else {
 				maxDia=28;
 			}
+		break;
 		default:
 			maxDia=30;
 		}
@@ -103,7 +103,7 @@ public class Fecha {
 
 	@Override
 	public String toString() {
-		return "Fecha [dia=" + dia + ", mes=" + mes + ", anio=" + anio + "]";
+		return String.format("%02d-%02d-%04d", dia, mes, anio);
 	}
 	
 }
