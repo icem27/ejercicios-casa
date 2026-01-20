@@ -10,21 +10,18 @@ public class Robot {
 		this.peso=peso;
 	}
 	
-	
-	public Robot recogerPieza(Robot otroRobot) {
-		int nuevoValor = this.peso=this.peso+(otroRobot.peso-1);
+	public void recogerPieza(Robot otroRobot) {
+		this.peso+=(otroRobot.peso-1);
 		otroRobot.peso=0;
-		return new Robot(nuevoValor);
 	}
 	
-	public Robot recogerPieza(int peso) {
-		return new Robot(this.peso=(this.peso+(peso-1)));
+	public void recogerPieza(int peso) {
+		this.peso+=(peso-1);
 	}
 
 	@Override
 	public String toString() {
-		return "Robot [peso=" + peso + "]";
+		return peso + " kg";
 	}
-	
 
 }
