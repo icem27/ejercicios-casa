@@ -1,27 +1,30 @@
 package Ejercicios;
 
 public class Robot {
-	private int peso=3;
+	private int peso;
 	
-	Robot(){	
+	Robot(){
+		this.peso=3;
 	}
 	
 	Robot(int peso){
 		this.peso=peso;
 	}
 	
+	public int recogerPieza(int peso) {
+		return this.peso+=(peso-1);
+	}
+	
 	public void recogerPieza(Robot otroRobot) {
-		this.peso+=(otroRobot.peso-1);
+		this.peso=recogerPieza(otroRobot.peso);
 		otroRobot.peso=0;
 	}
 	
-	public void recogerPieza(int peso) {
-		this.peso+=(peso-1);
-	}
+	
 
 	@Override
 	public String toString() {
-		return peso + " kg";
+		return "Soy un robot chatarrero y peso " + peso + " kg";
 	}
 
 }
