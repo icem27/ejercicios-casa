@@ -38,7 +38,7 @@ public class Zona_principal {
 			default:
 				System.out.println("Opción elegida no valida");
 			}
-		} while (opcion!=4);
+		} while (opcion!=3);
 
 	}
 	
@@ -46,8 +46,7 @@ public class Zona_principal {
 		System.out.println("====== MADCOOL 2026 ======");
 		System.out.println("1. Mostrar número de entradas libres");
 		System.out.println("2. Vender entradas");
-		System.out.println("3. Vendidas por zonas");
-		System.out.println("4. Salir");
+		System.out.println("3. Salir");
 		System.out.println("Elige la opción: ");
 		return sc.nextInt();
 	}
