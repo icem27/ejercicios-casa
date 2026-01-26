@@ -8,11 +8,7 @@ public class Articulo_principal {
 	static Articulo[] articulos = new Articulo[5];
 
 	public static void main(String[] args) {
-		articulos[0] = new Articulo("Macbook Pro", 10, 1200);
-		articulos[1] = new Articulo("iPhone 17 Pro Max", 20, 1700);
-		articulos[2] = new Articulo("iPad", 6, 800);
-		articulos[3] = new Articulo("Watch 11", 4, 500);
-		articulos[4] = new Articulo("AirPods Max", 6, 300);
+		inicializarArticulos();
 		int opcion;
 		do {
 			opcion = menu();
@@ -37,6 +33,14 @@ public class Articulo_principal {
 				System.out.println("Opción erronea, intentelo de nuevo");
 			}
 		} while (opcion != 5);
+	}
+	
+	public static void inicializarArticulos() {
+	    articulos[0] = new Articulo("Macbook Pro", 10, 1200);
+	    articulos[1] = new Articulo("iPhone 17 Pro Max", 20, 1700);
+	    articulos[2] = new Articulo("iPad", 6, 800);
+	    articulos[3] = new Articulo("Watch 11", 4, 500);
+	    articulos[4] = new Articulo("AirPods Max", 6, 300);
 	}
 
 	public static void aumentarStock() {
