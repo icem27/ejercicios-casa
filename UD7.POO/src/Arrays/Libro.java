@@ -12,28 +12,14 @@ public class Libro {
 	}
 	
 	public boolean prestar() {
-		if(!prestado) {
-			return this.prestado=true;
-		} else {
-			return this.prestado;
-		}
+		return prestado=true;
 	}
-	
+	public boolean devolver() {
+		return prestado=false;
+	}
 
 	public boolean isPrestado() {
 		return prestado;
-	}
-
-	public void setPrestado(boolean prestado) {
-		this.prestado = prestado;
-	}
-
-	public boolean devolver() {
-		if(prestado) {
-			return this.prestado=false;
-		} else {
-			return this.prestado;
-		}
 	}
 	
 	public String getTitulo() {
