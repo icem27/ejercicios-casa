@@ -16,11 +16,11 @@ public class Articulo {
 		return stock;
 	}
 	
-	public void aumentar_stock(int cantidad) {
+	public void aumentarStock(int cantidad) {
 		this.stock+=cantidad;
 	}
 	
-	public void disminuir_stock(int cantidad) {
+	public void disminuirStock(int cantidad) {
 		this.stock-=cantidad;
 	}
 	public void setStock(int stock) {
