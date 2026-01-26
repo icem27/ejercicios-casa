@@ -6,17 +6,18 @@ public class Articulo_principal {
 
 	static Scanner sc = new Scanner(System.in);
 	static Articulo[] articulos = new Articulo[5];
+
 	public static void main(String[] args) {
-		articulos[0] = new  Articulo("Macbook Pro", 10, 1200);
-		articulos[1] = new  Articulo("iPhone 17 Pro Max", 20, 1700);
-		articulos[2] = new  Articulo("iPad", 6, 800);
-		articulos[3] = new  Articulo("Watch 11", 4, 500);
-		articulos[4] = new  Articulo("AirPods Max", 6, 300);
+		articulos[0] = new Articulo("Macbook Pro", 10, 1200);
+		articulos[1] = new Articulo("iPhone 17 Pro Max", 20, 1700);
+		articulos[2] = new Articulo("iPad", 6, 800);
+		articulos[3] = new Articulo("Watch 11", 4, 500);
+		articulos[4] = new Articulo("AirPods Max", 6, 300);
 		int opcion;
 		do {
 			opcion = menu();
 			sc.nextLine();
-			switch(opcion) {
+			switch (opcion) {
 			case 1:
 				mostrarArticulos();
 				break;
@@ -35,9 +36,9 @@ public class Articulo_principal {
 			default:
 				System.out.println("Opción erronea, intentelo de nuevo");
 			}
-		} while(opcion!=5);
+		} while (opcion != 5);
 	}
-	
+
 	public static void aumentarStock() {
 		System.out.print("Introduce el nombre del artículo para aumentar el stock: ");
 		String nombre = sc.nextLine();
@@ -48,15 +49,12 @@ public class Articulo_principal {
 		}
 		System.out.print("Introduce la cantidad a aumentar: ");
 		int cantidad = sc.nextInt();
-		if (nombreCorrecto(pos, nombre)) {
-			articulos[pos].aumentarStock(cantidad);
-		} else {
-			System.out.println("El articulo introducido no es correcto.\n ");
-			return;
-		}
-		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
+		sc.nextLine();
+		articulos[pos].aumentarStock(cantidad);
+		System.out
+				.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
 	}
-	
+
 	public static void disminuirStock() {
 		System.out.print("\nIntroduce el nombre del artículo para disminuir el stock: ");
 		String nombre = sc.nextLine();
@@ -67,40 +65,35 @@ public class Articulo_principal {
 		}
 		System.out.print("Introduce la cantidad a disminuir: ");
 		int cantidad = sc.nextInt();
-		if (nombreCorrecto(pos, nombre)) {
-			if (articulos[pos].getStock() >= cantidad) {
-				articulos[pos].disminuirStock(cantidad);
-			} else {
-				System.out.println("No puedes disminuir la cantidad mayor que lo que hay en el stock\n");
-				return;
-			}
+		sc.nextLine();
+		if (articulos[pos].getStock() >= cantidad) {
+			articulos[pos].disminuirStock(cantidad);
 		} else {
-			System.out.println("El articulo introducido no es correcto.\n ");
+			System.out.println("No hay suficiente stock disponible\n");
 			return;
 		}
-		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
-
+		System.out
+				.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
 	}
-	
+
 	public static void mostrarArticulos() {
 		System.out.println("\nArtículos:");
-		for(Articulo articulo:articulos) {
+		for (Articulo articulo : articulos) {
 			System.out.println(articulo);
-
 		}
 		System.out.println();
 	}
-	
+
 	public static void menosCinco() {
 		System.out.println("\nArtículos con menos de 5 unidades:");
-		for(int i=0;i<articulos.length;i++) {
-			if(articulos[i].getStock()<5) {
+		for (int i = 0; i < articulos.length; i++) {
+			if (articulos[i].getStock() < 5) {
 				System.out.println(articulos[i]);
 			}
 		}
 		System.out.println();
 	}
-	
+
 	public static int menu() {
 		System.out.println("--- Menú Inventario ---");
 		System.out.println("1. Mostrar todos los artículos");
@@ -111,20 +104,12 @@ public class Articulo_principal {
 		System.out.print("Elige una opción: ");
 		return sc.nextInt();
 	}
-	
-	public static boolean nombreCorrecto(int i, String palabra) {
-		if(articulos[i].getNombre().equalsIgnoreCase(palabra)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
+
 	public static int posicionArticulo(Articulo[] articulos, String palabra) {
-		for(int i=0;i<articulos.length;i++) {
-			if(nombreCorrecto(i, palabra)) {
+		for (int i = 0; i < articulos.length; i++) {
+			if (articulos[i].getNombre().equalsIgnoreCase(palabra)) {
 				return i;
-			} 
+			}
 		}
 		return -1;
 	}
