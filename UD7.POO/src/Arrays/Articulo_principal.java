@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Articulo_principal {
 
+	static Scanner sc = new Scanner(System.in);
+	static Articulo[] articulos = new Articulo[5];
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		Articulo[] articulos = new Articulo[5];
 		articulos[0] = new  Articulo("Macbook Pro", 10, 1200);
 		articulos[1] = new  Articulo("iPhone 17 Pro Max", 20, 1700);
 		articulos[2] = new  Articulo("iPad", 6, 800);
@@ -14,20 +14,20 @@ public class Articulo_principal {
 		articulos[4] = new  Articulo("AirPods Max", 6, 300);
 		int opcion;
 		do {
-			opcion = menu(sc);
+			opcion = menu();
 			sc.nextLine();
 			switch(opcion) {
 			case 1:
-				mostrarArticulos(articulos);
+				mostrarArticulos();
 				break;
 			case 2:
-				menosCinco(articulos);
+				menosCinco();
 				break;
 			case 3:
-				aumentarStock(sc, articulos);
+				aumentarStock();
 				break;
 			case 4:
-				disminuirStock(sc, articulos);
+				disminuirStock();
 				break;
 			case 5:
 				System.out.println("Hasta la próxima: ");
@@ -38,50 +38,51 @@ public class Articulo_principal {
 		} while(opcion!=5);
 	}
 	
-	public static void aumentarStock(Scanner sc, Articulo[] articulos) {
+	public static void aumentarStock() {
 		System.out.print("Introduce el nombre del artículo para aumentar el stock: ");
-		String nombre=sc.nextLine();
+		String nombre = sc.nextLine();
+		int pos = posicionArticulo(articulos, nombre);
+		if (pos < 0) {
+			System.out.println("El articulo indicado no se encuentra en stock");
+			return;
+		}
 		System.out.print("Introduce la cantidad a aumentar: ");
-		int cantidad=sc.nextInt();
-		int pos=0;
-		for(int i=0;i<articulos.length;i++) {
-			if(nombreCorrecto(i, articulos, nombre)) {
-				articulos[i].aumentarStock(cantidad);
-				pos=i;
-				break;
-			} else {
-				System.out.println("El articulo introducido no es correcto.\n ");
-				return;
-			}
+		int cantidad = sc.nextInt();
+		if (nombreCorrecto(pos, nombre)) {
+			articulos[pos].aumentarStock(cantidad);
+		} else {
+			System.out.println("El articulo introducido no es correcto.\n ");
+			return;
 		}
 		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
 	}
 	
-	public static void disminuirStock(Scanner sc, Articulo[] articulos) {
+	public static void disminuirStock() {
 		System.out.print("\nIntroduce el nombre del artículo para disminuir el stock: ");
-		String nombre=sc.nextLine();
+		String nombre = sc.nextLine();
+		int pos = posicionArticulo(articulos, nombre);
+		if (pos < 0) {
+			System.out.println("El articulo indicado no se encuentra en stock");
+			return;
+		}
 		System.out.print("Introduce la cantidad a disminuir: ");
-		int cantidad=sc.nextInt();
-		int pos=0;
-		for(int i=0;i<articulos.length;i++) {
-			if(nombreCorrecto(i, articulos, nombre)) {
-				if(articulos[i].getStock()>=cantidad) {
-				articulos[i].disminuirStock(cantidad);
-				pos=i;
-				break;	
-				} else {
-					System.out.println("No puedes disminuir la cantidad mayor que lo que hay en el stock\n");
-					return;
-				}
+		int cantidad = sc.nextInt();
+		if (nombreCorrecto(pos, nombre)) {
+			if (articulos[pos].getStock() >= cantidad) {
+				articulos[pos].disminuirStock(cantidad);
 			} else {
-				System.out.println("El articulo introducido no es correcto.\n ");
+				System.out.println("No puedes disminuir la cantidad mayor que lo que hay en el stock\n");
 				return;
 			}
+		} else {
+			System.out.println("El articulo introducido no es correcto.\n ");
+			return;
 		}
-			System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() +"\n");
+		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
 
 	}
-	public static void mostrarArticulos(Articulo[] articulos) {
+	
+	public static void mostrarArticulos() {
 		System.out.println("\nArtículos:");
 		for(Articulo articulo:articulos) {
 			System.out.println(articulo);
@@ -90,7 +91,7 @@ public class Articulo_principal {
 		System.out.println();
 	}
 	
-	public static void menosCinco(Articulo[] articulos) {
+	public static void menosCinco() {
 		System.out.println("\nArtículos con menos de 5 unidades:");
 		for(int i=0;i<articulos.length;i++) {
 			if(articulos[i].getStock()<5) {
@@ -100,7 +101,7 @@ public class Articulo_principal {
 		System.out.println();
 	}
 	
-	public static int menu(Scanner sc) {
+	public static int menu() {
 		System.out.println("--- Menú Inventario ---");
 		System.out.println("1. Mostrar todos los artículos");
 		System.out.println("2. Mostrar artículos con menos de 5 unidades");
@@ -111,12 +112,21 @@ public class Articulo_principal {
 		return sc.nextInt();
 	}
 	
-	public static boolean nombreCorrecto(int i, Articulo[] articulos, String palabra) {
+	public static boolean nombreCorrecto(int i, String palabra) {
 		if(articulos[i].getNombre().equalsIgnoreCase(palabra)) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public static int posicionArticulo(Articulo[] articulos, String palabra) {
+		for(int i=0;i<articulos.length;i++) {
+			if(nombreCorrecto(i, palabra)) {
+				return i;
+			} 
+		}
+		return -1;
 	}
 
 }
