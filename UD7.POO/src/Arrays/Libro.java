@@ -11,42 +11,14 @@ public class Libro {
 		this.prestado = prestado;
 	}
 	
-	public void prestar() {
-		if(this.titulo==getTitulo()) {
-			if(!prestado) {
-				System.out.println("El libro "  + "\"" + titulo + "\" ya ha sido prestado ");
-				this.prestado=true;
-			} else {
-				System.out.println("El libro "  + "\"" + titulo + "\" no se puede prestar porque ya está prestado.");
-			}
+	public boolean prestar() {
+		if(!prestado) {
+			return this.prestado=true;
+		} else {
+			return this.prestado;
 		}
 	}
-
-	public void devolver() {
-		if(this.titulo==getTitulo()) {
-			if(prestado) {
-				System.out.println("El libro "  + "\"" + titulo + "\" ya ha sido devuelto ");
-				this.prestado=false;
-			} else {
-				System.out.println("El libro "  + "\"" + titulo + "\" no se puede devolver porque no estaba prestado.");
-			}
-		}
-	}
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
+	
 
 	public boolean isPrestado() {
 		return prestado;
@@ -56,6 +28,18 @@ public class Libro {
 		this.prestado = prestado;
 	}
 
+	public boolean devolver() {
+		if(prestado) {
+			return this.prestado=false;
+		} else {
+			return this.prestado;
+		}
+	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	
 	@Override
 	public String toString() {
 			return titulo + " de " + autor;
