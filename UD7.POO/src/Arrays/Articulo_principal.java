@@ -27,12 +27,13 @@ public class Articulo_principal {
 				disminuirStock();
 				break;
 			case 5:
-				System.out.println("Hasta la próxima!");
+				descuentoEspecial();
 				break;
 			default:
 				System.out.println("Opción erronea, intentelo de nuevo");
 			}
-		} while (opcion != 5);
+		} while (opcion != 6);
+		System.out.println("Hasta la próxima!");
 	}
 
 	public static int menu() {
@@ -41,7 +42,8 @@ public class Articulo_principal {
 		System.out.println("2. Mostrar artículos con menos de 5 unidades");
 		System.out.println("3. Aumentar stock de un artículo");
 		System.out.println("4. Disminuir stock de un artículo");
-		System.out.println("5. Salir");
+		System.out.println("5. Articulos con descuento");
+		System.out.println("6. Salir");
 		System.out.print("Elige una opción: ");
 		return sc.nextInt();
 	}
@@ -139,6 +141,11 @@ public class Articulo_principal {
 			totalArticulos+=articulos.getStock();
 		}
 		return totalArticulos;
+	}
+	
+	public static void descuentoEspecial() {
+		System.out.println("\nArticulos con un descuento del 15%: ");
+
 	}
 
 }
