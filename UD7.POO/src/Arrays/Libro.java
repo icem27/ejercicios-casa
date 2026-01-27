@@ -11,13 +11,13 @@ public class Libro {
 		this.prestado = prestado;
 	}
 	
-//	public boolean prestar() {
-//		return prestado=true;
-//	}
-//	
-//	public boolean devolver() {
-//		return prestado=false;
-//	}
+	public boolean prestar() {
+		return prestado=true;
+	}
+	
+	public boolean devolver() {
+		return prestado=false;
+	}
 
 	public boolean isPrestado() {
 		return prestado;

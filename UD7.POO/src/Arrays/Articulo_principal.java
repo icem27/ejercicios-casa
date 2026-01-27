@@ -6,7 +6,7 @@ public class Articulo_principal {
 
 	static Scanner sc = new Scanner(System.in);
 	static Articulo[] articulos = new Articulo[5];
-
+	final static int MAX_STOCK=50;
 	public static void main(String[] args) {
 		inicializarArticulos();
 		int opcion;
@@ -27,74 +27,12 @@ public class Articulo_principal {
 				disminuirStock();
 				break;
 			case 5:
-				System.out.println("Hasta la próxima: ");
+				System.out.println("Hasta la próxima!");
 				break;
 			default:
 				System.out.println("Opción erronea, intentelo de nuevo");
 			}
 		} while (opcion != 5);
-	}
-	
-	public static void inicializarArticulos() {
-	    articulos[0] = new Articulo("Macbook Pro", 10, 1200);
-	    articulos[1] = new Articulo("iPhone 17 Pro Max", 20, 1700);
-	    articulos[2] = new Articulo("iPad", 6, 800);
-	    articulos[3] = new Articulo("Watch 11", 4, 500);
-	    articulos[4] = new Articulo("AirPods Max", 6, 300);
-	}
-
-	public static void aumentarStock() {
-		System.out.print("Introduce el nombre del artículo para aumentar el stock: ");
-		String nombre = sc.nextLine();
-		int pos = posicionArticulo(nombre);
-		if (pos < 0) {
-			System.out.println("El articulo indicado no se encuentra en stock");
-			return;
-		}
-		System.out.print("Introduce la cantidad a aumentar: ");
-		int cantidad = sc.nextInt();
-		sc.nextLine();
-		articulos[pos].aumentarStock(cantidad);
-		System.out
-				.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
-	}
-
-	public static void disminuirStock() {
-		System.out.print("\nIntroduce el nombre del artículo para disminuir el stock: ");
-		String nombre = sc.nextLine();
-		int pos = posicionArticulo(nombre);
-		if (pos < 0) {
-			System.out.println("El articulo indicado no se encuentra en stock");
-			return;
-		}
-		System.out.print("Introduce la cantidad a disminuir: ");
-		int cantidad = sc.nextInt();
-		sc.nextLine();
-		if (articulos[pos].getStock() >= cantidad) {
-			articulos[pos].disminuirStock(cantidad);
-		} else {
-			System.out.println("No hay suficiente stock disponible\n");
-			return;
-		}
-		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
-	}
-
-	public static void mostrarArticulos() {
-		System.out.println("\nArtículos:");
-		for (Articulo articulo : articulos) {
-			System.out.println(articulo);
-		}
-		System.out.println();
-	}
-
-	public static void menosCinco() {
-		System.out.println("\nArtículos con menos de 5 unidades:");
-		for (int i = 0; i < articulos.length; i++) {
-			if (articulos[i].getStock() < 5) {
-				System.out.println(articulos[i]);
-			}
-		}
-		System.out.println();
 	}
 
 	public static int menu() {
@@ -107,6 +45,84 @@ public class Articulo_principal {
 		System.out.print("Elige una opción: ");
 		return sc.nextInt();
 	}
+	
+	public static void inicializarArticulos() {
+	    articulos[0] = new Articulo("Macbook Pro", 10, 1200);
+	    articulos[1] = new Articulo("iPhone 17 Pro Max", 20, 1700);
+	    articulos[2] = new Articulo("iPad", 6, 800);
+	    articulos[3] = new Articulo("Watch 11", 4, 500);
+	    articulos[4] = new Articulo("AirPods Max", 6, 300);
+	}
+	
+	public static void mostrarArticulos() {
+		System.out.println("\nArtículos:");
+		for (Articulo articulo : articulos) {
+			System.out.println(articulo);
+		}
+		int articulos=stockTotal();
+		System.out.println("---------------------------");
+		System.out.println("- Total stock: "+ articulos);
+		System.out.println("---------------------------");
+	}
+
+	public static void aumentarStock() {
+		int stock=stockTotal();
+		System.out.print("Introduce el nombre del artículo para aumentar el stock: ");
+		String nombre = sc.nextLine();
+		int pos = posicionArticulo(nombre);
+		if (pos < 0) {
+			System.out.println("El articulo indicado no se encuentra en stock");
+			return;
+		}
+		System.out.print("Introduce la cantidad a aumentar: ");
+		int cantidad = sc.nextInt();
+		if(cantidad<=0) {
+			System.out.println("Debes ingresar numeros positivos");
+			return;
+		} else if ((cantidad+stock)>MAX_STOCK) {
+			System.out.println("Has superado el stock maximo de " + MAX_STOCK + ". No puedes añadir mas");
+			return;
+		}
+		sc.nextLine();
+		articulos[pos].aumentarStock(cantidad);
+		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
+	}
+
+	public static void disminuirStock() {
+		System.out.print("\nIntroduce el nombre del artículo para disminuir el stock: ");
+		String nombre = sc.nextLine();
+		int pos = posicionArticulo(nombre);
+		if (pos < 0) {
+			System.out.println("El articulo indicado no se encuentra en stock");
+			return;
+		}
+		System.out.print("Introduce la cantidad a disminuir: ");
+		int cantidad = sc.nextInt();
+		if(cantidad<=0) {
+			System.out.println("Debes ingresar numeros positivos");
+			return;
+		}
+		sc.nextLine();
+		if (articulos[pos].getStock() >= cantidad) {
+			articulos[pos].disminuirStock(cantidad);
+		} else {
+			System.out.println("No hay suficiente stock disponible\n");
+			return;
+		}
+		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
+	}
+
+	
+
+	public static void menosCinco() {
+		System.out.println("\nArtículos con menos de 5 unidades:");
+		for (int i = 0; i < articulos.length; i++) {
+			if (articulos[i].getStock() < 5) {
+				System.out.println(articulos[i]);
+			}
+		}
+		System.out.println();
+	}
 
 	public static int posicionArticulo(String palabra) {
 		for (int i = 0; i < articulos.length; i++) {
@@ -115,6 +131,14 @@ public class Articulo_principal {
 			}
 		}
 		return -1;
+	}
+	
+	public static int stockTotal() {
+		int totalArticulos=0;
+		for(Articulo articulos:articulos) {
+			totalArticulos+=articulos.getStock();
+		}
+		return totalArticulos;
 	}
 
 }

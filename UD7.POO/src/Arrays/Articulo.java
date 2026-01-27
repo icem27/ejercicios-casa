@@ -30,6 +30,10 @@ public class Articulo {
 		return nombre;
 	}
 
+	public double getPrecio() {
+		return precio;
+	}
+	
 	@Override
 	public String toString() {
 		return "- " + nombre + " (Stock:" + stock + ")";
