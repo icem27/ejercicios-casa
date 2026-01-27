@@ -46,7 +46,7 @@ public class Articulo_principal {
 	public static void aumentarStock() {
 		System.out.print("Introduce el nombre del artículo para aumentar el stock: ");
 		String nombre = sc.nextLine();
-		int pos = posicionArticulo(articulos, nombre);
+		int pos = posicionArticulo(nombre);
 		if (pos < 0) {
 			System.out.println("El articulo indicado no se encuentra en stock");
 			return;
@@ -62,7 +62,7 @@ public class Articulo_principal {
 	public static void disminuirStock() {
 		System.out.print("\nIntroduce el nombre del artículo para disminuir el stock: ");
 		String nombre = sc.nextLine();
-		int pos = posicionArticulo(articulos, nombre);
+		int pos = posicionArticulo(nombre);
 		if (pos < 0) {
 			System.out.println("El articulo indicado no se encuentra en stock");
 			return;
