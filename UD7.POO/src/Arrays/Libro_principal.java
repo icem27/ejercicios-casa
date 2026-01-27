@@ -3,28 +3,24 @@ package Arrays;
 import java.util.Scanner;
 
 public class Libro_principal {
+	static Scanner sc = new Scanner(System.in);
+	static Libro[] biblioteca = new Libro[5];
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		Libro[] biblioteca = new Libro[5];
-		biblioteca[0] = new  Libro("El principito","Antoine de Saint-Exupéry",true);
-		biblioteca[1] = new  Libro("Cien años de soledad","Gabriel García Márquez",false);
-		biblioteca[2] = new  Libro("Drácula","Bram Stoker",true);
-		biblioteca[3] = new  Libro("El hobbit","J.R.R. Tolkien",false);
-		biblioteca[4] = new  Libro("1984","George Orwell",true);
+		inicializadorLibros();
 		int opcion;
 		do {
 			opcion = menu(sc);
 			sc.nextLine();
 			switch(opcion) {
 			case 1:
-				mostrar_libros(biblioteca);
+				mostrar_libros();
 				break;
 			case 2:
-				prestar_libro(sc, biblioteca);
+				prestar_libro();
 				break;
 			case 3:
-				devolver_libro(sc, biblioteca);
+				devolver_libro();
 				break;
 			case 4:
 				System.out.println("Hasta la próxima: ");
@@ -35,26 +31,33 @@ public class Libro_principal {
 		} while(opcion!=4);
 	}
 	
-	public static void mostrar_libros(Libro[] biblioteca) {
+	public static void inicializadorLibros() {
+		biblioteca[0] = new  Libro("El principito","Antoine de Saint-Exupéry",true);
+		biblioteca[1] = new  Libro("Cien años de soledad","Gabriel García Márquez",false);
+		biblioteca[2] = new  Libro("Drácula","Bram Stoker",true);
+		biblioteca[3] = new  Libro("El hobbit","J.R.R. Tolkien",false);
+		biblioteca[4] = new  Libro("1984","George Orwell",true);
+	}
+	
+	public static void mostrar_libros() {
 		System.out.println("\nLibros disponibles:");
 		for(Libro libro:biblioteca) {
 			if(!libro.isPrestado()) {
-			System.out.println("- " + libro);
+			System.out.println(libro);
 			}
 		}
 		System.out.println();
 	}
 	
-	public static void prestar_libro(Scanner sc, Libro[] biblioteca) {
+	public static void prestar_libro() {
 		System.out.print("Introduce el título del libro a prestar:");
 		String libro=sc.nextLine();
-		int pos=0;
-		for(int i=0;i<biblioteca.length;i++) {
-			if(biblioteca[i].getTitulo().equalsIgnoreCase(libro)) {
-				pos=i;
-				break;
-			}
+		int pos = posicionLibro(libro);
+		if (pos < 0) {
+			System.out.println("El libro indicado no se encuentra en la biblioteca");
+			return;
 		}
+		
 		if(!biblioteca[pos].isPrestado()) {
 			System.out.println("El libro \"" + biblioteca[pos].getTitulo() + "\" ha sido prestado");
 			biblioteca[pos].prestar();
@@ -63,16 +66,16 @@ public class Libro_principal {
 		}
 		System.out.println();
 	}
-	public static void devolver_libro(Scanner sc, Libro[] biblioteca) {
+	
+	public static void devolver_libro() {
 		System.out.print("Introduce el título del libro a devolver:");
 		String libro=sc.nextLine();
-		int pos=0;
-		for(int i=0;i<biblioteca.length;i++) {
-			if(biblioteca[i].getTitulo().equalsIgnoreCase(libro)) {
-				pos=i;
-				break;
-			}
+		int pos = posicionLibro(libro);
+		if (pos < 0) {
+			System.out.println("El libro indicado no se encuentra en la biblioteca");
+			return;
 		}
+		
 		if(biblioteca[pos].isPrestado()) {
 			System.out.println("El libro \"" + biblioteca[pos].getTitulo() + "\" ha sido devuelto");
 			biblioteca[pos].devolver();
@@ -90,6 +93,15 @@ public class Libro_principal {
 		System.out.println("4. Salir");
 		System.out.print("Elige una opción: ");
 		return sc.nextInt();
+	}
+	
+	public static int posicionLibro(String palabra) {
+		for (int i = 0; i < biblioteca.length; i++) {
+			if (biblioteca[i].getTitulo().equalsIgnoreCase(palabra)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 }

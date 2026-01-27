@@ -76,8 +76,7 @@ public class Articulo_principal {
 			System.out.println("No hay suficiente stock disponible\n");
 			return;
 		}
-		System.out
-				.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
+		System.out.println("El stock de " + articulos[pos].getNombre() + " ahora es " + articulos[pos].getStock() + "\n");
 	}
 
 	public static void mostrarArticulos() {
