@@ -6,7 +6,6 @@ public class Articulo {
 	private double precio;
 	
 	public Articulo(String nombre, int stock, double precio) {
-		super();
 		this.nombre = nombre;
 		this.stock = stock;
 		this.precio = precio;
@@ -30,7 +29,6 @@ public class Articulo {
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	@Override
 	public String toString() {

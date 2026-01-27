@@ -14,13 +14,13 @@ public class Libro_principal {
 			sc.nextLine();
 			switch(opcion) {
 			case 1:
-				mostrar_libros();
+				mostrarLibros();
 				break;
 			case 2:
-				prestar_libro();
+				prestarLibro();
 				break;
 			case 3:
-				devolver_libro();
+				devolverLibro();
 				break;
 			case 4:
 				System.out.println("Hasta la próxima: ");
@@ -39,7 +39,7 @@ public class Libro_principal {
 		biblioteca[4] = new  Libro("1984","George Orwell",true);
 	}
 	
-	public static void mostrar_libros() {
+	public static void mostrarLibros() {
 		System.out.println("\nLibros disponibles:");
 		for(Libro libro:biblioteca) {
 			if(!libro.isPrestado()) {
@@ -49,7 +49,7 @@ public class Libro_principal {
 		System.out.println();
 	}
 	
-	public static void prestar_libro() {
+	public static void prestarLibro() {
 		System.out.print("Introduce el título del libro a prestar:");
 		String libro=sc.nextLine();
 		int pos = posicionLibro(libro);
@@ -67,7 +67,7 @@ public class Libro_principal {
 		System.out.println();
 	}
 	
-	public static void devolver_libro() {
+	public static void devolverLibro() {
 		System.out.print("Introduce el título del libro a devolver:");
 		String libro=sc.nextLine();
 		int pos = posicionLibro(libro);
