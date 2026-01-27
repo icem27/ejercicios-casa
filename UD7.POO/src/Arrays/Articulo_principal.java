@@ -108,7 +108,7 @@ public class Articulo_principal {
 		return sc.nextInt();
 	}
 
-	public static int posicionArticulo(Articulo[] articulos, String palabra) {
+	public static int posicionArticulo(String palabra) {
 		for (int i = 0; i < articulos.length; i++) {
 			if (articulos[i].getNombre().equalsIgnoreCase(palabra)) {
 				return i;
