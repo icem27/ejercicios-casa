@@ -6,7 +6,7 @@ public class Articulo_principal {
 
 	static Scanner sc = new Scanner(System.in);
 	static Articulo[] articulos = new Articulo[5];
-	final static int MAX_STOCK=50;
+	final static int MAX_STOCK=100;
 	public static void main(String[] args) {
 		inicializarArticulos();
 		int opcion;
@@ -36,7 +36,7 @@ public class Articulo_principal {
 				System.out.println("Opción erronea, intentelo de nuevo");
 			}
 		} while (opcion != 6);
-		
+		sc.close();
 	}
 
 	public static int menu() {
