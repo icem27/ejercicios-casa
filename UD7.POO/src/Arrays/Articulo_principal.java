@@ -29,11 +29,14 @@ public class Articulo_principal {
 			case 5:
 				descuentoEspecial();
 				break;
+			case 6: 
+				System.out.println("Hasta la próxima!");
+				break;
 			default:
 				System.out.println("Opción erronea, intentelo de nuevo");
 			}
 		} while (opcion != 6);
-		System.out.println("Hasta la próxima!");
+		
 	}
 
 	public static int menu() {
@@ -52,7 +55,7 @@ public class Articulo_principal {
 	    articulos[0] = new Articulo("Macbook Pro", 10, 1200);
 	    articulos[1] = new Articulo("iPhone 17 Pro Max", 20, 1700);
 	    articulos[2] = new Articulo("iPad", 6, 800);
-	    articulos[3] = new Articulo("Watch 11", 4, 500);
+	    articulos[3] = new Articulo("Watch 11", 3, 500);
 	    articulos[4] = new Articulo("AirPods Max", 6, 300);
 	}
 	
@@ -145,7 +148,17 @@ public class Articulo_principal {
 	
 	public static void descuentoEspecial() {
 		System.out.println("\nArticulos con un descuento del 15%: ");
-
+		boolean descuento=false;
+		for(Articulo articulos:articulos) {
+			articulos.conDescuento();
+			if(articulos.isDescuento()) {
+				System.out.println(articulos);
+				descuento=true;
+			}
+		}
+		if(!descuento) {
+			System.out.println("\nNo hay articulos con descuento en este momento\n");
+		}
 	}
 
 }
