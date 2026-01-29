@@ -1,4 +1,4 @@
-package Arrays;
+package ArraysRepaso;
 
 public class Corredor_principal {
 	static Corredor[] participantes = new Corredor[5];

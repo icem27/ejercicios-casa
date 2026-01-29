@@ -1,4 +1,4 @@
-package Arrays;
+package ArraysRepaso;
 
 public class Jugador {
 	/*
