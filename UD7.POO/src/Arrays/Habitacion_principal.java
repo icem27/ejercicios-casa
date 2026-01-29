@@ -18,7 +18,7 @@ public class Habitacion_principal {
 		int num=100;
 		boolean ocupada=false;
 		
-		for(int i=0;i<hotel.length;i++) {
+		for(int i=0;i<hotel.length;i++) { 
 			if(num%2==0) {
 				ocupada=true;
 			}
