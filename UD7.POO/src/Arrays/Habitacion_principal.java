@@ -10,7 +10,7 @@ public class Habitacion_principal {
 		for(Habitacion habitacion:hotel) {
 			if(habitacion.isOcupada()) {
 				System.out.println(habitacion);
-			}
+			} 
 		}
 	}
 	
