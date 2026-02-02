@@ -12,6 +12,7 @@ public class Atleta_principal {
 		for(Atleta mi:equipo) {
 			System.out.println(mi);
 		}
+		System.out.println("Tiempo total por equipo: " + Atleta.tiempoEquipo + " del equipo: " + Atleta.equipoNombre());
 	}
 
 }
