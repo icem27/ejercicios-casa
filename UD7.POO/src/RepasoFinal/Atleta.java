@@ -42,7 +42,7 @@ public class Atleta {
 
 	@Override
 	public String toString() {
-		return "Atleta [identificador=" + identificador + ", nombre=" + nombre + ", tiempo=" + tiempo + "]";
+		return "Nombre=" + nombre + "\nTiempo=" + tiempo + "\nIdentificador=" + String.format("I%03d", identificador) + "\n";
 	}
 	
 	static double tiempo() {
