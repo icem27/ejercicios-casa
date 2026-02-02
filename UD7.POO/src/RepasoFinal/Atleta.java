@@ -13,7 +13,7 @@ public class Atleta {
 		this.tiempo = tiempo;
 		this.identificador+=contarAtletas;
 		contarAtletas++;
-		tiempo();
+		tiempoEquipo+=tiempo;
 	}
 
 	public int getIdentificador() {
@@ -45,8 +45,8 @@ public class Atleta {
 		return "Atleta [identificador=" + identificador + ", nombre=" + nombre + ", tiempo=" + tiempo + "]";
 	}
 	
-	public void tiempo() {
-		tiempoEquipo+=tiempo;
+	static double tiempo() {
+		return tiempoEquipo;
 	}
 	
 	static String equipoNombre() {
