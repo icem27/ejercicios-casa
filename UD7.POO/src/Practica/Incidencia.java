@@ -41,6 +41,11 @@ public class Incidencia {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	@Override
+	public String toString() {
+		return "Puesto: " + puesto + " --> " + averia + " " + estado;
+	}
 	
 	
 

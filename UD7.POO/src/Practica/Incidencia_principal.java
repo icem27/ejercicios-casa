@@ -23,7 +23,7 @@ public class Incidencia_principal {
 				boolean si_hay=false;
 				for(Incidencia in:averia) {
 					if(in.getEstado()=="PENDIENTE" || in.getEstado()=="RESUELTA") {
-					System.out.println("Puesto: " + in.getPuesto() + " --> " + in.getAveria() + " " + in.getEstado());
+					System.out.println(in);
 					si_hay=true;
 					}
 				} 
@@ -34,9 +34,9 @@ public class Incidencia_principal {
 			case 2: 
 				System.out.println("Ingresa el numero de puesto:");
 				puesto = sc.nextInt();
-				if(averia[puesto]!=null) {
-					System.out.println("Ya existe una averia en este puesto.");
-					return; 
+				if(arrayNull(puesto)==-1) {
+					System.out.println("Ya existe una averia para este puesto. ");
+					return;
 				}
 				sc.nextLine();
 				System.out.println("Ingresa la descripcion de la incidencia: ");
@@ -60,6 +60,13 @@ public class Incidencia_principal {
 		
 	
 
+	}
+	
+	public static int arrayNull(int puesto) {
+		if(averia[puesto]!=null) {
+			return puesto;
+		}
+		return -1;
 	}
 	
 	public static void abrirIncidencia(int puesto, String averia_usuario) {
