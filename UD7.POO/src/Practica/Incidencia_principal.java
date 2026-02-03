@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Incidencia_principal {
 	static Scanner sc = new Scanner(System.in);
-
 	static Incidencia[] averia = new Incidencia[30];
+	
 	public static void main(String[] args) {
 		for(int i=0;i<averia.length;i++) {
 			averia[i]=null;
@@ -28,6 +28,7 @@ public class Incidencia_principal {
 		}
 
 	}
+	
 	public void abrirIncidencia(int puesto, String averia) {
 		
 	}

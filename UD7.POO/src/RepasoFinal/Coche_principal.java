@@ -19,13 +19,12 @@ public class Coche_principal {
 				parking[i]=coche;
 				aparcado=true;
 				System.out.println("El coche ha sido aparcado en la plaza " + i);
-				return;
+				break;
 			}
 		}
 		
 		if(!aparcado) {
 			System.out.println("El parking actualmente se encuentra lleno. Lo siento");
-			return;
 		}
 	}
 	
@@ -34,7 +33,7 @@ public class Coche_principal {
 			if(parking[i].getMatricula().equalsIgnoreCase(matricula)) {
 				parking[i]=null;
 				System.out.println("Coche retirado de la plaza " + i);
-				return;
+				break;
 			} else {
 				System.out.println("El matricula introducida no es correcta.");
 			}
