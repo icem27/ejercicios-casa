@@ -7,7 +7,7 @@ public class Coche_principal {
 		aparcar(new Coche("Skoda", "3645FVV"));
 		aparcar(new Coche("Audi", "7268NHG"));
 		mostrarParking();
-		sacar("3645fvv");
+		sacar("7268NHG");
 		mostrarParking();
 		
 	}
@@ -29,14 +29,17 @@ public class Coche_principal {
 	}
 	
 	static void sacar(String matricula) {
+		boolean sacado=false;
 		for(int i=0;i<parking.length;i++) {
 			if(parking[i].getMatricula().equalsIgnoreCase(matricula)) {
 				parking[i]=null;
+				sacado=true;
 				System.out.println("Coche retirado de la plaza " + i);
 				break;
-			} else {
-				System.out.println("El matricula introducida no es correcta.");
-			}
+			} 
+		}
+		if(!sacado) {
+			System.out.println("El matricula introducida no es correcta.");
 		}
 	}
 	

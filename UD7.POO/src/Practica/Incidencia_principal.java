@@ -8,7 +8,7 @@ public class Incidencia_principal {
 	
 	public static void main(String[] args) {
 		for(int i=0;i<averia.length;i++) {
-			averia[i]=null;
+			averia[i]= new Incidencia();
 		}
 		final int PUESTOS_MAX = 30;
 		System.out.println("Ingresa el numero de puesto:");
@@ -16,25 +16,34 @@ public class Incidencia_principal {
 		sc.nextLine();
 		System.out.println("Ingresa la descripcion de la incidencia: ");
 		String aver = sc.nextLine();
-//		averia[0].abrirIncidencia(puesto, aver);
+		abrirIncidencia(puesto, aver);
 		System.out.println("Ingresa el numero de puesto:");
 		puesto = sc.nextInt();
 		sc.nextLine();
 		System.out.println("Ingresa la descripcion de la incidencia: ");
 		aver = sc.nextLine();
-//		averia[1].abrirIncidencia(puesto, aver);
+		abrirIncidencia(puesto, aver);
 		for(Incidencia in:averia) {
 			System.out.println(in.isEstado());
 		}
 
 	}
 	
-	public void abrirIncidencia(int puesto, String averia) {
+	public static void abrirIncidencia(int puesto, String averia_usuario) {
+		if(!averia[puesto].isEstado()) {
+			averia[puesto] = new Incidencia(puesto, averia_usuario);
+			averia[puesto].setEstado(true);
+			System.out.println("Se ha abierto la averia " + averia_usuario + " con exito");
+		}
 		
 	}
 	
-	public void cerrarIncidencia(int puesto, String averia) {
-		
+	public static void cerrarIncidencia(int puesto, String averia_usuario) {
+		if(averia[puesto].isEstado()) {
+			averia[puesto] = new Incidencia(puesto, averia_usuario);
+			averia[puesto].setEstado(false);
+			System.out.println("Se ha cerrado la averia " + averia_usuario + " con exito");
+		}
 	}
 	public static int menu() {
 		System.out.println("Seleccione una opcion (1-4):\n"

@@ -6,7 +6,7 @@ public class Incidencia {
 	private boolean estado;
 	
 	Incidencia(){
-		
+		estado=false;
 	}
 	
 	public Incidencia(int puesto, String averia) {
