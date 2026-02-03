@@ -22,6 +22,7 @@ public class Coche_principal {
 				return;
 			}
 		}
+		
 		if(!aparcado) {
 			System.out.println("El parking actualmente se encuentra lleno. Lo siento");
 			return;
