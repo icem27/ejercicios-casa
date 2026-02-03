@@ -6,7 +6,6 @@ public class Incidencia {
 	private String estado;
 	
 	Incidencia(){
-		
 	}
 	
 	public Incidencia(int puesto, String averia) {

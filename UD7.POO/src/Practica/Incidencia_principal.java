@@ -2,6 +2,7 @@ package Practica;
 
 import java.util.Scanner;
 
+
 public class Incidencia_principal {
 	static Scanner sc = new Scanner(System.in);
 	static Incidencia[] averia = new Incidencia[30];
@@ -22,7 +23,7 @@ public class Incidencia_principal {
 				boolean si_hay=false;
 				for(Incidencia in:averia) {
 					if(in.getEstado()=="PENDIENTE" || in.getEstado()=="RESUELTA") {
-					System.out.println(in);
+					System.out.println("Puesto: " + in.getPuesto() + " --> " + in.getAveria() + " " + in.getEstado());
 					si_hay=true;
 					}
 				} 
@@ -33,6 +34,10 @@ public class Incidencia_principal {
 			case 2: 
 				System.out.println("Ingresa el numero de puesto:");
 				puesto = sc.nextInt();
+				if(averia[puesto]!=null) {
+					System.out.println("Ya existe una averia en este puesto.");
+					return; 
+				}
 				sc.nextLine();
 				System.out.println("Ingresa la descripcion de la incidencia: ");
 				aver = sc.nextLine();
@@ -58,14 +63,9 @@ public class Incidencia_principal {
 	}
 	
 	public static void abrirIncidencia(int puesto, String averia_usuario) {
-		if(averia[puesto].getEstado()=="") {
 			averia[puesto] = new Incidencia(puesto, averia_usuario);
 			System.out.println("Se ha abierto la averia " + averia_usuario + " con exito");
 			averia[puesto].setEstado("PENDIENTE");
-		} else {
-			System.out.println("Ya hay una incidencia abierta sobre esta averia. ");
-		}
-		
 	}
 	
 	public static void cerrarIncidencia(int puesto) {
