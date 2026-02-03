@@ -8,6 +8,9 @@ public class Incidencia_principal {
 	static Incidencia[] averia = new Incidencia[30];
 	
 	public static void main(String[] args) {
+		for(int i=0;i<averia.length;i++) {
+			averia[i]=new Incidencia();
+		}
 		final int PUESTOS_MAX = 30;
 		int puesto;
 		String aver;
@@ -16,7 +19,6 @@ public class Incidencia_principal {
 			opcion = menu();
 			switch(opcion) {
 			case 1: 
-
 				boolean si_hay=false;
 				for(Incidencia in:averia) {
 					if(in.getEstado()=="PENDIENTE" || in.getEstado()=="RESUELTA") {
@@ -56,8 +58,8 @@ public class Incidencia_principal {
 		String aver;
 		System.out.println("Ingresa el numero de puesto:");
 		puesto = sc.nextInt();
-		if (averia[puesto]!=null) {
-			System.out.println("Ya existe una averia para este puesto. ");
+		if (averia[puesto].getAveria()!=null) {
+			System.out.println("Ya existe una incidencia no resuelta en este puesto.");
 			return;
 		}
 		sc.nextLine();
@@ -70,7 +72,6 @@ public class Incidencia_principal {
 	
 	public static void cerrarIncidencia(int puesto) {
 		if(averia[puesto].getEstado()=="PENDIENTE") {
-			averia[puesto] = new Incidencia(puesto);
 			averia[puesto].setEstado("RESUELTA");
 		} 
 	}
