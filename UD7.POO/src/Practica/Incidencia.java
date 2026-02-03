@@ -3,15 +3,20 @@ package Practica;
 public class Incidencia {
 	private int puesto;
 	private String averia;
-	private boolean estado;
+	private String estado;
 	
 	Incidencia(){
-		estado=false;
+		
 	}
 	
 	public Incidencia(int puesto, String averia) {
+		this(puesto);
 		this.puesto = puesto;
 		this.averia = averia;
+	}
+	
+	public Incidencia(int puesto) {
+		this.puesto = puesto;
 	}
 
 	public int getPuesto() {
@@ -30,13 +35,15 @@ public class Incidencia {
 		this.averia = averia;
 	}
 
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	
 
 
 
