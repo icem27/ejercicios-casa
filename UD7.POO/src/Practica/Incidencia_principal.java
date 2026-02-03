@@ -8,9 +8,6 @@ public class Incidencia_principal {
 	static Incidencia[] averia = new Incidencia[30];
 	
 	public static void main(String[] args) {
-		for(int i=0;i<averia.length;i++) {
-			averia[i]= new Incidencia();
-		}
 		final int PUESTOS_MAX = 30;
 		int puesto;
 		String aver;
@@ -32,16 +29,8 @@ public class Incidencia_principal {
 				}
 				break;
 			case 2: 
-				System.out.println("Ingresa el numero de puesto:");
-				puesto = sc.nextInt();
-				if(arrayNull(puesto)==-1) {
-					System.out.println("Ya existe una averia para este puesto. ");
-					return;
-				}
-				sc.nextLine();
-				System.out.println("Ingresa la descripcion de la incidencia: ");
-				aver = sc.nextLine();
-				abrirIncidencia(puesto, aver);
+				
+				abrirIncidencia();
 				break;
 			case 3: 
 				System.out.println("Ingresa el numero de puesto:");
@@ -62,17 +51,21 @@ public class Incidencia_principal {
 
 	}
 	
-	public static int arrayNull(int puesto) {
-		if(averia[puesto]!=null) {
-			return puesto;
+	public static void abrirIncidencia() {
+		int puesto;
+		String aver;
+		System.out.println("Ingresa el numero de puesto:");
+		puesto = sc.nextInt();
+		if (averia[puesto]!=null) {
+			System.out.println("Ya existe una averia para este puesto. ");
+			return;
 		}
-		return -1;
-	}
-	
-	public static void abrirIncidencia(int puesto, String averia_usuario) {
-			averia[puesto] = new Incidencia(puesto, averia_usuario);
-			System.out.println("Se ha abierto la averia " + averia_usuario + " con exito");
-			averia[puesto].setEstado("PENDIENTE");
+		sc.nextLine();
+		System.out.println("Ingresa la descripcion de la incidencia: ");
+		aver = sc.nextLine();
+		averia[puesto] = new Incidencia(puesto, aver);
+		System.out.println("Se ha abierto la averia " + aver + " con exito");
+		averia[puesto].setEstado("PENDIENTE");
 	}
 	
 	public static void cerrarIncidencia(int puesto) {
