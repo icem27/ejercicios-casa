@@ -65,7 +65,6 @@ public class Incidencia_principal {
     }
 
     public static void abrirIncidencia(Scanner sc, Incidencia[] incidencias) {
-
         System.out.println("Ingresa el numero de puesto:");
         int puesto = sc.nextInt();
         sc.nextLine();
