@@ -7,7 +7,7 @@ public class Incidencia_principal {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Incidencia[] incidencias = new Incidencia[30];
+        Incidencia[] incidencias = new Incidencia[30]; //Creamos un array para los 30 puestos de la clase. 
         int opcion;
 
         do {
@@ -51,7 +51,9 @@ public class Incidencia_principal {
 
     public static void listarIncidencias(Incidencia[] incidencias) {
         boolean hay = false;
-
+        
+        //recoremos el array para visualizar lo que tenemos dentro, pero solo y cuando no sea null
+        //si no entra en el if, salta la bandera y le indica que no existen incidencias
         for (Incidencia i : incidencias) {
             if (i != null) {
                 System.out.println(i);
@@ -68,12 +70,14 @@ public class Incidencia_principal {
         System.out.println("Ingresa el numero de puesto:");
         int puesto = sc.nextInt();
         sc.nextLine();
-
+        //realizamos una comprobación para que el usuario solo meta los valores que queremos, que en este caso es entre 0 y 29
         if (puesto < 0 || puesto >= incidencias.length) {
             System.out.println("Puesto no válido.");
             return;
         }
-
+        //En este if comprobamos la posición del array es distinta que null y el estado es pendiente, ya que una vez
+        //creado el array todo es null hasta asignamos un obtejo a esa posición concreta del array. Y en el caso de que esa
+        //posición no sea null, el estado debe ser PENDIENTE, si es resuelta nos permite crear una nueva averia para ese puesto
         if (incidencias[puesto] != null && incidencias[puesto].getEstado() == Estado.PENDIENTE) {
             System.out.println("Ya existe una incidencia no resuelta en este puesto.");
             return;
@@ -94,7 +98,10 @@ public class Incidencia_principal {
             System.out.println("Puesto no válido.");
             return;
         }
-
+        
+        //Aqui lo mismo pero cambiando el AND por el OR que lo de arriba y al reves, si el puesto que intrucimos es null o el 
+        //estado es distinto de pendiente nos indica el mensaje de que no existe una incidencia y sale del metodo, 
+        //para mi lo mas comodo es usar el return y terminar
         if (incidencias[puesto] == null || incidencias[puesto].getEstado() != Estado.PENDIENTE) {
             System.out.println("No existe una incidencia no resuelta en este puesto.");
             return;
