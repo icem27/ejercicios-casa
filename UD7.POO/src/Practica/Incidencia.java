@@ -1,8 +1,6 @@
 package Practica;
 
 public class Incidencia {
-	private static int MAX_AVERIAS=30;
-	private static int contarAverias=0;
 	private int puesto;
 	private String averia;
 	private String estado;
@@ -14,7 +12,6 @@ public class Incidencia {
 		this(puesto);
 		this.puesto = puesto;
 		this.averia = averia;
-		contarAverias++;
 	}
 	
 	public Incidencia(int puesto) {

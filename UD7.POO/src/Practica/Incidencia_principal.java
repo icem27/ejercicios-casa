@@ -48,9 +48,6 @@ public class Incidencia_principal {
 			}
 		} while(opcion!=4);
 
-		
-	
-
 	}
 	
 	public static void abrirIncidencia() {
@@ -75,6 +72,7 @@ public class Incidencia_principal {
 			averia[puesto].setEstado("RESUELTA");
 		} 
 	}
+	
 	public static int menu() {
 		System.out.println("Seleccione una opcion (1-4):\n"
 				+ "1. Listado\n"
