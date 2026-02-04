@@ -2,84 +2,105 @@ package Practica;
 
 import java.util.Scanner;
 
-
 public class Incidencia_principal {
-	static Scanner sc = new Scanner(System.in);
-	static Incidencia[] averia = new Incidencia[30];
-	
-	public static void main(String[] args) {
-		for(int i=0;i<averia.length;i++) {
-			averia[i]=new Incidencia();
-		}
-		final int PUESTOS_MAX = 30;
-		int puesto;
-		String aver;
-		int opcion;
-		do {
-			opcion = menu();
-			switch(opcion) {
-			case 1: 
-				boolean si_hay=false;
-				for(Incidencia in:averia) {
-					if(in.getEstado()=="PENDIENTE" || in.getEstado()=="RESUELTA") {
-					System.out.println(in);
-					si_hay=true;
-					}
-				} 
-				if(!si_hay) {
-					System.out.println("No existen incidencias");
-				}
-				break;
-			case 2: 
-				
-				abrirIncidencia();
-				break;
-			case 3: 
-				System.out.println("Ingresa el numero de puesto:");
-				puesto = sc.nextInt();
-				sc.nextLine();
-				cerrarIncidencia(puesto);
-				break;
-			case 4: 
-				System.out.println("Hasta la próxima!");
-				break;
-			default: 
-				System.out.println("La opción introducida no es correcta");
-			}
-		} while(opcion!=4);
 
-	}
-	
-	public static void abrirIncidencia() {
-		int puesto;
-		String aver;
-		System.out.println("Ingresa el numero de puesto:");
-		puesto = sc.nextInt();
-		if (averia[puesto].getAveria()!=null) {
-			System.out.println("Ya existe una incidencia no resuelta en este puesto.");
-			return;
-		}
-		sc.nextLine();
-		System.out.println("Ingresa la descripcion de la incidencia: ");
-		aver = sc.nextLine();
-		averia[puesto] = new Incidencia(puesto, aver);
-		System.out.println("Se ha abierto la averia " + aver + " con exito");
-		averia[puesto].setEstado("PENDIENTE");
-	}
-	
-	public static void cerrarIncidencia(int puesto) {
-		if(averia[puesto].getEstado()=="PENDIENTE") {
-			averia[puesto].setEstado("RESUELTA");
-		} 
-	}
-	
-	public static int menu() {
-		System.out.println("Seleccione una opcion (1-4):\n"
-				+ "1. Listado\n"
-				+ "2. Alta\n"
-				+ "3. Baja\n"
-				+ "4. Salir");
-		return sc.nextInt();
-	}
+    public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+        Incidencia[] incidencias = new Incidencia[30];
+        int opcion;
+
+        do {
+            opcion = menu(sc);
+
+            switch (opcion) {
+
+                case 1:
+                    listarIncidencias(incidencias);
+                    break;
+
+                case 2:
+                    abrirIncidencia(sc, incidencias);
+                    break;
+
+                case 3:
+                    cerrarIncidencia(sc, incidencias);
+                    break;
+
+                case 4:
+                    System.out.println("Saliendo del programa.");
+                    break;
+
+                default:
+                    System.out.println("Opción incorrecta.");
+            }
+
+        } while (opcion != 4);
+
+        sc.close();
+    }
+
+    public static int menu(Scanner sc) {
+        System.out.println("Seleccione una opcion (1-4):");
+        System.out.println("1. Listado");
+        System.out.println("2. Alta");
+        System.out.println("3. Baja");
+        System.out.println("4. Salir");
+        return sc.nextInt();
+    }
+
+    public static void listarIncidencias(Incidencia[] incidencias) {
+        boolean hay = false;
+
+        for (Incidencia i : incidencias) {
+            if (i != null) {
+                System.out.println(i);
+                hay = true;
+            }
+        }
+
+        if (!hay) {
+            System.out.println("No existen incidencias");
+        }
+    }
+
+    public static void abrirIncidencia(Scanner sc, Incidencia[] incidencias) {
+
+        System.out.println("Ingresa el numero de puesto:");
+        int puesto = sc.nextInt();
+        sc.nextLine();
+
+        if (puesto < 0 || puesto >= incidencias.length) {
+            System.out.println("Puesto no válido.");
+            return;
+        }
+
+        if (incidencias[puesto] != null && incidencias[puesto].getEstado() == Estado.PENDIENTE) {
+            System.out.println("Ya existe una incidencia no resuelta en este puesto.");
+            return;
+        }
+
+        System.out.println("Ingresa la descripcion de la incidencia:");
+        String averia = sc.nextLine();
+
+        incidencias[puesto] = new Incidencia(puesto, averia);
+    }
+
+    public static void cerrarIncidencia(Scanner sc, Incidencia[] incidencias) {
+
+        System.out.println("Ingresa el numero de puesto:");
+        int puesto = sc.nextInt();
+
+        if (puesto < 0 || puesto >= incidencias.length) {
+            System.out.println("Puesto no válido.");
+            return;
+        }
+
+        if (incidencias[puesto] == null || incidencias[puesto].getEstado() != Estado.PENDIENTE) {
+
+            System.out.println("No existe una incidencia no resuelta en este puesto.");
+            return;
+        }
+        incidencias[puesto].setEstado(Estado.RESUELTA);
+    }
 }

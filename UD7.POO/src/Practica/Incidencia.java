@@ -3,42 +3,28 @@ package Practica;
 public class Incidencia {
 	private int puesto;
 	private String averia;
-	private String estado;
+	private Estado estado;
 	
-	Incidencia(){
-	}
 	
 	public Incidencia(int puesto, String averia) {
-		this(puesto);
 		this.puesto = puesto;
 		this.averia = averia;
-	}
-	
-	public Incidencia(int puesto) {
-		this.puesto = puesto;
+		this.estado = Estado.PENDIENTE;
 	}
 
 	public int getPuesto() {
 		return puesto;
 	}
 
-	public void setPuesto(int puesto) {
-		this.puesto = puesto;
-	}
-
 	public String getAveria() {
 		return averia;
 	}
 
-	public void setAveria(String averia) {
-		this.averia = averia;
-	}
-
-	public String getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
@@ -47,8 +33,4 @@ public class Incidencia {
 		return "Puesto: " + puesto + " --> " + averia + " " + estado;
 	}
 	
-	
-
-
-
 }
