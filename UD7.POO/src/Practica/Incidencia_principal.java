@@ -96,10 +96,10 @@ public class Incidencia_principal {
         }
 
         if (incidencias[puesto] == null || incidencias[puesto].getEstado() != Estado.PENDIENTE) {
-
             System.out.println("No existe una incidencia no resuelta en este puesto.");
             return;
         }
+        
         incidencias[puesto].setEstado(Estado.RESUELTA);
     }
 }
