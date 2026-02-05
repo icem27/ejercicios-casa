@@ -37,6 +37,4 @@ public class Corredor {
 		return nombre + " con " + tiempo + " minutos";
 	}
 	
-	
-	
 }
