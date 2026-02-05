@@ -5,7 +5,7 @@ public class Ejercicio12 {
 	
 	public static void viajar() {
 		totalMisiones++;
-		puntos+=10;
+//		puntos+=10;
 	}
 	int puntos=0;
 }
