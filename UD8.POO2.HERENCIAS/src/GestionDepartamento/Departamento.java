@@ -30,10 +30,10 @@ public class Departamento {
 	}
 	
 	public String profe() {
-	    String pres = "";
+	    String pres =imprimirGuiones();
 	    for (int i = 0; i < profesor.length; i++) {
 	        if (profesor[i] != null) {
-	            pres += profesor[i].toString() + "\n"; 
+	            pres += profesor[i].toString() + "\n" + imprimirGuiones(); 
 	        }
 	    }
 	    return pres;
@@ -43,10 +43,9 @@ public class Departamento {
 	@Override
 	public String toString() {
 		return imprimirEstrellas() + "Profesores del departamento de " + nombre + " del IES Barajas: " + "(" + profes() + " de " + profesor.length + ")\n"
-				+ imprimirEstrellas() + imprimirGuiones() + profe(); 
+				+ imprimirEstrellas() + profe(); 
 	}
 	
-
 	
 	public String imprimirEstrellas() {
 		String estrella="";
