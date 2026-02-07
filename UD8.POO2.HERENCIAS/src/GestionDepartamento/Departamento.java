@@ -19,14 +19,14 @@ public class Departamento {
 		}
 	}
 	
-	public String profesoresDisponibles() {
+	public int profes() {
 		int profes=0;
 		for(int i=0;i<profesor.length;i++) {
 			if(profesor[i]!=null) {
 				profes++;
 			}
 		}
-		return "(" + profes + " de " + profesor.length + ")\n";
+		return profes;
 	}
 	
 	public String profe() {
@@ -38,11 +38,12 @@ public class Departamento {
 		}
 		return pres;
 	}
+	
 
 	@Override
 	public String toString() {
-		return imprimirEstrellas() + "Profesores del departamento de " + nombre + " del IES Barajas: " + profesoresDisponibles()
-				+ imprimirEstrellas() + imprimirGuiones() + profesor[0].toString(); 
+		return imprimirEstrellas() + "Profesores del departamento de " + nombre + " del IES Barajas: " + "(" + profes() + " de " + profesor.length + ")\n"
+				+ imprimirEstrellas() + imprimirGuiones() + profe(); 
 	}
 	
 

@@ -1,7 +1,5 @@
 package GestionDepartamento;
 
-import java.util.Arrays;
-
 public class Profesor {
 	private String nombre;
 	private String apellidos;
@@ -13,10 +11,18 @@ public class Profesor {
 		this.apellidos = apellidos;
 		this.modulo = modulo;
 	}
+	
+	public String array() {
+		String text="";
+		for(int i=0;i<modulo.length;i++) {
+			text+=(i+1) + modulo[i].getId() + " " + modulo[i].getDescripcion() + "\n";
+		}
+		return text;
+	}
 
 	@Override
 	public String toString() {
-		return nombre + " " + apellidos + "\n " + Arrays.toString(modulo);
+		return nombre + " " + apellidos + "\n " + array();
 	}
 
 }
