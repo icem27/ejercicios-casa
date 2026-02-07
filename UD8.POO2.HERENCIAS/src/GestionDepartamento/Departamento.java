@@ -30,13 +30,13 @@ public class Departamento {
 	}
 	
 	public String profe() {
-		String pres="";
-		for(int i=0;i<profesor.length;i++) {
-			if(profesor[i]!=null) {
-				profesor.toString();
-			}
-		}
-		return pres;
+	    String pres = "";
+	    for (int i = 0; i < profesor.length; i++) {
+	        if (profesor[i] != null) {
+	            pres += profesor[i].toString() + "\n"; 
+	        }
+	    }
+	    return pres;
 	}
 	
 

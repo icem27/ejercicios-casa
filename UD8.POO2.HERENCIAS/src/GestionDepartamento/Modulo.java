@@ -14,7 +14,7 @@ public enum Modulo {
 		this.descripcion = descripcion;
 		this.ciclo = ciclo;
 		this.curso = curso;
-		this.id = "("+curso +""+ ciclo + "_" + descripcion.substring(0,2)+")";
+		this.id = "("+curso +""+ ciclo + "_" + ciclo.name().substring(0,2)+")";
 	}
 
 	public String getDescripcion() {

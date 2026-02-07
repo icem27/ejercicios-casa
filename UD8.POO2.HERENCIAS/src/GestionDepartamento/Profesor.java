@@ -13,11 +13,11 @@ public class Profesor {
 	}
 	
 	public String array() {
-		String text="";
-		for(int i=0;i<modulo.length;i++) {
-			text+=(i+1) + modulo[i].getId() + " " + modulo[i].getDescripcion() + "\n";
-		}
-		return text;
+	    String text = "";
+	    for (int i = 0; i < modulo.length; i++) {
+	        text += (i + 1) + ". " + modulo[i].getId() + " " + modulo[i].getDescripcion() + "\n";
+	    }
+	    return text;
 	}
 
 	@Override
