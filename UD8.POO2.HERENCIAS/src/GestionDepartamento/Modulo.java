@@ -2,7 +2,7 @@ package GestionDepartamento;
 
 public enum Modulo {
 	BBDDW("Bases de datos", Ciclo.DAW, 1), BBDDM("Bases de datos", Ciclo.DAM, 1), ENTDM("Entornos de Desarrollo", Ciclo.DAM, 1), 
-	ENTDW("Entidad de Desarrollo", Ciclo.DAW, 1), LMW("Lenguaje de Marcas", Ciclo.DAW, 1), 
+	ENTDW("Entornos de Desarrollo", Ciclo.DAW, 1), LMW("Lenguaje de Marcas", Ciclo.DAW, 1), 
 	PROGW("Programación", Ciclo.DAW, 1), PROGM("Programación", Ciclo.DAM, 1);
 	
 	private String descripcion;
