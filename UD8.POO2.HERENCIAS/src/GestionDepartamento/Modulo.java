@@ -14,7 +14,7 @@ public enum Modulo {
 		this.descripcion = descripcion;
 		this.ciclo = ciclo;
 		this.curso = curso;
-		this.id = "("+curso +""+ ciclo + "_" + this.name().substring(0,2) + ")";
+		this.id = "("+curso + ciclo + "_" + this.name().substring(0,2) + ")";
 	}
 	
 	@Override

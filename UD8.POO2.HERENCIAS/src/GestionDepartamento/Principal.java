@@ -6,7 +6,7 @@ public class Principal {
 		
 		Profesor profe1=new Profesor("David", "Peláez", new Modulo[] {Modulo.BBDDM, Modulo.BBDDM, Modulo.ENTDM, Modulo.ENTDW, Modulo.LMW});
 		Profesor profe2=new Profesor("Clara", "Catala", new Modulo[] {Modulo.PROGM, Modulo.PROGW});
-		Profesor profe3=new Profesor("Tomás", "Lopez", new Modulo[] {Modulo.ENTDM, Modulo.ENTDW});
+		Profesor profe3=new Profesor("Tomás", "López", new Modulo[] {Modulo.ENTDM, Modulo.ENTDW});
 		
 		dpt.anyadirProfesor(profe1);
 		dpt.anyadirProfesor(profe2);
