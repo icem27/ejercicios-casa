@@ -10,16 +10,17 @@ public class Departamento {
 		this.nombre = nombre;
 	}
 	
-	public void anyadirProfesor(Profesor profe) {
+	public int anyadirProfesor(Profesor profe) {
 		for(int i=0;i<profesor.length;i++) {
 			if(profesor[i]==null) {
 				profesor[i]=profe;
-				break;
+				return i;
 			}
 		}
+		return -1;
 	}
 	
-	public int profes() {
+	public int cuantosProfes() {
 		int profes=0;
 		for(int i=0;i<profesor.length;i++) {
 			if(profesor[i]!=null) {
@@ -39,13 +40,11 @@ public class Departamento {
 	    return pres;
 	}
 	
-
 	@Override
 	public String toString() {
-		return imprimirEstrellas() + "Profesores del departamento de " + nombre + " del IES Barajas: " + "(" + profes() + " de " + profesor.length + ")\n"
+		return imprimirEstrellas() + "Profesores del departamento de " + nombre + " del IES Barajas: " + "(" + cuantosProfes() + " de " + profesor.length + ")\n"
 				+ imprimirEstrellas() + profe(); 
 	}
-	
 	
 	public String imprimirEstrellas() {
 		String estrella="";
