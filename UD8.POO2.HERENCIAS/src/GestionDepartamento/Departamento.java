@@ -30,10 +30,10 @@ public class Departamento {
 	}
 	
 	public String profe() {
-	    String pres =imprimirGuiones();
+	    String pres = "";
 	    for (int i = 0; i < profesor.length; i++) {
 	        if (profesor[i] != null) {
-	            pres += profesor[i].toString() + "\n" + imprimirGuiones(); 
+	            pres += imprimirGuiones() + profesor[i].toString() + imprimirGuiones(); 
 	        }
 	    }
 	    return pres;

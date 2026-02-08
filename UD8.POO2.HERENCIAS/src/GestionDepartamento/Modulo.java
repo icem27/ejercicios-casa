@@ -1,7 +1,7 @@
 package GestionDepartamento;
 
 public enum Modulo {
-	BBDDW("Bases de datos", Ciclo.DAW, 1), BBDDM("Bases de datos", Ciclo.DAM, 1), ENTDM("Entidad de Desarrollo", Ciclo.DAM, 1), 
+	BBDDW("Bases de datos", Ciclo.DAW, 1), BBDDM("Bases de datos", Ciclo.DAM, 1), ENTDM("Entornos de Desarrollo", Ciclo.DAM, 1), 
 	ENTDW("Entidad de Desarrollo", Ciclo.DAW, 1), LMW("Lenguaje de Marcas", Ciclo.DAW, 1), 
 	PROGW("Programación", Ciclo.DAW, 1), PROGM("Programación", Ciclo.DAM, 1);
 	
@@ -14,7 +14,7 @@ public enum Modulo {
 		this.descripcion = descripcion;
 		this.ciclo = ciclo;
 		this.curso = curso;
-		this.id = "("+curso +""+ ciclo + "_" + ciclo.name().substring(0,2)+")";
+		this.id = "("+curso +""+ ciclo + "_";
 	}
 
 	public String getDescripcion() {
