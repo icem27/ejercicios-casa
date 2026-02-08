@@ -15,7 +15,8 @@ public class Profesor {
 	public String array() {
 	    String text = "";
 	    for (int i = 0; i < modulo.length; i++) {
-	        text += (i+1) + ". " + modulo[i].getId() + modulo[i].name().substring(0,2) + ") " + modulo[i].getDescripcion() + "\n";
+	        text += (i+1) + ". " + modulo[i] + "\n";
+
 	    }
 	    return text;
 	}

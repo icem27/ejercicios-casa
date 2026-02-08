@@ -14,40 +14,12 @@ public enum Modulo {
 		this.descripcion = descripcion;
 		this.ciclo = ciclo;
 		this.curso = curso;
-		this.id = "("+curso +""+ ciclo + "_";
+		this.id = "("+curso +""+ ciclo + "_" + this.name().substring(0,2) + ")";
 	}
-
-	public String getDescripcion() {
-		return descripcion;
+	
+	@Override
+	public String toString() {
+	    return id + " "  + descripcion;
 	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Ciclo getCiclo() {
-		return ciclo;
-	}
-
-	public void setCiclo(Ciclo ciclo) {
-		this.ciclo = ciclo;
-	}
-
-	public int getCurso() {
-		return curso;
-	}
-
-	public void setCurso(int curso) {
-		this.curso = curso;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	
 }
