@@ -1,4 +1,4 @@
-package Ejemplos;
+package EjemplosEnum;
 
 public enum TipoPelicula {
 ESTRENO(9), ANTIGUA(6);

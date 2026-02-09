@@ -1,4 +1,4 @@
-package Ejemplos;
+package EjemplosEnum;
 
 public enum Mes {
 	ENERO(Estacion.INVIERNO), FEBRERO(Estacion.INVIERNO), MARZO(Estacion.PRIMAVERA), ABRIL(Estacion.PRIMAVERA), MAYO(Estacion.PRIMAVERA), JUNIO(Estacion.VERANO), JULIO(Estacion.VERANO), AGOSTO(Estacion.VERANO), SEPTIEMBRE(Estacion.OTOÑO), OCTUBRE(Estacion.OTOÑO), NOVIEMBRE(Estacion.OTOÑO), DICIEMBRE(Estacion.INVIERNO);

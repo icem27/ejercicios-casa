@@ -1,4 +1,4 @@
-package Ejemplos;
+package EjemplosEnum;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Ejemplos;
+package EjemplosEnum;
 
 public class Pelicula_principal {
 
