@@ -3,13 +3,18 @@ package EjercicioHerencia;
 public class Circulo extends Figura {
 	private int radio;
 	
-	public Circulo(int radio) {
-		super();
-		this.radio = radio;
+	Circulo(){
+		this.radio=5;
 	}
-
-	public void CalcularArea() {
-		super.calcularArea();
-		System.out.println(Math.PI * Math.pow(radio, 2));
+	
+	@Override
+	void calcularArea() {
+		double area = Math.PI * Math.pow(radio, 2);
+		System.out.println("El área es " + area);
+	}
+	
+	@Override
+	void mostrarNombre() {
+		System.out.println("Círculo");
 	}
 }

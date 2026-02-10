@@ -1,7 +1,14 @@
 package EjercicioHerencia;
 
 public class Figura {
-	public void calcularArea() {
-		System.out.println("Calcula el area de: ");
+	
+	void calcularArea() {
+		
 	}
+
+	void mostrarNombre() {
+		System.out.println("Figura");
+		
+	}
+	
 }

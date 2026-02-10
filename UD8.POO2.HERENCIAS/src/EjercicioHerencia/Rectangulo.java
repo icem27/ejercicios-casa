@@ -4,15 +4,19 @@ public class Rectangulo extends Figura{
 	private int base;
 	private int altura;
 	
-	public Rectangulo(int base, int altura) {
-		super();
-		this.base = base;
-		this.altura = altura;
+	Rectangulo(){
+		this.altura=10;
+		this.base=5;
 	}
 	
-	public void mostrarArea() {
-		this.calcularArea();
-		System.out.println("");
+	@Override
+	void calcularArea() {
+		System.out.println("Base x altura es " + base*altura);
+	}
+	
+	@Override
+	void mostrarNombre() {
+		System.out.println("Rectangulo");
 	}
 	
 }
