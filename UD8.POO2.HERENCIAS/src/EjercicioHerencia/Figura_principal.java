@@ -14,9 +14,7 @@ public class Figura_principal {
 		Rectangulo r1 = new Rectangulo();
 		r1.calcularArea();
 		r1.mostrarNombre();
-		
-		
-
+	
 	}
 
 }
