@@ -9,34 +9,33 @@ public class Trabajador extends Persona {
 	 * cinco variables en una sola cadena.
 	 */
 	
-	private char categoria_profesional;
+	private Categoria_profesional categoria;
 	private int antiguedad;
 	
 	Trabajador(){
 	}
 	
-	void validadorCategoria(char l) {
-		char A = 'A', B = 'B', C = 'C';
-		if(l!=A && l!=B && l!=C) {
+	void validadorCategoria(Categoria_profesional l) {
+		if(l!=Categoria_profesional.A && l!=Categoria_profesional.B && l!=Categoria_profesional.C) {
 			System.out.println("La categoria introducida no es correcta");
-			this.categoria_profesional='X';
+			this.categoria=null;
 		} else {
-			this.categoria_profesional=l;
+			this.categoria=l;
 		}
 	}
 
-	public Trabajador(String nombre, String telefono, int edad, char categoria_profesional, int antiguedad) {
+	public Trabajador(String nombre, String telefono, int edad, Categoria_profesional categoria_profesional, int antiguedad) {
 		super(nombre, telefono, edad);
 //		this.categoria_profesional = categoria_profesional;
 		this.antiguedad = antiguedad;
 		validadorCategoria(categoria_profesional);
 	}
 
-	public char getCategoria_profesional() {
-		return categoria_profesional;
+	public Categoria_profesional getCategoria_profesional() {
+		return categoria;
 	}
 
-	public void setCategoria_profesional(char categoria_profesional) {
+	public void setCategoria_profesional(Categoria_profesional categoria_profesional) {
 		validadorCategoria(categoria_profesional);
 	}
 
@@ -48,10 +47,10 @@ public class Trabajador extends Persona {
 		this.antiguedad = antiguedad;
 	}
 
-//	@Override
-//	public String toString() {
-//		return super.toString()+" Trabajador [categoria_profesional=" + categoria_profesional + ", antiguedad=" + antiguedad + "]";
-//	}
+	@Override
+	public String toString() {
+		return super.toString()+" Trabajador [categoria_profesional=" + categoria + ", antiguedad=" + antiguedad + "]";
+	}
 	
 	
 

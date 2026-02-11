@@ -47,10 +47,10 @@ public class Persona {
 		this.edad = edad;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Persona [nombre=" + nombre + ", telefono=" + telefono + ", edad=" + edad + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", telefono=" + telefono + ", edad=" + edad + "]";
+	}
 	
 	
 

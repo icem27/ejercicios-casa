@@ -29,23 +29,13 @@ public class Principal {
 		t1.setNombre("Juan");
 		t1.setTelefono("987654728");
 		t1.setEdad(34);
-		t1.setCategoria_profesional('B');
+		t1.setCategoria_profesional(Categoria_profesional.B);
 		t1.setAntiguedad(12);
 		System.out.println(t1.toString());
 		
 		
-		
-		System.out.print("Introduce el nombre del empleado: ");
-		String nombre=sc.nextLine();
-		System.out.print("Introduce el número de telefono: ");
-		String tel=sc.nextLine();
-		System.out.print("Introce la edad del empleado: ");
-		int edad=sc.nextInt();
-		System.out.print("Introduce la categoria del empleado[A,B o C]: ");
-		char cat=sc.next().charAt(0);
-		System.out.print("Introduce la antiguedad del empleado: ");
-		int antiguedad=sc.nextInt();
-		Trabajador t2 = new Trabajador(nombre, tel, edad, cat, antiguedad);
+
+		Trabajador t2 = new Trabajador("Ismael", "659865986", 25, Categoria_profesional.A, 24);
 		System.out.println(t2.toString());
 		
 		if(t1.getAntiguedad()>t2.getAntiguedad()) {
