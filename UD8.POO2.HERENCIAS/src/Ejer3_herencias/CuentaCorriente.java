@@ -18,7 +18,7 @@ public class CuentaCorriente extends Cuenta{
 	
 	@Override
 	void ingresoDinero(float ingreso) {
-		if(descubierto>=0) {
+		if(descubierto>=0 && saldo>ingreso) {
 			super.ingresoDinero((ingreso-descubierto));
 			descubierto=0;
 		} else {
