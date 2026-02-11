@@ -16,11 +16,13 @@ public class Cuenta {
 	
 	void ingresoDinero(float ingreso) {
 		this.saldo+=ingreso;
+		num_ingresos++;
 	}
 	
 	void retirarDinero(float retiro) {
-		if(retiro>=saldo) {
+		if(retiro<=saldo) {
 			this.saldo-=retiro;
+			num_retiradas++;
 		} else {
 			System.out.println("No se puede realizar la operación, no tiene suficientes fondos");
 		}
@@ -46,9 +48,5 @@ public class Cuenta {
 	}
 	
 	
-	public static void main(String[] args) {
-		Cuenta c1= new Cuenta(1000, 2);
-		c1.calcInteres();
-		c1.imprimir();
-	}
+	
 }
