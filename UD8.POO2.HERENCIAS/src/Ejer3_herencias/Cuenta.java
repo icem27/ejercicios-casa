@@ -19,6 +19,4 @@ public class Cuenta {
 	void retirarDinero(float retiro) {
 		this.saldo-=retiro;
 	}
-	
-
 }
