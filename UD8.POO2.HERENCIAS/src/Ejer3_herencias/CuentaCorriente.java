@@ -38,7 +38,7 @@ public class CuentaCorriente extends Cuenta{
 	}
 	
 	public static void main(String[] args) {
-		CuentaCorriente c2=new CuentaCorriente(1000, 2);
+		CuentaCorriente c2=new CuentaCorriente(1200, 2);
 		c2.retirarDinero(1300);
 		c2.ingresoDinero(200);
 		c2.calcInteres();

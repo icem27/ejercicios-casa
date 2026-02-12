@@ -59,11 +59,9 @@ public class CuentaAhorros extends Cuenta {
 	}
 	
 	public static void main(String[] args) {
-		CuentaAhorros c1= new CuentaAhorros(1500, 2);
+		CuentaAhorros c1= new CuentaAhorros(1000, 2);
 		c1.ingresoDinero(100);
-		c1.retirarDinero(150);
-		c1.retirarDinero(150);
-		c1.retirarDinero(50);
+		c1.retirarDinero(100);
 		c1.calcInteres();
 		c1.imprimir();
 	}
