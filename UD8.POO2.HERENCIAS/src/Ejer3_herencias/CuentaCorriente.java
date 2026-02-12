@@ -34,7 +34,6 @@ public class CuentaCorriente extends Cuenta{
 		CuentaCorriente c2=new CuentaCorriente(100, 2);
 		c2.retirar(150);
 		c2.retirar(50);
-//		c2.ingresoDinero(200);
 		c2.calcInteres();
 		c2.imprimir();
 	}
