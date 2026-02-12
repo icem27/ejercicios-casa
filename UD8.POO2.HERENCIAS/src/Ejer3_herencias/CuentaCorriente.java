@@ -7,29 +7,21 @@ public class CuentaCorriente extends Cuenta{
 		super(saldo, tasa);
 	}
 	
-	void retirarDinero(float retirada) {
+	void retirar(float retirada) {
 		num_retiradas++;
-		float saltoAnterior=saldo;
 		saldo-=retirada;
 		if(saldo<=0) {
-			descubierto+=(retirada-saltoAnterior);
+			descubierto=Math.abs(saldo);
 		}
 	}
 	
-	@Override
-	void ingresoDinero(float ingreso) {
-		if(descubierto>=0 && saldo>ingreso) {
-			super.ingresoDinero((ingreso-descubierto));
+	void ingreso(float dinero) {
+		super.ingresoDinero(dinero);
+		if(saldo>=0) {
 			descubierto=0;
 		} else {
-			super.ingresoDinero(ingreso);
-			descubierto=0;
+			descubierto=Math.abs(saldo);
 		}
-	}
-	
-	@Override
-	void extractoMensual() {
-		super.extractoMensual();
 	}
 	
 	@Override
@@ -39,9 +31,9 @@ public class CuentaCorriente extends Cuenta{
 	}
 	
 	public static void main(String[] args) {
-		CuentaCorriente c2=new CuentaCorriente(1200, 2);
-		c2.retirarDinero(1300);
-		c2.ingresoDinero(0);
+		CuentaCorriente c2=new CuentaCorriente(100, 2);
+		c2.retirar(150);
+		c2.retirar(50);
 //		c2.ingresoDinero(200);
 		c2.calcInteres();
 		c2.imprimir();
