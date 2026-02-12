@@ -4,8 +4,8 @@ import java.util.Locale;
 
 public class Cuenta {
 	protected float saldo;
-	protected int num_ingresos;
-	protected int num_retiradas;
+	protected int num_ingresos=0;
+	protected int num_retiradas=0;
 	protected float tasa;
 	protected float comision=0;
 	

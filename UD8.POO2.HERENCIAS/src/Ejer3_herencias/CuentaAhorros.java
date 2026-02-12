@@ -1,15 +1,13 @@
 package Ejer3_herencias;
 
 public class CuentaAhorros extends Cuenta {
-	private boolean estadoCuenta;
+	private boolean estadoCuenta=true;
 	
-	CuentaAhorros(float cuenta, float tasa){
-		super(cuenta, tasa);
+	CuentaAhorros(float saldo, float tasa){
+		super(saldo, tasa);
 	}
 	
-	@Override
-	void ingresoDinero(float ingreso) {
-		cuentaEstado();
+	void ingreso(float ingreso) {
 		if(estadoCuenta) {
 			super.ingresoDinero(ingreso);
 		} else {
@@ -17,9 +15,7 @@ public class CuentaAhorros extends Cuenta {
 		}
 	}
 	
-	@Override
-	void retirarDinero(float retiro) {
-		cuentaEstado();
+	void retirar(float retiro) {
 		if(estadoCuenta) {
 			super.retirarDinero(retiro);
 			extractoMensual();
@@ -37,9 +33,8 @@ public class CuentaAhorros extends Cuenta {
 	}
 	
 	void extractoMensual() {
-		cuentaEstado();
 		int comisionPorOperacion=100;
-		if(num_retiradas>1) {
+		if(num_retiradas>4) {
 			comision+=comisionPorOperacion;
 			saldo-=comisionPorOperacion;
 		}
@@ -53,16 +48,20 @@ public class CuentaAhorros extends Cuenta {
 		if(estadoCuenta) {
 		super.imprimir(); System.out.println("Has realizado " + (num_ingresos+num_retiradas) + " operaciones");
 		}else {
-			System.out.println("No hay fondos");
+			System.out.println("La cuenta no esta activa ya que no hay fondos");
 		}
 		
 	}
 	
 	public static void main(String[] args) {
 		CuentaAhorros c1= new CuentaAhorros(1500, 2);
-		c1.ingresoDinero(100);
-		c1.retirarDinero(100);
-		c1.retirarDinero(10);
+		c1.ingreso(100);
+		c1.retirar(100);
+		c1.retirar(10);
+		c1.retirar(100);
+		c1.retirar(10);
+		c1.retirar(100);
+		c1.retirar(10);
 		c1.calcInteres();
 		c1.imprimir();
 	}
