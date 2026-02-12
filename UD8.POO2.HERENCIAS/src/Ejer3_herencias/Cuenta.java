@@ -46,7 +46,7 @@ public class Cuenta {
 	String conDecimales(float num) {
 		return String.format(Locale.GERMAN, "%,.2f", num);
 	}
-	
+	 
 	
 	
 }

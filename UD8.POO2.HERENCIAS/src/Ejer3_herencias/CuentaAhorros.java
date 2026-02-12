@@ -39,7 +39,7 @@ public class CuentaAhorros extends Cuenta {
 	void extractoMensual() {
 		cuentaEstado();
 		int comisionPorOperacion=100;
-		if(num_retiradas>4) {
+		if(num_retiradas>1) {
 			comision+=comisionPorOperacion;
 			saldo-=comisionPorOperacion;
 		}
@@ -59,9 +59,10 @@ public class CuentaAhorros extends Cuenta {
 	}
 	
 	public static void main(String[] args) {
-		CuentaAhorros c1= new CuentaAhorros(1000, 2);
+		CuentaAhorros c1= new CuentaAhorros(1500, 2);
 		c1.ingresoDinero(100);
 		c1.retirarDinero(100);
+		c1.retirarDinero(10);
 		c1.calcInteres();
 		c1.imprimir();
 	}

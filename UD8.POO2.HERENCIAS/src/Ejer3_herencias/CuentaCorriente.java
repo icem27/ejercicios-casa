@@ -8,11 +8,11 @@ public class CuentaCorriente extends Cuenta{
 	}
 	
 	void retirarDinero(float retirada) {
+		num_retiradas++;
 		float saltoAnterior=saldo;
 		saldo-=retirada;
 		if(saldo<=0) {
 			descubierto+=(retirada-saltoAnterior);
-			saldo=0;
 		}
 	}
 	
@@ -23,6 +23,7 @@ public class CuentaCorriente extends Cuenta{
 			descubierto=0;
 		} else {
 			super.ingresoDinero(ingreso);
+			descubierto=0;
 		}
 	}
 	
@@ -40,7 +41,9 @@ public class CuentaCorriente extends Cuenta{
 	public static void main(String[] args) {
 		CuentaCorriente c2=new CuentaCorriente(1200, 2);
 		c2.retirarDinero(1300);
-		c2.ingresoDinero(200);
+		c2.ingresoDinero(100);
+		c2.ingresoDinero(100);
+//		c2.ingresoDinero(200);
 		c2.calcInteres();
 		c2.imprimir();
 	}
