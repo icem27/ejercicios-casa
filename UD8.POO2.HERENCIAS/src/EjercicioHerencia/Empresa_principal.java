@@ -22,13 +22,14 @@ public class Empresa_principal {
 			alta_empleado(sc, empleado);
 			break;
 		case 2:
+			for(int i=0;i<empleado.length;i++) {
+			if(empleado[i]!=null) {
+				System.out.println(empleado[i]);
+			}
+		}
 			break;
 		case 3:
-			for(int i=0;i<empleado.length;i++) {
-				if(empleado[i]!=null) {
-					System.out.println(empleado[i]);
-				}
-			}
+			System.out.println("Hasta la próxima!");
 			break;
 		default: 
 			System.out.println("Debes introducir la opción 1 o 2");
