@@ -1,14 +1,15 @@
 package EjercicioHerencia;
 
 public class Empresa_Programador extends Empresa_Empleado {
-	private int lineasDeCodigoPorHora, lenguajeDominante;
+	private int lineasDeCodigoPorHora;
+	private String lenguajeDominante;
 	
 	public Empresa_Programador() {
 		
 	}
 
 	public Empresa_Programador(String nombre, String dni, int edad, boolean casado, double salario,
-			int lineasDeCodigoPorHora, int lenguajeDominante) {
+			int lineasDeCodigoPorHora, String lenguajeDominante) {
 		super(nombre, dni, edad, casado, salario);
 		this.lineasDeCodigoPorHora = lineasDeCodigoPorHora;
 		this.lenguajeDominante = lenguajeDominante;
