@@ -59,6 +59,7 @@ public class Invernadero {
 				avanzarSemana();
 				break;
 			case 5:
+				System.out.println("Hasta la próxima!");
 				break;
 			default:
 				System.out.println("La opción introducida no es correcta");
@@ -123,7 +124,6 @@ public class Invernadero {
 	}
 
 	private static void plantarLechuga() {
-		// TODO Auto-generated method stub
 		int vacio = 0;
 		if (Lechuga.getTotalLechugas() < Lechuga.MAX_LECHUGAS) {
 			while (plantas[vacio] != null && plantas[vacio].isPlantada()) {
@@ -146,9 +146,11 @@ public class Invernadero {
 		if (Tomate.getTotalTamates() < Tomate.MAX_TOMATES) {
 			while (plantas[vacio] != null && plantas[vacio].isPlantada()) {
 				vacio++;
-			}
-		}
+			} 
+		} 
+		
 		TipoTomate tipo = TipoTomate.CHERRY;
+		
 		int t;
 		do {
 			System.out.println("Qué tipo de tomate vas a plantar?CHERRY(1), PERA(2), KUMATO(3)");
