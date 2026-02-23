@@ -7,6 +7,7 @@ public class Perros extends Animales {
 
 	public Perros(String tipo, double precio_venta, char tamanio) {
 		super();
+		this.precio_venta=precio_venta;
 		this.precio_compra=50;
 		this.tipo = tipo;
 		this.tamanio = tamanio;
@@ -37,8 +38,8 @@ public class Perros extends Animales {
 	}
 	
 	@Override
-	public void mostrar() {
-		System.out.println(nombre + " edad en meses: " + meses + " precio venta: " + precio_venta + " - " + vendido);
+	public String mostrar() {
+		return tipo + " edad en meses: " + meses + " precio venta: " + precio_venta + " - " + estadoVenta();
 	}
 
 }

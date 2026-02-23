@@ -39,8 +39,16 @@ public class Animales {
 		this.meses++;
 	}
 	
-	public void mostrar() {
-		
+	public String estadoVenta() {
+		if(vendido) {
+			return "Vendido";
+		} else {
+			return "En venta";
+		}
+	}
+	
+	public String mostrar() {
+		return "";
 	}
 	
 }

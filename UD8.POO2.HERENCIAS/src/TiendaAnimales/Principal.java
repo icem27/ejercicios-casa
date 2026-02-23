@@ -2,10 +2,18 @@ package TiendaAnimales;
 
 public class Principal {
 	
-	public static final int  MAX_ANIMALES=11;
-	public static Animales[] animales = new Animales[MAX_ANIMALES];
-	
-	
+	static final int  MAX_ANIMALES=11;
+	static Animales[] animales = new Animales[MAX_ANIMALES];
+	static int mes = 1;
+		
+	public static void viajarTiempo() {
+		mes++;
+		for(Animales a:animales) {
+			if(a!=null) {
+				a.avanzarMeses();
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		animales[0] = new Perros("Pastor Alemán", 1000, 'M');
@@ -19,6 +27,20 @@ public class Principal {
 		animales[8] = new Tortugas(TipoOrejas.AMARILLAS);
 		animales[9] = new Tortugas(TipoOrejas.AMARILLAS);
 		animales[10] = new Tortugas(TipoOrejas.ROJA);
+		
+		viajarTiempo();
+		for(int i=0;i<animales.length;i++) {
+			String nombre = "";
+			if(animales[i]!=null) {
+				if(animales[i] instanceof Perros) {
+					nombre = "Perro";
+					System.out.println(nombre + " " + (i+1) + " " +  animales[i].mostrar());
+				} else {
+					nombre = "Tortuga";
+					System.out.println(nombre + " " + (i+1) + " " + animales[i].mostrar());
+				}
+			}
+		}
 
 	}
 
