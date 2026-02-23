@@ -1,7 +1,7 @@
 package EjerInventario;
 
 public class Lechuga extends Planta{
-	public static final int MAX_LECHUGAS = 10;
+	public static final int MAX_LECHUGAS = 6;
 	public static int totalLechugas = 0;
 	public TipoLechuga tipo;
 	private static double COSTO_TOMATE=0.3;

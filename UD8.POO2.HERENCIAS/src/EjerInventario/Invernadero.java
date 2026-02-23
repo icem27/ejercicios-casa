@@ -129,7 +129,7 @@ public class Invernadero {
 			while (plantas[vacio] != null && plantas[vacio].isPlantada()) {
 				vacio++;
 			}
-		}
+		} 
 		TipoLechuga tipo = TipoLechuga.ICEBERG;
 		int t;
 		do {
