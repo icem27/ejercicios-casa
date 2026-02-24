@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class Principal {
 	static Scanner sc = new Scanner(System.in);
-	static Productos[] producto = new Productos[25];
+	static Productos[] producto = new Productos[25];		
+
 
 	public static void main(String[] args) {
 		producto[0] = new Disfraz("Batman", Categoria.HISTORICO, Talla.L);
 		//producto[0].alquilarProducto("Ismael", 5);
 		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
-		nuevoDisfraz();
 		//producto[1].alquilarProducto("Juan", 3);
+		nuevoAccesorio();
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
 			if(producto[i] instanceof Disfraz) {
@@ -60,15 +61,14 @@ public class Principal {
 		opcion=sc.nextInt();
 		} while(opcion != 1 && opcion != 2);
 		if (opcion==1) {
-			//aqui voy a poner la función de disfraz
+			nuevoDisfraz();
 		} else {
 			//aqui voy a poner la función de accesorio
 		}
 	}
 	
-	public static void nuevoDisfraz() {
+	public void nuevoDisfraz() {
 		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
-		
 		Talla tipo = Talla.S;
 		
 		Categoria tipoCategoria = Categoria.HISTORICO;
@@ -98,7 +98,34 @@ public class Principal {
 			tipo = Talla.XL;
 		}
 		producto[codigoSiguiente] = new Disfraz(nombre, tipoCategoria, tipo);
+	}
+	
+	public static void nuevoAccesorio() {
+		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
+		Categoria tipoCategoria = Categoria.HISTORICO;
+		boolean esNovedad = false;
+		System.out.println("Cuál es el nombre del artículo:");
+		String nombre = sc.nextLine();
+		int categoria;
 		
+		do {
+		System.out.println("De qué categoría es: Históricos(1), Terror(2), Superhéroes(3), Otros(4)");
+		categoria = sc.nextInt();
+		} while (categoria <= 0 || categoria > 4);
+		
+		tipoCategoria = Categoria.values() [categoria-1];
+		sc.nextLine();
+		int novedad;
+		do {
+		System.out.println("Si es una novedad pulsa 1, sino, pulsa 0");
+		novedad = sc.nextInt();
+		}while(novedad!=1 && novedad!=0);
+		if(novedad==1) {
+			esNovedad=true;
+		}
+		
+		producto[codigoSiguiente] = new Accesorio(nombre, tipoCategoria, esNovedad);
+
 	}
 
 }
