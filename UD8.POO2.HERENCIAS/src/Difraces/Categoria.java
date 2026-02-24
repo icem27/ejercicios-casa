@@ -1,32 +1,24 @@
 package Difraces;
 
 public enum Categoria {
-	HISTORICO(10, "Categoria de historico"), TERROR(15, "Categoria de Terror"), SUPERHEROE(8, "Categoria de Superheroe"), OTROS(2, "Categoria de otros");
-	
-	private double descuento;
-	private String descripcion;
-	
-	Categoria(double descuento, String descripcion){
-		this.descuento=descuento;
-		this.descripcion=descripcion;
-	}
+    HISTORICO(0.10, "Categoria de Historico"),
+    TERROR(0.15, "Categoria de Terror"),
+    SUPERHEROE(0.08, "Categoria de Superheroe"),
+    OTROS(0.02, "Categoria de Otros");
 
-	public double getDescuento() {
-		return descuento;
-	}
+    private double descuento;
+    private String descripcion;
 
-	public void setDescuento(double descuento) {
-		this.descuento = descuento;
-	}
+    Categoria(double descuento, String descripcion){
+        this.descuento = descuento;
+        this.descripcion = descripcion;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public double getDescuento() {
+        return descuento;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	
-	
-
+    public String getDescripcion() {
+        return descripcion;
+    }
 }

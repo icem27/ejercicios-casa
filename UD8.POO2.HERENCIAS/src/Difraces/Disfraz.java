@@ -1,32 +1,36 @@
 package Difraces;
 
 public class Disfraz extends Productos {
-	private Talla talla;
-	private Categoria categoria;
-	
-	public Disfraz(int codigo, String nombre, boolean estado, double precio, Talla talla) {
-		super(codigo, nombre, estado, precio);
-		this.talla=talla;
-	}
+    private Talla talla;
 
-	public Talla getTalla() {
-		return talla;
-	}
+    public Disfraz(String nombreProducto, Categoria categoria, Talla talla) {
+        super(nombreProducto, categoria);
+        this.talla = talla;
+    }
 
-	public void setTalla(Talla talla) {
-		this.talla = talla;
-	}
-	
-	@Override
-	public double calcularPrecio(int dia) {
-		double precio;
-		return precio=super.getPrecio()*dia;
-	}
-	
-	@Override
-	public String toString() {
-		return categoria.getDescripcion() + " - " + super.isEstado() + " - " + super.getPrecio() + "/día" + " talla: " + talla.values();
-	}
-	
+    @Override
+    public double precioProducto() {
+        double precioBaseConIva = super.precioProducto();
+        double descuento = getCategoriaProducto().getDescuento();
+        return precioBaseConIva * (1 - descuento);
+    }
+
+    public Talla getTalla() {
+        return talla;
+    }
+
+    public void setTalla(Talla talla) {
+        this.talla = talla;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("D%04d - %s - %s - Talla: %s - Precio/día: %s%s",
+                getCodigoProducto(),
+                getCategoriaProducto().getDescripcion(),
+                getNombreProducto(),
+                talla,
+                String.format("%.2f€", precioPorDiaConIva()),
+                isEstaAlquilado() ? " - Alquilado - Cliente: " + getCliente() + " - Días: " + getDiasAlquilado() : " - Disponible");
+    }
 }
-	

@@ -1,71 +1,94 @@
 package Difraces;
 
 public class Productos {
-	private static final double IVA = 0.21;
-	private int codigo;
-	private String nombre;
-	private boolean estado;
-	private double precio = 15;
+	private String nombreProducto;
+	private static int codigoGlobal = 0;
+	private int codigoProducto;
+	private boolean estaAlquilado;
+	private Categoria categoriaProducto;
+	private static final double IVA=0.21;
+	private String cliente;
+	private int diasAlquilado;
+	private final double PRODUCTO_BASE=15;
 	
-	public Productos(int codigo, String nombre, boolean estado, double precio) {
-		this.codigo = codigo;
-		this.nombre = nombre;
-		this.estado = estado;
-		this.precio = precio;
-	}
+	public Productos(String nombreProducto, Categoria categoriaProducto) {
+        this.nombreProducto = nombreProducto;
+        this.categoriaProducto = categoriaProducto;
+        codigoGlobal++;
+        this.codigoProducto = codigoGlobal;
+        this.estaAlquilado = false; 
+    }
 	
-	public int getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public boolean isEstado() {
-		return estado;
-	}
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
-	public static double getIva() {
-		return IVA;
+	public double precioProducto() {
+        return PRODUCTO_BASE * diasAlquilado * (1 + IVA);
+    }
+	
+	public double precioPorDiaConIva() {
+	    return PRODUCTO_BASE * (1 + IVA);
 	}
 	
-	public double calcularPrecio(int dia) {
-		return 0;
-	}
+	public boolean alquilarProducto(String cliente, int dias) {
+        if (estaAlquilado || dias <= 0) {
+            return false;
+        }
+        this.estaAlquilado = true;
+        this.cliente = cliente;
+        this.diasAlquilado = dias;
+        return true;
+    }
 	
-	public double getPrecio() {
-		return precio;
-	}
+	public boolean devolverProducto() {
+        if (!estaAlquilado) {
+            return false;
+        }
+        this.estaAlquilado = false;
+        this.cliente = null;
+        this.diasAlquilado = 0;
+        return true;
+    }
 
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
+	public String getNombreProducto() {
+        return nombreProducto;
+    }
 
-	public boolean alquiler(){
-		if(estado) {
-			return true; 
-		} else {
-			return false;
-			
-		}
-	}
+    public int getCodigoProducto() {
+        return codigoProducto; 
+    }
+
+    public boolean isEstaAlquilado() {
+        return estaAlquilado;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public int getDiasAlquilado() {
+        return diasAlquilado;
+    }
+
+    public double getPrecioBase() {
+        return PRODUCTO_BASE;
+    }
+
+    public Categoria getCategoriaProducto() {
+        return categoriaProducto;
+    }
+
+    public static double getIva() {
+        return IVA;
+    }
+    
+    @Override
+    public String toString() {
+        String estado = estaAlquilado ? "Alquilado" : "Disponible";
+        String infoAlquiler = estaAlquilado ? " - Cliente: " + cliente + " - Días: " + diasAlquilado : "";
+        return String.format("%s - %s - %s - %s - Precio/día: %.2f€",
+                "",
+                getCategoriaProducto().getDescripcion(),
+                nombreProducto,
+                estado + infoAlquiler,
+                precioProducto());
+    }
 	
-	public boolean devolver() {
-		if(estado) {
-			return true; 
-		} else {
-			return false;
-		}
-	}
-	
-	public String toString() {
-		return "";
-	}
 }
