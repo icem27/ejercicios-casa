@@ -116,7 +116,7 @@ public class Principal {
 	}
 	
 	public static void nuevoDisfraz() {
-		Talla tipo = Talla.S;
+		//Talla tipo = Talla.S;
 		
 		System.out.println("Cuál es el nombre del artículo:");
 		String nombre = sc.nextLine();
