@@ -7,6 +7,8 @@ public class Principal {
 
 	public static void main(String[] args) {
 		Productos[] producto = new Productos[25];
+		producto[1] = new Disfraz(1, "Disfraz de tigre", false, 100, Talla.M);
+		System.out.println(producto[1].toString());
 		
 	}
 	

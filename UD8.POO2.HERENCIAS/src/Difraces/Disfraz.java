@@ -25,7 +25,7 @@ public class Disfraz extends Productos {
 	
 	@Override
 	public String toString() {
-		return "DISFRACES -- #D000" +  categoria.getDescripcion() + " - " + super.isEstado() + " - " + super.getPrecio() + "/día" + " talla: " + talla.values();
+		return categoria.getDescripcion() + " - " + super.isEstado() + " - " + super.getPrecio() + "/día" + " talla: " + talla.values();
 	}
 	
 }
