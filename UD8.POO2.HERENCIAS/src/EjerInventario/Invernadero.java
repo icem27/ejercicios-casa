@@ -124,12 +124,15 @@ public class Invernadero {
 	}
 
 	private static void plantarLechuga() {
+		boolean bandera=false;
 		int vacio = 0;
 		if (Lechuga.getTotalLechugas() < Lechuga.MAX_LECHUGAS) {
 			while (plantas[vacio] != null && plantas[vacio].isPlantada()) {
 				vacio++;
 			}
+			bandera=true;
 		} 
+		if(bandera) {
 		TipoLechuga tipo = TipoLechuga.ICEBERG;
 		int t;
 		do {
@@ -138,17 +141,21 @@ public class Invernadero {
 		} while (t <= 0 || t > 3);
 		tipo = TipoLechuga.values()[t - 1];
 		plantas[vacio] = new Lechuga(tipo);
+		} else {
+			System.out.println("Inventario lleno. No puedes añadir más.");
+		}
 	}
 
 	private static void plantarTomate() {
 		// TODO Auto-generated method stub
+		boolean bandera=false;
 		int vacio = 0;
 		if (Tomate.getTotalTamates() < Tomate.MAX_TOMATES) {
 			while (plantas[vacio] != null && plantas[vacio].isPlantada()) {
 				vacio++;
 			} 
 		} 
-		
+		if(bandera) {
 		TipoTomate tipo = TipoTomate.CHERRY;
 		
 		int t;
@@ -158,6 +165,9 @@ public class Invernadero {
 		} while (t <= 0 || t > 3);
 		tipo = TipoTomate.values()[t - 1];
 		plantas[vacio] = new Tomate(tipo);
+		} else {
+			System.out.println("Inventario lleno. No puedes añadir más.");
+		}
 	}
 
 	private static void cosecharPlanta() {
