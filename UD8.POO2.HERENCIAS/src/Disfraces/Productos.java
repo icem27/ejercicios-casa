@@ -23,10 +23,6 @@ public class Productos {
         return PRODUCTO_BASE * diasAlquilado * (1 + IVA);
     }
 	
-	public double precioProductoTotal(int dias) {
-		return precioPorDiaConIva()*dias;
-	}
-	
 	public double precioPorDiaConIva() {
 		double descuento = getCategoriaProducto().getDescuento();
 	    double precioBaseConIva = PRODUCTO_BASE * (1 + IVA);
