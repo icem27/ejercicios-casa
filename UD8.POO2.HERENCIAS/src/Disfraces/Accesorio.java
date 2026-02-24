@@ -10,9 +10,10 @@ public class Accesorio extends Productos {
     
     @Override
     public double precioPorDiaConIva() {
-        double precioDia = super.getPrecioBase() * 0.5 * (1 + getIva());
+        double precioDia = super.getPrecioBase() * 0.5;
+        double iva = precioDia*getIva();
         double descuento = getCategoriaProducto().getDescuento();
-        return precioDia * (1 - descuento);
+        return precioDia * (1 - descuento) + iva;
     }
 
     public boolean isEsNovedad() {

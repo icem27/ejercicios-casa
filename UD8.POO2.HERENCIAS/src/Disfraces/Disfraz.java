@@ -7,12 +7,13 @@ public class Disfraz extends Productos {
         super(nombreProducto, categoria);
         this.talla = talla;
     }
-
+    
     @Override
-    public double precioProducto() {
-        double precioBaseConIva = super.precioProducto();
+    public double precioPorDiaConIva() {
+        double precioDia = super.getPrecioBase();
+        double iva = precioDia * getIva();
         double descuento = getCategoriaProducto().getDescuento();
-        return precioBaseConIva * (1 - descuento);
+        return precioDia * (1 - descuento) + iva;
     }
 
     public Talla getTalla() {
