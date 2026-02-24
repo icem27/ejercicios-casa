@@ -1,10 +1,10 @@
 package Disfraces;
 
 public enum Categoria {
-    HISTORICO(0.10, "Categoria de Historico"),
-    TERROR(0.15, "Categoria de Terror"),
-    SUPERHEROE(0.08, "Categoria de Superheroe"),
-    OTROS(0.02, "Categoria de Otros");
+    HISTORICO(0.10, "Personaje histórico."),
+    TERROR(0.15, "Personajes de terror."),
+    SUPERHEROE(0.08, "Personajes con superpoderes."),
+    OTROS(0.02, "Payasos, policias, etc.");
 
     private double descuento;
     private String descripcion;
