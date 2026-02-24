@@ -16,7 +16,9 @@ public class Principal {
 		//alquilerProducto();
 		//devolverProducto();
 		
-		menu();
+		
+		
+		//menu();
 		
 		
 		
@@ -34,8 +36,8 @@ public class Principal {
 			}
 		}
 		*/
-		//System.out.println(producto[0].toString());
-		//System.out.println(producto[1].toString());
+		System.out.println(producto[0].toString());
+		System.out.println(producto[1].toString());
 		
 	}
 	
