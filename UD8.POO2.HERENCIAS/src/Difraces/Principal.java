@@ -10,6 +10,7 @@ public class Principal {
 		producto[0] = new Disfraz("Batman", Categoria.HISTORICO, Talla.L);
 		//producto[0].alquilarProducto("Ismael", 5);
 		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
+		nuevoDisfraz();
 		//producto[1].alquilarProducto("Juan", 3);
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
@@ -52,7 +53,7 @@ public class Principal {
 		}
 	}
 	
-	public void aniadirProducto() {
+	public void nuevoProducto() {
 		int opcion;
 		do {
 		System.out.println("Qué vas a añadir: Disfraz(1) o Accesorio(2)");
@@ -63,6 +64,41 @@ public class Principal {
 		} else {
 			//aqui voy a poner la función de accesorio
 		}
+	}
+	
+	public static void nuevoDisfraz() {
+		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
+		
+		Talla tipo = Talla.S;
+		
+		Categoria tipoCategoria = Categoria.HISTORICO;
+		
+		System.out.println("Cuál es el nombre del artículo:");
+		String nombre = sc.nextLine();
+		
+		int categoria;
+		
+		do {
+		System.out.println("De qué categoría es: Históricos(1), Terror(2), Superhéroes(3), Otros(4)");
+		categoria = sc.nextInt();
+		} while (categoria <= 0 || categoria > 4);
+		
+		tipoCategoria = Categoria.values() [categoria-1];
+		sc.nextLine();
+		
+		System.out.println("La talla: S, M, L, XL?");
+		String talla = sc.nextLine().toUpperCase();
+		if(talla.equals("S")) {
+			tipo = Talla.S;
+		} else if(talla.equals("M")) {
+			tipo = Talla.M;
+		} else if(talla.equals("L")) {
+			tipo = Talla.L;
+		} else {
+			tipo = Talla.XL;
+		}
+		producto[codigoSiguiente] = new Disfraz(nombre, tipoCategoria, tipo);
+		
 	}
 
 }
