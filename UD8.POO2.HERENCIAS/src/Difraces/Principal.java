@@ -12,7 +12,6 @@ public class Principal {
 		//producto[0].alquilarProducto("Ismael", 5);
 		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
 		//producto[1].alquilarProducto("Juan", 3);
-		nuevoAccesorio();
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
 			if(producto[i] instanceof Disfraz) {
@@ -63,7 +62,7 @@ public class Principal {
 		if (opcion==1) {
 			nuevoDisfraz();
 		} else {
-			//aqui voy a poner la función de accesorio
+			nuevoAccesorio();
 		}
 	}
 	
@@ -100,7 +99,7 @@ public class Principal {
 		producto[codigoSiguiente] = new Disfraz(nombre, tipoCategoria, tipo);
 	}
 	
-	public static void nuevoAccesorio() {
+	public void nuevoAccesorio() {
 		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
 		Categoria tipoCategoria = Categoria.HISTORICO;
 		boolean esNovedad = false;
@@ -123,9 +122,21 @@ public class Principal {
 		if(novedad==1) {
 			esNovedad=true;
 		}
-		
 		producto[codigoSiguiente] = new Accesorio(nombre, tipoCategoria, esNovedad);
-
+	}
+	
+	public void alquilerProducto() {
+		System.out.println("Introduce el código del artículo: ");
+		int articulo = sc.nextInt();
+		if (producto[articulo] != null) {
+			if (producto[articulo].isEstaAlquilado()) {
+				// aqui podremos la función para el aquiler del producto
+			} else {
+				System.out.println("El artículo no está disponible porque ya está alquílado");
+			}
+		} else {
+			System.out.println("El código no es correcto");
+		}
 	}
 
 }
