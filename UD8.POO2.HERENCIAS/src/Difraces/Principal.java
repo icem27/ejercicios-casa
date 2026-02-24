@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Principal {
 	static int productosMaximos = 25;
 	static Scanner sc = new Scanner(System.in);
-	static Productos[] producto = new Productos[productosMaximos];		
+	static Productos[] producto = new Productos[productosMaximos];	
 
 
 	public static void main(String[] args) {
@@ -14,6 +14,7 @@ public class Principal {
 		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
 		//producto[1].alquilarProducto("Juan", 3);
 		//alquilerProducto();
+		//devolverProducto();
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
 			if(producto[i] instanceof Disfraz) {
@@ -144,6 +145,24 @@ public class Principal {
 				System.out.println("El articulo ha sido alquilado por " + nombre + " durante " + dias + " por " + producto[articulo].precioProductoTotal(dias));
 			} else {
 				System.out.println("El artículo no está disponible porque ya está alquílado");
+			}
+		} else {
+			System.out.println("El código no es correcto");
+		}
+	}
+	
+	public static void devolverProducto() {
+		int articulo;
+		do {
+		System.out.println("Introduce el código del artículo: ");
+		articulo = sc.nextInt()-1;
+		} while (articulo<=0 && articulo>=productosMaximos);
+		sc.nextLine();
+		if(producto[articulo]!=null) {
+			if(producto[articulo].devolverProducto()) {
+				System.out.println("Artículo devuelto");
+			} else {
+				System.out.println("El articulo no se puede devolver porque no está alquilado");
 			}
 		} else {
 			System.out.println("El código no es correcto");
