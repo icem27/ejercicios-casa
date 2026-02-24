@@ -10,7 +10,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		producto[0] = new Disfraz("Batman", Categoria.OTROS, Talla.L);
-		//producto[0].alquilarProducto("Ismael", 5);
+		producto[0].alquilarProducto("Ismael", 5);
 		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
 		//producto[1].alquilarProducto("Juan", 3);
 		//alquilerProducto();
@@ -42,14 +42,15 @@ public class Principal {
 	public static void menu() {
 		int opcion = 0;
 
-		while (opcion != 5) {
-		System.out.println("Bienvenido a Carnaval Fest");
+		while (opcion != 6) {
+		System.out.println("\nBienvenido a Carnaval Fest");
 		System.out.println("Qué deseas hacer?");
 		System.out.println("1. Mostrar estado tienda");
 		System.out.println("2. Añadir producto");
-		System.out.println("3. Alquilar producto");
-		System.out.println("4. Devolver producto");
-		System.out.println("5. Salir");
+		System.out.println("3. Eliminar producto");
+		System.out.println("4. Alquilar producto");
+		System.out.println("5. Devolver producto");
+		System.out.println("6. Salir");
 		opcion = sc.nextInt();
 		switch (opcion) {
 		case 1:
@@ -59,12 +60,15 @@ public class Principal {
 			nuevoProducto();
 			break;
 		case 3:
-			alquilerProducto();
+			eliminarProducto();
 			break;
 		case 4:
-			devolverProducto();
+			alquilerProducto();
 			break;
 		case 5:
+			devolverProducto();
+			break;
+		case 6:
 			System.out.println("Hasta la próxima!");
 			break;
 		default:
@@ -75,15 +79,17 @@ public class Principal {
 	}
 	
 	public static void mostrarProductos() {
-		for(int i=0;i<producto.length;i++) {
-			if(producto[i]!=null) {
-			if(producto[i] instanceof Disfraz) {
-				System.out.println(" " + (i+1) + " DISFRAZ -- " + producto[i].toString());
+		for (int i = 0; i < producto.length; i++) {
+			if (producto[i] != null) {
+
+				if (producto[i] instanceof Disfraz) {
+					System.out.println(" " + (i + 1) + " DISFRAZ -- " + producto[i].toString());
+				} else {
+					System.out.println(" " + (i + 1) + " ACCESORIO -- " + producto[i].toString());
+				}
+
 			} else {
-				System.out.println(" " + (i+1) + " ACCESORIO -- " + producto[i].toString());
-			}
-			} else {
-				System.out.println(" " + (i+1) + "  --------------------");
+				System.out.println(" " + (i + 1) + "  --------------------");
 			}
 		}
 	}
@@ -98,7 +104,6 @@ public class Principal {
 		if (opcion==1) {
 			nuevoDisfraz();
 		} else {
-			
 			nuevoAccesorio();
 		}
 	}
@@ -115,7 +120,6 @@ public class Principal {
 	
 	public static void nuevoDisfraz() {
 		Talla tipo = Talla.S;
-		Categoria tipoCategoria = Categoria.HISTORICO;
 		
 		System.out.println("Cuál es el nombre del artículo:");
 		String nombre = sc.nextLine();
@@ -127,7 +131,7 @@ public class Principal {
 		categoria = sc.nextInt();
 		} while (categoria <= 0 || categoria > 4);
 		
-		tipoCategoria = Categoria.values() [categoria-1];
+		Categoria tipoCategoria = Categoria.values() [categoria-1];
 		sc.nextLine();
 		
 		System.out.println("La talla: S, M, L, XL?");
@@ -208,6 +212,25 @@ public class Principal {
 		} else {
 			System.out.println("El código no es correcto");
 		}
+	}
+	
+	public static void eliminarProducto() {
+		int articulo;
+		do {
+		System.out.println("Introduce el código del artículo: ");
+		articulo = sc.nextInt()-1;
+		} while (articulo<=0 && articulo>=PRODUCTOS_MAXIMOS);
+		sc.nextLine();
+		
+		if(producto[articulo]!=null && !producto[articulo].isEstaAlquilado()) {
+			producto[articulo]=null;
+			System.out.println("El producto ha sido eliminado");
+		} else if (producto[articulo]!=null && producto[articulo].isEstaAlquilado()){
+			System.out.println("El producto se encuentra alquilado, no se puede eliminar.");
+		} else {
+			System.out.println("El producto no existe.");
+		}
+		
 	}
 
 }
