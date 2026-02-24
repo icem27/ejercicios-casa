@@ -183,7 +183,7 @@ public class Principal {
 				System.out.println("Cuántos dias se lo va a llevar?");
 				int dias = sc.nextInt();
 				producto[articulo].alquilarProducto(nombre, dias);
-				System.out.println("El articulo ha sido alquilado por " + nombre + " durante " + dias + " por " + producto[articulo].precioProductoTotal(dias));
+				System.out.println("El articulo ha sido alquilado por " + nombre + " durante " + dias + " dias por " + String.format("%.2f€", producto[articulo].precioProductoTotal(dias)) );
 			} else {
 				System.out.println("El artículo no está disponible porque ya está alquílado");
 			}
