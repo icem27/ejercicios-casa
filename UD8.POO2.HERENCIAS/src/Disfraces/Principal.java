@@ -18,7 +18,7 @@ public class Principal {
 		
 		
 		
-		//menu();
+		menu();
 		
 		
 		
@@ -36,8 +36,8 @@ public class Principal {
 			}
 		}
 		*/
-		System.out.println(producto[0].toString());
-		System.out.println(producto[1].toString());
+		//System.out.println(producto[0].toString());
+		//System.out.println(producto[1].toString());
 		
 	}
 	
@@ -137,8 +137,9 @@ public class Principal {
 		sc.nextLine();
 		
 		System.out.println("La talla: S, M, L, XL?");
-		String talla = sc.nextLine().toUpperCase();
-		if(talla.equals("S")) {
+		//String talla = sc.nextLine().toUpperCase();
+		Talla tipoTalla = Talla.valueOf(sc.nextLine().toUpperCase());
+		/*if(talla.equals("S")) {
 			tipo = Talla.S;
 		} else if(talla.equals("M")) {
 			tipo = Talla.M;
@@ -146,8 +147,8 @@ public class Principal {
 			tipo = Talla.L;
 		} else {
 			tipo = Talla.XL;
-		}
-		producto[siguienteCodigo()] = new Disfraz(nombre, tipoCategoria, tipo);
+		}*/
+		producto[siguienteCodigo()] = new Disfraz(nombre, tipoCategoria, tipoTalla);
 	}
 	
 	public static void nuevoAccesorio() {
