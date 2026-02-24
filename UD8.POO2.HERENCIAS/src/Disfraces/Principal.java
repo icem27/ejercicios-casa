@@ -11,7 +11,7 @@ public class Principal {
 	public static void main(String[] args) {
 		producto[0] = new Disfraz("Batman", Categoria.OTROS, Talla.L);
 		producto[0].alquilarProducto("Ismael", 5);
-		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
+		producto[1] = new Accesorio("Pendientes", Categoria.HISTORICO, false);
 		//producto[1].alquilarProducto("Juan", 3);
 		//alquilerProducto();
 		//devolverProducto();
