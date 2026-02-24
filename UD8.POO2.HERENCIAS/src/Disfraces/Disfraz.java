@@ -14,11 +14,6 @@ public class Disfraz extends Productos {
         double descuento = getCategoriaProducto().getDescuento();
         return precioBaseConIva * (1 - descuento);
     }
-    
-    @Override
-    public double precioProductoTotal(int dias) {
-    	return precioPorDiaConIva()*dias;
-    }
 
     public Talla getTalla() {
         return talla;

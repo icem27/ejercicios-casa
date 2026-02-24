@@ -14,11 +14,6 @@ public class Accesorio extends Productos {
         double descuento = getCategoriaProducto().getDescuento();
         return precioDia * (1 - descuento);
     }
-    
-    @Override
-    public double precioProductoTotal(int dias) {
-    	return precioPorDiaConIva()*dias;
-    }
 
     public boolean isEsNovedad() {
         return esNovedad;
