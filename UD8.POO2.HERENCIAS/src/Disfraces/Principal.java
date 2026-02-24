@@ -3,9 +3,9 @@ package Disfraces;
 import java.util.Scanner;
 
 public class Principal {
-	static int productosMaximos = 25;
+	static final int PRODUCTOS_MAXIMOS = 25;
 	static Scanner sc = new Scanner(System.in);
-	static Productos[] producto = new Productos[productosMaximos];	
+	static Productos[] producto = new Productos[PRODUCTOS_MAXIMOS];	
 
 
 	public static void main(String[] args) {
@@ -174,7 +174,7 @@ public class Principal {
 		do {
 		System.out.println("Introduce el código del artículo: ");
 		articulo = sc.nextInt()-1;
-		} while (articulo<=0 && articulo>=productosMaximos);
+		} while (articulo<=0 && articulo>=PRODUCTOS_MAXIMOS);
 		sc.nextLine();
 		if (producto[articulo] != null) {
 			if (!producto[articulo].isEstaAlquilado()) {
@@ -197,7 +197,7 @@ public class Principal {
 		do {
 		System.out.println("Introduce el código del artículo: ");
 		articulo = sc.nextInt()-1;
-		} while (articulo<=0 && articulo>=productosMaximos);
+		} while (articulo<=0 && articulo>=PRODUCTOS_MAXIMOS);
 		sc.nextLine();
 		if(producto[articulo]!=null) {
 			if(producto[articulo].devolverProducto()) {
