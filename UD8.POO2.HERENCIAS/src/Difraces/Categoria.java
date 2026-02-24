@@ -1,13 +1,14 @@
 package Difraces;
 
 public enum Categoria {
-	HISTORICO(10), TERROR(15), SUPERHEROE(8), OTROS(2);
+	HISTORICO(10, "Categoria de historico"), TERROR(15, "Categoria de Terror"), SUPERHEROE(8, "Categoria de Superheroe"), OTROS(2, "Categoria de otros");
 	
 	private double descuento;
 	private String descripcion;
 	
-	Categoria(double descuento){
+	Categoria(double descuento, String descripcion){
 		this.descuento=descuento;
+		this.descripcion=descripcion;
 	}
 
 	public double getDescuento() {
