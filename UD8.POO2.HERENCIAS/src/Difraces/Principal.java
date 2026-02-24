@@ -3,15 +3,17 @@ package Difraces;
 import java.util.Scanner;
 
 public class Principal {
+	static int productosMaximos = 25;
 	static Scanner sc = new Scanner(System.in);
-	static Productos[] producto = new Productos[25];		
+	static Productos[] producto = new Productos[productosMaximos];		
 
 
 	public static void main(String[] args) {
-		producto[0] = new Disfraz("Batman", Categoria.HISTORICO, Talla.L);
+		producto[0] = new Disfraz("Batman", Categoria.OTROS, Talla.L);
 		//producto[0].alquilarProducto("Ismael", 5);
 		producto[1] = new Accesorio("Pendientes", Categoria.TERROR, false);
 		//producto[1].alquilarProducto("Juan", 3);
+		//alquilerProducto();
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
 			if(producto[i] instanceof Disfraz) {
@@ -125,12 +127,21 @@ public class Principal {
 		producto[codigoSiguiente] = new Accesorio(nombre, tipoCategoria, esNovedad);
 	}
 	
-	public void alquilerProducto() {
+	public static void alquilerProducto() {
+		int articulo;
+		do {
 		System.out.println("Introduce el código del artículo: ");
-		int articulo = sc.nextInt();
+		articulo = sc.nextInt()-1;
+		} while (articulo<=0 && articulo>=productosMaximos);
+		sc.nextLine();
 		if (producto[articulo] != null) {
-			if (producto[articulo].isEstaAlquilado()) {
-				// aqui podremos la función para el aquiler del producto
+			if (!producto[articulo].isEstaAlquilado()) {
+				System.out.println("Introduce el nombre y apellido del cliente: ");
+				String nombre = sc.nextLine();
+				System.out.println("Cuántos dias se lo va a llevar?");
+				int dias = sc.nextInt();
+				producto[articulo].alquilarProducto(nombre, dias);
+				System.out.println("El articulo ha sido alquilado por " + nombre + " durante " + dias + " por " + producto[articulo].precioProductoTotal(dias));
 			} else {
 				System.out.println("El artículo no está disponible porque ya está alquílado");
 			}

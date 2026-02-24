@@ -7,12 +7,17 @@ public class Accesorio extends Productos {
         super(nombreProducto, categoria);
         this.esNovedad = esNovedad;
     }
-
+    
     @Override
-    public double precioProducto() {
-        double precioBaseConIva = super.precioProducto() * 0.5;
+    public double precioPorDiaConIva() {
+        double precioDia = super.getPrecioBase() * 0.5 * (1 + getIva());
         double descuento = getCategoriaProducto().getDescuento();
-        return precioBaseConIva * (1 - descuento);
+        return precioDia * (1 - descuento);
+    }
+    
+    @Override
+    public double precioProductoTotal(int dias) {
+    	return precioPorDiaConIva()*dias;
     }
 
     public boolean isEsNovedad() {
@@ -25,12 +30,12 @@ public class Accesorio extends Productos {
 
     @Override
     public String toString() {
-        return String.format("A%04d - %s - %s - Novedad: %s - Precio/día: %s%s",
+        return String.format("A%04d - %s - %s - Novedad: %s - Precio/día: %.2f€%s",
                 getCodigoProducto(),
                 getCategoriaProducto().getDescripcion(),
                 getNombreProducto(),
                 esNovedad ? "Sí" : "No",
-                String.format("%.2f€", precioPorDiaConIva()/2),
+                precioPorDiaConIva(),
                 isEstaAlquilado() ? " - Alquilado - Cliente: " + getCliente() + " - Días: " + getDiasAlquilado() : " - Disponible");
     }
 }

@@ -23,8 +23,14 @@ public class Productos {
         return PRODUCTO_BASE * diasAlquilado * (1 + IVA);
     }
 	
+	public double precioProductoTotal(int dias) {
+		return precioPorDiaConIva()*dias;
+	}
+	
 	public double precioPorDiaConIva() {
-	    return PRODUCTO_BASE * (1 + IVA);
+		double descuento = getCategoriaProducto().getDescuento();
+	    double precioBaseConIva = PRODUCTO_BASE * (1 + IVA);
+	    return precioBaseConIva * (1 - descuento);
 	}
 	
 	public boolean alquilarProducto(String cliente, int dias) {
