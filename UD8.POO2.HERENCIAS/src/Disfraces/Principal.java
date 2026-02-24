@@ -15,6 +15,13 @@ public class Principal {
 		//producto[1].alquilarProducto("Juan", 3);
 		//alquilerProducto();
 		//devolverProducto();
+		
+		menu();
+		
+		
+		
+		
+		/*
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
 			if(producto[i] instanceof Disfraz) {
@@ -26,6 +33,7 @@ public class Principal {
 				System.out.println(" " + (i+1) + "  --------------------");
 			}
 		}
+		*/
 		//System.out.println(producto[0].toString());
 		//System.out.println(producto[1].toString());
 		
@@ -85,18 +93,28 @@ public class Principal {
 		do {
 		System.out.println("Qué vas a añadir: Disfraz(1) o Accesorio(2)");
 		opcion=sc.nextInt();
+		sc.nextLine();
 		} while(opcion != 1 && opcion != 2);
 		if (opcion==1) {
 			nuevoDisfraz();
 		} else {
+			
 			nuevoAccesorio();
 		}
 	}
 	
+	public static int siguienteCodigo() {
+		int pos=0;
+		for(int i=0;i<producto.length;i++) {
+			if(producto[i]!=null) {
+				pos=i;
+			}
+		}
+		return pos+1;
+	}
+	
 	public static void nuevoDisfraz() {
-		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
 		Talla tipo = Talla.S;
-		
 		Categoria tipoCategoria = Categoria.HISTORICO;
 		
 		System.out.println("Cuál es el nombre del artículo:");
@@ -123,11 +141,10 @@ public class Principal {
 		} else {
 			tipo = Talla.XL;
 		}
-		producto[codigoSiguiente] = new Disfraz(nombre, tipoCategoria, tipo);
+		producto[siguienteCodigo()] = new Disfraz(nombre, tipoCategoria, tipo);
 	}
 	
 	public static void nuevoAccesorio() {
-		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
 		Categoria tipoCategoria = Categoria.HISTORICO;
 		boolean esNovedad = false;
 		System.out.println("Cuál es el nombre del artículo:");
@@ -149,7 +166,7 @@ public class Principal {
 		if(novedad==1) {
 			esNovedad=true;
 		}
-		producto[codigoSiguiente] = new Accesorio(nombre, tipoCategoria, esNovedad);
+		producto[siguienteCodigo()] = new Accesorio(nombre, tipoCategoria, esNovedad);
 	}
 	
 	public static void alquilerProducto() {
