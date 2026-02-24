@@ -1,4 +1,4 @@
-package Difraces;
+package Disfraces;
 
 public class Productos {
 	private String nombreProducto;

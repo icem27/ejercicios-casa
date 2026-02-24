@@ -1,4 +1,4 @@
-package Difraces;
+package Disfraces;
 
 import java.util.Scanner;
 

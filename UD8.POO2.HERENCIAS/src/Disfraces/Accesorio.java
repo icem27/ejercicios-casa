@@ -1,4 +1,4 @@
-package Difraces;
+package Disfraces;
 
 public class Accesorio extends Productos {
     private boolean esNovedad;

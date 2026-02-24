@@ -1,4 +1,4 @@
-package Difraces;
+package Disfraces;
 
 public class Disfraz extends Productos {
     private Talla talla;

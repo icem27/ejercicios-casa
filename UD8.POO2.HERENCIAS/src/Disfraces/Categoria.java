@@ -1,4 +1,4 @@
-package Difraces;
+package Disfraces;
 
 public enum Categoria {
     HISTORICO(0.10, "Categoria de Historico"),
