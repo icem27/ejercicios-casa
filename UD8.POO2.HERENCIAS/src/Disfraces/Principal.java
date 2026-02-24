@@ -31,7 +31,10 @@ public class Principal {
 		
 	}
 	
-	public int menu() {
+	public static void menu() {
+		int opcion = 0;
+
+		while (opcion != 5) {
 		System.out.println("Bienvenido a Carnaval Fest");
 		System.out.println("Qué deseas hacer?");
 		System.out.println("1. Mostrar estado tienda");
@@ -39,10 +42,31 @@ public class Principal {
 		System.out.println("3. Alquilar producto");
 		System.out.println("4. Devolver producto");
 		System.out.println("5. Salir");
-		return sc.nextInt();
+		opcion = sc.nextInt();
+		switch (opcion) {
+		case 1:
+			mostrarProductos();
+			break;
+		case 2:
+			nuevoProducto();
+			break;
+		case 3:
+			alquilerProducto();
+			break;
+		case 4:
+			devolverProducto();
+			break;
+		case 5:
+			System.out.println("Hasta la próxima!");
+			break;
+		default:
+			System.out.println("La opción introducida no es correcta");
+			break;
+		}
+		}
 	}
 	
-	public void mostrarProductos() {
+	public static void mostrarProductos() {
 		for(int i=0;i<producto.length;i++) {
 			if(producto[i]!=null) {
 			if(producto[i] instanceof Disfraz) {
@@ -56,7 +80,7 @@ public class Principal {
 		}
 	}
 	
-	public void nuevoProducto() {
+	public static void nuevoProducto() {
 		int opcion;
 		do {
 		System.out.println("Qué vas a añadir: Disfraz(1) o Accesorio(2)");
@@ -69,7 +93,7 @@ public class Principal {
 		}
 	}
 	
-	public void nuevoDisfraz() {
+	public static void nuevoDisfraz() {
 		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
 		Talla tipo = Talla.S;
 		
@@ -102,7 +126,7 @@ public class Principal {
 		producto[codigoSiguiente] = new Disfraz(nombre, tipoCategoria, tipo);
 	}
 	
-	public void nuevoAccesorio() {
+	public static void nuevoAccesorio() {
 		int codigoSiguiente = producto[0].getCodigoProducto()+1; //esto es para saber cuantos productos tengo creados
 		Categoria tipoCategoria = Categoria.HISTORICO;
 		boolean esNovedad = false;
