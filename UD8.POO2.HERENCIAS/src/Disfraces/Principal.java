@@ -95,8 +95,6 @@ public class Principal {
 	}
 	
 	public static void nuevoDisfraz() {
-		//Talla tipo = Talla.S;
-		
 		System.out.println("Cuál es el nombre del artículo:");
 		String nombre = sc.nextLine();
 		
@@ -111,17 +109,7 @@ public class Principal {
 		sc.nextLine();
 		
 		System.out.println("La talla: S, M, L, XL?");
-		//String talla = sc.nextLine().toUpperCase();
 		Talla tipoTalla = Talla.valueOf(sc.nextLine().toUpperCase());
-		/*if(talla.equals("S")) {
-			tipo = Talla.S;
-		} else if(talla.equals("M")) {
-			tipo = Talla.M;
-		} else if(talla.equals("L")) {
-			tipo = Talla.L;
-		} else {
-			tipo = Talla.XL;
-		}*/
 		producto[siguienteCodigo()] = new Disfraz(nombre, tipoCategoria, tipoTalla);
 	}
 	
