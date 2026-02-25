@@ -5,35 +5,14 @@ import java.util.Scanner;
 public class Principal {
 	static final int PRODUCTOS_MAXIMOS = 25;
 	static Scanner sc = new Scanner(System.in);
-	static Productos[] producto = new Productos[PRODUCTOS_MAXIMOS];	
-
+	static Productos[] producto = new Productos[PRODUCTOS_MAXIMOS];
 
 	public static void main(String[] args) {
 		producto[0] = new Disfraz("Batman", Categoria.OTROS, Talla.L);
 		producto[0].alquilarProducto("Ismael", 5);
 		producto[1] = new Accesorio("Pendientes", Categoria.HISTORICO, false);
-		//producto[1].alquilarProducto("Juan", 3);
-		//alquilerProducto();
-		//devolverProducto();
 		
 		menu();
-		
-		/*
-		for(int i=0;i<producto.length;i++) {
-			if(producto[i]!=null) {
-			if(producto[i] instanceof Disfraz) {
-				System.out.println(" " + (i+1) + " DISFRAZ -- " + producto[i].toString());
-			} else {
-				System.out.println(" " + (i+1) + " ACCESORIO -- " + producto[i].toString());
-			}
-			} else {
-				System.out.println(" " + (i+1) + "  --------------------");
-			}
-		}
-		*/
-		//System.out.println(producto[0].toString());
-		//System.out.println(producto[1].toString());
-		
 	}
 	
 	public static void menu() {
