@@ -48,8 +48,8 @@ public class BibliotecaLibro extends BibliotecaPublicacion implements Biblioteca
 
 	@Override
 	public String toString() {
-		return "BibliotecaLibro [autor=" + autor + ", titulo=" + titulo + ", prestado=" + prestado + ", getCodigo()="
-				+ getCodigo() + ", getAnyoPublicacion()=" + getAnyoPublicacion() + "]";
+		return "Autor: " + autor + " | Titulo: " + titulo + " | Prestado: " + (prestado ? "Prestado":"Disponible") + " | Codigo ISBN: "
+				+ getCodigo() + " | Año de publicación: " + getAnyoPublicacion();
 	}
 	
 	

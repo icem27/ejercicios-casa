@@ -16,8 +16,8 @@ public class BibliotecaRevista extends BibliotecaPublicacion {
 
 	@Override
 	public String toString() {
-		return "BibliotecaRevista [numero=" + numero + ", getCodigo()=" + getCodigo() + ", getAnyoPublicacion()="
-				+ getAnyoPublicacion() + "]";
+		return "Número de revista: " + numero + " | Código ISSB: " + getCodigo() + " | Año de publicación: "
+				+ getAnyoPublicacion();
 	}
 	
 	
