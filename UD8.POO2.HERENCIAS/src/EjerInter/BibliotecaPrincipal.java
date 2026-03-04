@@ -22,7 +22,7 @@ public class BibliotecaPrincipal {
 				anyadirPublicacion();
 				break;
 			case 2: 
-				buscarPublicaciones();
+				buscarPublicacion();
 				break;
 			case 3: 
 				prestarLibro();
@@ -117,6 +117,7 @@ public class BibliotecaPrincipal {
 					System.out.println("Ya está prestado. ");
 				} else {
 					((BibliotecaLibro) publi).prestar();
+					System.out.println("El libro ha sido prestado. ");
 				}
 			} else {
 				System.out.println("La publicación introducida es una revista por lo cual no se puede reservar");
@@ -131,7 +132,7 @@ public class BibliotecaPrincipal {
 		int posicion=buscarPosicionPublicacion();
 		if(posicion>=0) {
 			if(publicaciones[posicion] instanceof BibliotecaLibro && ((BibliotecaLibro)publicaciones[posicion]).estaPrestado()) {
-				System.out.println("No se puede elimnar ya que el libro se encuentra prestado.");
+				System.out.println("No se puede eliminar ya que el libro se encuentra prestado.");
 			} else {
 				publicaciones[posicion]=null;
 			}
@@ -164,14 +165,20 @@ public class BibliotecaPrincipal {
 	}
 	
 	public static void devolverLibro() {
-//		System.out.println("Devolver libro");
-		int posicion=buscarPosicionPublicacion();
-		if(publicaciones[posicion] != null) {
-			if(publicaciones[posicion] instanceof BibliotecaLibro && ((BibliotecaLibro)publicaciones[posicion]).estaPrestado()) {
-				
+		BibliotecaPublicacion publi = pedirCodigoyBuscarPublicacion();
+		if(publi != null) {
+			if(publi instanceof BibliotecaLibro) {
+				if(((BibliotecaLibro) publi).estaPrestado()) {
+					((BibliotecaLibro) publi).devolver();
+					System.out.println("El libro ha sido devuelto.");
+				} else {
+					System.out.println("El libro no se encuentra prestado, por lo cual no se puede devolver.");
+				}
+			} else {
+				System.out.println("La publicación introducida es una revista por lo cual no se puede reservar. ");
 			}
 		} else {
-			System.out.println("No existe una publicación con ese código");
+			System.out.println("Esa publicación no existe.");
 		}
 	}
 	
