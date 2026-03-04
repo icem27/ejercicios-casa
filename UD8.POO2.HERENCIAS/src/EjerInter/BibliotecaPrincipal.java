@@ -36,10 +36,13 @@ public class BibliotecaPrincipal {
 			case 6: 
 				mostrarPublicaciones();
 				break;
-			case 7:
+			case 7: 
+				mostrarPrestados();
+				break;
+			case 8:
 				System.out.println("Hasta la próxima!");
 			}
-		} while(opcion!=7);
+		} while(opcion!=8);
 	}
 	
 	private static void mostrarPublicaciones() {
@@ -60,7 +63,7 @@ public class BibliotecaPrincipal {
 	public static void menu() {
 		System.out.println("Selecciona la operación que quieres realizar (entre 1 y 6):  \r\n"
 				+ " 1 -> Añadir publicación\r\n" + " 2 -> Buscar Publicación\r\n" + " 3 -> Prestar libro\r\n"
-				+ " 4 -> Devolver libro\r\n" + " 5 -> Eliminar publicación\r\n" + " 6 -> Mostrar publicación\r\n" +" 7 -> Salir");
+				+ " 4 -> Devolver libro\r\n" + " 5 -> Eliminar publicación\r\n" + " 6 -> Mostrar publicación\r\n" + " 7 -> Mostrar publicación prestadas\r\n" + " 8 -> Salir");
 	}
 	
 	public static void anyadirPublicacion() {
@@ -112,11 +115,11 @@ public class BibliotecaPrincipal {
 	public static void prestarLibro() {
 		BibliotecaPublicacion publi = pedirCodigoyBuscarPublicacion();
 		if(publi != null) {
-			if(publi instanceof BibliotecaLibro) {
-				if(((BibliotecaLibro) publi).estaPrestado()) {
+			if(publi instanceof BibliotecaPrestable) {
+				if(((BibliotecaPrestable) publi).estaPrestado()) {
 					System.out.println("Ya está prestado. ");
 				} else {
-					((BibliotecaLibro) publi).prestar();
+					((BibliotecaPrestable) publi).prestar();
 					System.out.println("El libro ha sido prestado. ");
 				}
 			} else {
@@ -167,9 +170,9 @@ public class BibliotecaPrincipal {
 	public static void devolverLibro() {
 		BibliotecaPublicacion publi = pedirCodigoyBuscarPublicacion();
 		if(publi != null) {
-			if(publi instanceof BibliotecaLibro) {
-				if(((BibliotecaLibro) publi).estaPrestado()) {
-					((BibliotecaLibro) publi).devolver();
+			if(publi instanceof BibliotecaPrestable) {
+				if(((BibliotecaPrestable) publi).estaPrestado()) {
+					((BibliotecaPrestable) publi).devolver();
 					System.out.println("El libro ha sido devuelto.");
 				} else {
 					System.out.println("El libro no se encuentra prestado, por lo cual no se puede devolver.");
@@ -183,12 +186,33 @@ public class BibliotecaPrincipal {
 	}
 	
 	public static void buscarPublicacion() {
-//		int posicion=buscarPublicacion(codigo);
 		BibliotecaPublicacion publi = pedirCodigoyBuscarPublicacion();
 		if(publi != null) {
 			System.out.println(publi.mostrarDatos());
 		} else {
 			System.out.println("No existe una publicación con ese código");
+		}
+	}
+	
+	public static void mostrarPrestados() {
+		System.out.println("¿Qué deseas visualizar? (1) Prestados o (2) No prestados");
+		int opcion = sc.nextInt();
+		sc.nextLine();
+		
+		if (opcion != 1 && opcion != 2) {
+			System.out.println("La opción seleccionada es errónea.");
+			return;
+		}
+		for (BibliotecaPublicacion p : publicaciones) {
+			if (p != null && p instanceof BibliotecaPrestable) {
+				BibliotecaPrestable prestable = (BibliotecaPrestable) p;
+				if (opcion == 1 && prestable.estaPrestado()) {
+					System.out.println(p.mostrarDatos());
+				}
+				if (opcion == 2 && !prestable.estaPrestado()) {
+					System.out.println(p.mostrarDatos());
+				}
+			}
 		}
 	}
 	
