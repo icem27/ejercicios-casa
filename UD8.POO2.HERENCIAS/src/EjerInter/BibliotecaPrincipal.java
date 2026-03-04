@@ -126,10 +126,6 @@ public class BibliotecaPrincipal {
 		}
 	}
 	
-	public static void devolverLibro() {
-		System.out.println("Devolver libro");
-	}
-	
 	public static void eliminarLibro() {
 //		System.out.println("Eliminar libro");
 		int posicion=buscarPosicionPublicacion();
@@ -166,6 +162,19 @@ public class BibliotecaPrincipal {
 		}
 		return null;
 	}
+	
+	public static void devolverLibro() {
+//		System.out.println("Devolver libro");
+		int posicion=buscarPosicionPublicacion();
+		if(publicaciones[posicion] != null) {
+			if(publicaciones[posicion] instanceof BibliotecaLibro && ((BibliotecaLibro)publicaciones[posicion]).estaPrestado()) {
+				
+			}
+		} else {
+			System.out.println("No existe una publicación con ese código");
+		}
+	}
+	
 	public static void buscarPublicacion() {
 //		int posicion=buscarPublicacion(codigo);
 		BibliotecaPublicacion publi = pedirCodigoyBuscarPublicacion();
