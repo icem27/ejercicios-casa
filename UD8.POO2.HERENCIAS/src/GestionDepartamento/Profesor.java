@@ -1,6 +1,6 @@
 package GestionDepartamento;
 
-public class Profesor {
+public class Profesor implements Comparable<Profesor>{
 	private String nombre;
 	private String apellidos;
 	private Modulo[] modulo;
@@ -25,6 +25,11 @@ public class Profesor {
 	@Override
 	public String toString() {
 		return nombre + " " + apellidos + "\n" + array();
+	}
+
+	@Override
+	public int compareTo(Profesor o) {
+		return o.nombre.compareTo(this.nombre);
 	}
 
 }
