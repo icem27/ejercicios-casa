@@ -9,7 +9,7 @@ public class LibrosPpal {
 		Libros l2 = new Libros("El lunar", "Pedro Almodovar", 243);
 		Libros l3 = new Libros("La perla", "Alvaro Cruz", 154);
 		Libros l4 = new Libros("El niño que voló", "Sara Soto", 856);
-		Libros l5 = new Libros("Erasé una vez", "Sofia Catalá", 364);
+		Libros l5 = new Libros("Érase una vez", "Sofia Catalá", 364);
 		
 		Libros[] libro = {l1, l2, l3, l4, l5};
 		Arrays.sort(libro);
@@ -18,8 +18,6 @@ public class LibrosPpal {
 			System.out.println(l);
 		}
 		
-		
-
 	}
 
 }
