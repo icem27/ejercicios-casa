@@ -199,10 +199,7 @@ public class BibliotecaPrincipal {
 		int opcion = sc.nextInt();
 		sc.nextLine();
 		
-		if (opcion != 1 && opcion != 2) {
-			System.out.println("La opción seleccionada es errónea.");
-			return;
-		}
+		if (opcion == 1 || opcion == 2) {
 		for (BibliotecaPublicacion p : publicaciones) {
 			if (p != null && p instanceof BibliotecaPrestable) {
 				BibliotecaPrestable prestable = (BibliotecaPrestable) p;
@@ -213,6 +210,9 @@ public class BibliotecaPrincipal {
 					System.out.println(p.mostrarDatos());
 				}
 			}
+		}
+		} else {
+			System.out.println("La opción seleccionada es errónea.");
 		}
 	}
 	
