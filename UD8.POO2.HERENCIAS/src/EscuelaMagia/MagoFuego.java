@@ -1,9 +1,9 @@
 package EscuelaMagia;
 
 public class MagoFuego extends MagoElemental {
-	int superficieQuemada;
+	double superficieQuemada;
 	
-	public MagoFuego(String nombre, int superficieQuemada) {
+	public MagoFuego(String nombre, double superficieQuemada) {
 		super(nombre);
 		this.superficieQuemada = superficieQuemada;
 	}
@@ -12,20 +12,20 @@ public class MagoFuego extends MagoElemental {
 
 	@Override
 	String lanzarHechizo() {
-		return " lanza fuego y quema " + superficieQuemada;
+		return " lanza fuego y quema " + superficieQuemada + "²";
 	}
 
-	public int getSuperficieQuemada() {
+	public double getSuperficieQuemada() {
 		return superficieQuemada;
 	}
 
-	public void setSuperficieQuemada(int superficieQuemada) {
+	public void setSuperficieQuemada(double superficieQuemada) {
 		this.superficieQuemada = superficieQuemada;
 	}
 	
 	@Override
 	public String capacidades() {
-		return nombre + " - Superficie: " + superficieQuemada;
+		return nombre + " - Superficie: " + superficieQuemada + "²";
 	}
 
 }

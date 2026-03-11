@@ -12,21 +12,19 @@ public class Principal {
 		magos[posicion++] = new MagoAire("Morgana", 100);
 		magos[posicion++] = new MagoFuego("Albus", 500);
 		magos[posicion++] = new MagoEstudiante("Elminster");
-//		lanzarHechizo();
-//		nuevoUsuario();
-//		ordena();
 		menu();
 	}
 	
 	public static void menu() {
 		int opcion = 0;
 		while (opcion!=5) {
-			System.out.println("=========== Escuela de Magia =============");
+			System.out.println("=========== Escuela de Magia =============\n");
 			System.out.println("1. Añadir mago");
 			System.out.println("2. Lanzar hechizos");
 			System.out.println("3. Pasar lista");
 			System.out.println("4. Mostrar todos los magos");
 			System.out.println("5. Salir");
+			System.out.print("Introduce tu opción:");
 		opcion = sc.nextInt();
 		switch(opcion) {
 		case 1:
@@ -45,7 +43,7 @@ public class Principal {
 			System.out.println("bye");
 			break;
 		default:
-			
+			System.out.println("Debes selecionar la opción correcta");
 		}
 		}
 	}
@@ -70,7 +68,6 @@ public class Principal {
 		Arrays.sort(magos, 0, posicion);
 		for(MagoElemental m:magos) {
 			if (m!=null) System.out.println(m);
-			
 		}
 		
 	}
@@ -80,7 +77,7 @@ public class Principal {
 		int tipo=sc.nextInt();
 		sc.nextLine();
 		String nombre;
-		int cantidad;
+		double cantidad;
 		if(tipo==1) {
 			System.out.println("Nombre: ");
 			nombre = sc.nextLine();
