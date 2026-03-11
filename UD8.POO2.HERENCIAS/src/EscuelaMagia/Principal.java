@@ -1,13 +1,17 @@
 package EscuelaMagia;
 
+import java.util.Arrays;
+
 public class Principal {
-	public static MagoElemental[] magos = new MagoElemental[10];
+	public static int posicion = 0;
+	public static MagoElemental[] magos = new MagoElemental[4];
 
 	public static void main(String[] args) {
-		magos[0] = new MagoAire("Morgana", 100);
-		magos[1] = new MagoFuego("Albus", 500);
-		magos[2] = new MagoEstudiante("Elminster");
-		lanzarHechizo();
+		magos[posicion++] = new MagoAire("Morgana", 100);
+		magos[posicion++] = new MagoFuego("Albus", 500);
+		magos[posicion++] = new MagoEstudiante("Elminster");
+//		lanzarHechizo();
+		ordena();
 	}
 	
 	public static void lanzarHechizo() {
@@ -24,6 +28,15 @@ public class Principal {
 			}
 			}
 		}
+	}
+	
+	public static void ordena() {
+		Arrays.sort(magos, 0, posicion);
+		for(MagoElemental m:magos) {
+			if (m!=null) System.out.println(m);
+			
+		}
+		
 	}
 
 }
