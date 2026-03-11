@@ -18,6 +18,9 @@ public class MagoEstudiante extends MagoElemental implements Aprendiz {
 		return "Shhh, estoy estudiando";
 	}
 	
-	
+	@Override
+	public String capacidades() {
+		return nombre;
+	}
 
 }

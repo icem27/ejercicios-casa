@@ -23,6 +23,9 @@ public class MagoFuego extends MagoElemental {
 		this.superficieQuemada = superficieQuemada;
 	}
 	
-	
+	@Override
+	public String capacidades() {
+		return nombre + " - Superficie: " + superficieQuemada;
+	}
 
 }

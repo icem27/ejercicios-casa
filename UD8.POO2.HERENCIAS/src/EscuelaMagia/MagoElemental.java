@@ -26,6 +26,8 @@ public abstract class MagoElemental implements Comparable<MagoElemental>{
 		return "Nombre: " + nombre + " presente";
 	}
 	
-	
+	public String capacidades() {
+		return null;
+	}
 
 }

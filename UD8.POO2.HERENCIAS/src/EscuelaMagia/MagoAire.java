@@ -24,7 +24,10 @@ public class MagoAire extends MagoElemental {
 		this.velocidadAtaque = velocidadAtaque;
 	}
 	
-	
+	@Override
+	public String capacidades() {
+		return nombre + " - Velocidad: " + velocidadAtaque;
+	}
 	
 	
 }
