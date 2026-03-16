@@ -18,7 +18,7 @@ public class Ejercicio1 {
 				int div = num1 / num2;
 				System.out.println("División: " + div);
 
-			} catch (InputMismatchException e) {
+			} catch (InputMismatchException | ArithmeticException e) {
 				System.out.println("Debes introduce números. ");
 				sc.nextLine();
 			} finally {
