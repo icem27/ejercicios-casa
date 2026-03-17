@@ -24,17 +24,37 @@ public class Arrays03 {
 	
 	public static int[][] cargarArray(int filas, int cols){
 		int[][] numeritos=new int[filas][cols];
-		try {
+		boolean correcto = false;
+		do {
 		for(int i=0;i<numeritos.length;i++) {
 			for(int j=0;j<numeritos[i].length;j++) {
+				try {
 				System.out.println("Introduce el valor de la fila " + (1+i) + " y la columna " +(j+1));
 				numeritos[i][j]=sc.nextInt();
+				correcto=true;
+				} catch (InputMismatchException x) {
+					System.out.println("El dato no es el correcto");
+					System.out.println(x.getMessage());
+					correcto = false;
+					sc.nextLine();
+					j--;
+				} catch (ArrayIndexOutOfBoundsException y) {
+					System.out.println("El rango no es el correcto. ");
+					System.out.println(y.getMessage());
+					correcto = false;
+					sc.nextLine();
+					j--;
+				} catch (Exception x) {
+					System.out.println("Este es el general");
+					System.out.println(x.getMessage());
+					correcto = false;
+					sc.nextLine();
+					j--;
+				}
 			}
 		}
-		} catch (Exception x) {
-			System.out.println("El valor introducido no es correcto");
-			System.out.println(x.getMessage());
-		}
+		} while(!correcto);
+		
 		return numeritos;
 	}
 	
