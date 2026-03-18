@@ -1,5 +1,6 @@
 package PolizaSeguro;
 
+
 public class Cliente {
 	String nombre;
 	int edad;
@@ -9,10 +10,6 @@ public class Cliente {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.nif = nif;
-	}
-	
-	public void aniadirCliente() {
-		
 	}
 	
 	public void edadIncorrecta() throws edadEnRango {
@@ -32,6 +29,26 @@ public class Cliente {
 			System.out.println("La cuota es de 70€");
 		} else {
 			System.out.println("La couta es de 80€");
+		}
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		try {
+			this.edad = edad;
+		} catch (NumberFormatException x) {
+			System.out.println("Debes introduce numeros");
 		}
 	}
 	
