@@ -6,10 +6,30 @@ import java.util.Scanner;
 
 public class Ejercicio6 {
 	static Scanner sc = new Scanner(System.in);
-	public static void main(String[] args) {
-		int[][] array = cargarArray(pedirFilas(), pedirColumna());
-		visualizarArray(array);
 
+	public static void main(String[] args) {
+			int filas=0;
+			int columnas=0;
+			try {
+				filas=pedirFilas();
+			} catch (InputMismatchException x) {
+				System.out.println(x.getMessage());
+				sc.nextLine();
+			} 
+			try {
+				columnas=pedirColumna();
+			} catch (InputMismatchException x) {
+				System.out.println(x.getMessage());
+				sc.nextLine();
+			} 
+			int[][] array;
+			try {
+				array = cargarArray(filas, columnas);
+				visualizarArray(array);
+			} catch (ExcepcionRango e) {
+				System.out.println(e.getMessage());
+			}
+			
 	}
 	
 	public static void visualizarArray(int[][] array) {
@@ -22,7 +42,14 @@ public class Ejercicio6 {
 		}
 	}
 	
-	public static int[][] cargarArray(int filas, int cols){
+	public static void comprobarTamanio(int filas, int cols) throws ExcepcionRango {
+		if(filas<2 || filas>4 || cols<2 || filas>4) {
+			throw new ExcepcionRango("Error en el tamaño");
+		}
+	}
+	
+	public static int[][] cargarArray(int filas, int cols) throws ExcepcionRango{
+		comprobarTamanio(filas,cols);
 		int[][] numeritos=new int[filas][cols];
 		boolean correcto = false;
 		do {
@@ -58,31 +85,31 @@ public class Ejercicio6 {
 		return numeritos;
 	}
 	
-	public static int pedirFilas() {
-		return pedirFilasColumnas(false);
+	public static int pedirFilas() throws InputMismatchException {
+		try {
+			return pedirFilasColumnas(true);
+		} catch (InputMismatchException e) {
+			throw new InputMismatchException("Error en la fila");
+		}
 	}
 	
 	public static int pedirColumna() {
-		return pedirFilasColumnas(true);
+		try {
+			return pedirFilasColumnas(false);
+		} catch (InputMismatchException e) {
+			System.out.println("Error en la columna");
+		}
+		return 0;
 	}
 
-	public static int pedirFilasColumnas(boolean filas) {
+	public static int pedirFilasColumnas(boolean filas) throws InputMismatchException {
 		int num = 0;
-		boolean correcto=false;
-		do {
-		try {
 			if(filas) {
 				System.out.println("Introduce el número de filas: ");
 			} else {
 				System.out.println("Introduce el número de columnas:");
 			}
 			num = sc.nextInt();
-			correcto = (num <4 && num >= 2);
-		} catch  (InputMismatchException e) {
-			System.out.println("Debes introducir un número");
-			sc.nextLine();
-		}
-		} while(!correcto);
 		return num;
 	}
 }
