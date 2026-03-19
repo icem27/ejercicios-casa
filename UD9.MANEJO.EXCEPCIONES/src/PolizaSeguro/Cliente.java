@@ -2,33 +2,27 @@ package PolizaSeguro;
 
 
 public class Cliente {
-	String nombre;
-	int edad;
-	String nif;
+	private String nombre;
+	private int edad;
+	private String Nif;
 	
 	public Cliente(String nombre, int edad, String nif) {
 		this.nombre = nombre;
 		this.edad = edad;
-		this.nif = nif;
+		this.Nif = nif;
 	}
 	
-	public void edadIncorrecta() throws edadEnRango {
-		if(edad<18 || edad>64) {
-			throw new edadEnRango("Edad fuera de rango");
-		}
-	}
-	
-	public void cuotasClientes() {
+	public int cuotasClientes() {
 		if(edad<30) {
-			System.out.println("La cuota es de 40€");
+			return 40;
 		} else if (edad<40) {
-			System.out.println("La cuota es de 50€");
+			return 50;
 		} else if (edad<50) {
-			System.out.println("La cuota es de 60€");
+			return 60;
 		} else if (edad<60) {
-			System.out.println("La cuota es de 70€");
+			return 70;
 		} else {
-			System.out.println("La couta es de 80€");
+			return 80;
 		}
 	}
 
@@ -42,14 +36,6 @@ public class Cliente {
 
 	public int getEdad() {
 		return edad;
-	}
-
-	public void setEdad(int edad) {
-		try {
-			this.edad = edad;
-		} catch (NumberFormatException x) {
-			System.out.println("Debes introduce numeros");
-		}
 	}
 	
 
