@@ -1,73 +1,69 @@
 package org.barajas.ies.util;
 
-import org.barajas.ies.entities.Registro;
-import org.barajas.ies.entities.Usuario;
+import static org.junit.jupiter.api.Assertions.*;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestUtilidad extends TestCase {
-	
-	// Propiedad de la clase
-	private Registro registro;
+class TestUtilidad {
 
-	protected void setUp() throws Exception {
-		super.setUp();
-		// Inicializamos la propiedad "Registro"
-		// para tenerla disponible en los diferentes
-		// métodos de prueba
-		registro = Registro.getInstance(); 
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
 	}
 
-	protected void tearDown() throws Exception {
-		super.tearDown();
-		// Aseguramos que después de la ejecución de 
-		// cualquier método de prueba, el registro
-		// no tenga usuarios
-		for (int index = 0; index < registro.getUsuarios().length; index++) {
-			registro.setUsuario(null, index);
-		}
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
 	}
 
-	public void testRegistroVacio() {
-		//fail("Not yet implemented");
-		
-		// Comprobamos que inicialmente el registro no tiene usuarios
-		assertTrue(Utilidad.registroVacio(registro));
-		
-		// Añadimos un usuario al registro, para comprobar cuando no está vacío
-		registro.setUsuario(new Usuario(), 0);
-		
-		// Comprobamos que ahora el registro tiene algún usuario
-		assertFalse(Utilidad.registroVacio(registro));
+	@BeforeEach
+	void setUp() throws Exception {
 	}
 
-	public void testRegistroLleno() {
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	@Test
+	void testRegistroVacio() {
 		fail("Not yet implemented");
 	}
 
-	public void testPosicionDisponible() {
+	@Test
+	void testRegistroLleno() {
 		fail("Not yet implemented");
 	}
 
-	public void testEmailUnico() {
+	@Test
+	void testPosicionDisponible() {
 		fail("Not yet implemented");
 	}
 
-	public void testUsuarioRepetido() {
+	@Test
+	void testEmailUnico() {
 		fail("Not yet implemented");
 	}
 
-	public void testPosicionUsuario() {
+	@Test
+	void testUsuarioRepetido() {
 		fail("Not yet implemented");
 	}
 
-	public void testPasswordValido() {
+	@Test
+	void testPosicionUsuario() {
 		fail("Not yet implemented");
 	}
 
-	public void testEmailValido() {
+	@Test
+	void testPasswordValido() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testEmailValido() {
 		fail("Not yet implemented");
 	}
 
 }
-  
