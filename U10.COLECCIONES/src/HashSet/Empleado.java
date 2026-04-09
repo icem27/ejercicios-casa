@@ -1,4 +1,5 @@
 package HashSet;
+import java.util.Iterator;
 
 public class Empleado {
 	/*
@@ -31,13 +32,19 @@ public class Empleado {
 		this.sueldo=sueldo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	
+
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setSueldo(Double sueldo) {
-		this.sueldo = sueldo;
+
+
+	public Double getSueldo() {
+		return sueldo;
 	}
+
+
 
 	@Override
 	public String toString() {
