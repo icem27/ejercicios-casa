@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Alumno implements Comparable<Alumno> {
 	private String nombre;
 	
-	Alumno(String nombre){
+	public Alumno(String nombre){
 		this.nombre=nombre;
 	}
 
