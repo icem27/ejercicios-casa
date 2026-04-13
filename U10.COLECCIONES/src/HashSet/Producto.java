@@ -1,5 +1,7 @@
 package HashSet;
 
+import java.util.Objects;
+
 public class Producto {
 	private int codigo;
 	private String nombre;
@@ -13,6 +15,22 @@ public class Producto {
 		this.tipo = tipo;
 		this.precio = precio;
 		this.stock = stock;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(this==o) {
+			return true;
+		} 
+		if(this== null || getClass()!=o.getClass()) {
+			return false;
+		}
+		Producto p=(Producto)o;
+		return (p.codigo==this.codigo);
 	}
 
 	public int getCodigo() {

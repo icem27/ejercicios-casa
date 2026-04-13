@@ -1,9 +1,36 @@
 package HashSet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 
 public class GestionProductos {
+	public static void main(String[] args) {
+		ArrayList<Producto> productos=new ArrayList<Producto>();
+		productos.add(new Producto(1, "nombre1", "tipo1", 20.3, 10));
+		productos.add(new Producto(2, "nombre2", "tipo2", 50.3, 50));
+		productos.add(new Producto(3, "nombre3", "tipo3", 80.3, 10));
+		productos.add(new Producto(4, "nombre4", "tipo4", 120.3, 60));
+		productos.add(new Producto(5, "nombre5", "tipo5", 540.3, 10));
+		productos.add(new Producto(5, "nombre5", "tipo5", 540.3, 10));
+		mostrarProductos(productos);
+		
+		agregarSinDuplicados(productos);
+		
+		
+	}
+	
+	public static void mostrarProductos(ArrayList<Producto> productos) {
+		for(Producto p:productos) {
+			System.out.println(p);
+		}
+	}
+	public static void mostrarProductos(HashSet<Producto> productos) {
+		for(Producto p:productos) {
+			System.out.println(p);
+		}
+	}
+	
 	ArrayList<Producto> prod;
 	
 	GestionProductos() {
@@ -116,8 +143,30 @@ public class GestionProductos {
 		return prod.size();
 	}
 	
-	public void agregarSinDuplicados() {
+	public static void agregarSinDuplicados(ArrayList<Producto> prod) {
+		HashSet<Producto> productosSinDuplicado = new HashSet<Producto>(prod);
+		System.out.println("===== SIN DUPLICADOS =====");
+		mostrarProductos(productosSinDuplicado);
+		
 		
 	}
+	
+	public void aumentarPrecio(ArrayList<Producto> prod, String tipo, double porcentaje) {
+		for(Producto p: prod) {
+			if(p.getTipo().equalsIgnoreCase(tipo)) {
+				double nuevoPrecio=p.getPrecio()*(1+(porcentaje/100));
+				p.setPrecio(nuevoPrecio);
+			}
+		}
+	}
+	
+	public void eliminarSinStock(ArrayList<Producto> prod) {
+		for(Producto p:prod) {
+			if(p.getStock()==0) {
+				prod.remove(p);
+			}
+		}
+	}
+	
 	
 }
