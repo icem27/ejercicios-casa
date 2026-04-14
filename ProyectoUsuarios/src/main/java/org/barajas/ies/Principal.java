@@ -8,10 +8,15 @@ import org.barajas.ies.services.Gestion;
 import org.barajas.ies.util.Utilidad;
 
 public class Principal {
+	
 	private static Scanner entrada = new Scanner(System.in);
 	private static Registro registro = Registro.getInstance();
-	
-	private static int menu() {
+
+        protected static void initEntrada(Scanner scan) {
+                entrada = scan;
+        }
+    
+        private static int menu() {
 		int opcion = 0;
 		
 		System.out.println("*** ########## GESTIÓN DE USUARIOS ########## ***");
@@ -160,5 +165,4 @@ public class Principal {
 		
 	}
 }
-  
 
