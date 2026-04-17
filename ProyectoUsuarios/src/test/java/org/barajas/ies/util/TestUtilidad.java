@@ -22,6 +22,11 @@ public class TestUtilidad {
 
 	// Propiedad de la clase
 	private Usuario usuario;
+	
+	// Declaramos las variables como indicas en la tarea: 
+	private final String NOMBRE = "Ismael";
+	private final String EMAIL = "icem27@educa.madrid.org";
+	private final String PASSWORD = "Isma1";
 
 	@BeforeAll
 	@DisplayName("Ejecuta método anotado con \"@BeforeAll\"")
@@ -47,7 +52,7 @@ public class TestUtilidad {
 		// Inicializamos la propiedad "Usuario"
 		// para tenerla disponible en los diferentes
 		// métodos de prueba
-		usuario = new Usuario("Usuario", "usuario@mail.es", "Usu123");
+		usuario = new Usuario(NOMBRE, EMAIL, PASSWORD);
 	}
 
 	@AfterEach
@@ -79,25 +84,29 @@ public class TestUtilidad {
 	@Test
 	@Order(2)
 	void testRegistroLleno() {
-		fail("Not yet implemented");
+		for(int i=0;i<registro.getUsuarios().length;i++) {
+			registro.setUsuario(new Usuario(NOMBRE+i, EMAIL+i, PASSWORD),i);
+		}
+		assertTrue(Utilidad.registroLleno(registro));
 	}
 
 	@Test
 	@Order(3)
 	void testPosicionDisponible() {
-		fail("Not yet implemented");
+		assertEquals(Utilidad.posicionDisponible(registro),0);
 	}
 
 	@Test
 	@Order(4)
 	void testEmailUnico() {
-		fail("Not yet implemented");
+		assertTrue(Utilidad.emailUnico(registro, usuario.getEmail()));
 	}
 
 	@Test
 	@Order(5)
 	void testUsuarioRepetido() {
-		fail("Not yet implemented");
+		registro.setUsuario(usuario,0);
+		assertTrue(Utilidad.usuarioRepetido(registro, usuario));
 	}
 
 	@Test
@@ -120,13 +129,15 @@ public class TestUtilidad {
 	@Test
 	@Order(7)
 	void testPasswordValido() {
-		fail("Not yet implemented");
+		assertTrue(Utilidad.passwordValido(PASSWORD));
+		assertTrue(Utilidad.passwordValido("PassMal1"));
 	}
 
 	@Test
 	@Order(8)
 	void testEmailValido() {
-		fail("Not yet implemented");
+		assertTrue(Utilidad.emailValido(EMAIL));
+		assertFalse(Utilidad.emailValido("ismael@educa.madrid.es"));
 	}
 
 }

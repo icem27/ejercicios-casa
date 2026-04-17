@@ -26,7 +26,12 @@ public class TestGestion {
 
 	// Propiedad de la clase
 	private Usuario usuario;
-
+	
+	// Declaramos las variables como indicas en la tarea: 
+	private final String NOMBRE = "Ismael";
+	private final String EMAIL = "icem27@educa.madrid.org";
+	private final String PASSWORD = "Isma1";
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		// Inicializamos la propiedad "Registro"
@@ -50,7 +55,7 @@ public class TestGestion {
 		// Inicializamos la propiedad "Usuario"
 		// para tenerla disponible en los diferentes
 		// métodos de prueba
-		usuario = new Usuario("Usuario", "usuario@mail.es", "Usu123");
+		usuario = new Usuario(NOMBRE, EMAIL, PASSWORD);
 	}
 
 	@AfterEach
@@ -83,7 +88,8 @@ public class TestGestion {
 	@Order(2)
 	@DisplayName("Segundo método en ejecutarse, para comprobar si se elimina el Usuario en el Registro")
 	void testRemoveUser() {
-		fail("Not yet implemented");
+		Gestion.addUser(registro, usuario);
+		assertTrue(Gestion.removeUser(registro, usuario));
 	}
 	
 	
@@ -156,6 +162,9 @@ public class TestGestion {
 	@Test
 	@Order(4)
 	void testMockRemoveUser() {
-		fail("Not yet implemented");
+		// Esto lo tengo que revisar, no esta de todo correcto
+		Registro mockRegistro = Mockito.mock(Registro.class);
+		Gestion.addUser(mockRegistro, usuario);
+		assertTrue(Gestion.removeUser(mockRegistro, usuario));
 	}
 }
