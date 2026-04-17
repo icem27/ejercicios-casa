@@ -29,8 +29,8 @@ public class TestGestion {
 	
 	// Declaramos las variables como indicas en la tarea: 
 	private final String NOMBRE = "Ismael";
-	private final String EMAIL = "icem27@educa.org";
-	private final String PASSWORD = "Isma1";
+	private final String EMAIL = "icem27@educamadrid.org";
+	private final String PASSWORD = "Isma123";
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -91,6 +91,7 @@ public class TestGestion {
 		Gestion.addUser(registro, usuario);
 		assertTrue(Gestion.removeUser(registro, usuario));
 	}
+	
 	
 	
 	@Test

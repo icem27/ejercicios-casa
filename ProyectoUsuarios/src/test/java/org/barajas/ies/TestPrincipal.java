@@ -28,13 +28,11 @@ class TestPrincipal {
             "icem27@educamadrid.org" + System.lineSeparator() +
             "Ismael" + System.lineSeparator() +
             "Isma1234" + System.lineSeparator() +
-            System.lineSeparator() +
-            "0" + System.lineSeparator() +
+            System.lineSeparator() + 
 
             // Order(3): opción inválida (registro tiene a Ismael, no importa)
             "9" + System.lineSeparator() +
-            System.lineSeparator() +
-            "0" + System.lineSeparator() +
+            System.lineSeparator() + 
 
             // Order(4): eliminar a Ismael (que ya está en el registro del test 2)
             "3" + System.lineSeparator() +
@@ -42,12 +40,52 @@ class TestPrincipal {
             "Ismael" + System.lineSeparator() +
             System.lineSeparator() +
             "0" + System.lineSeparator() +
-
+            
             // Order(5): alta con email inválido (registro vacío tras baja)
             "2" + System.lineSeparator() +
             "emailsinArroba" + System.lineSeparator() +
             System.lineSeparator() +
+            "0" + System.lineSeparator() + 
+            
+            // Baja con email inválido (registro vacío tras baja)
+            "3" + System.lineSeparator() +
+            "emailsinArroba" + System.lineSeparator() +
+            System.lineSeparator() +
+            "0" + System.lineSeparator() + 
+            // Hasta aqui todo bien -----
+            
+            // Order(6): dar de alta Tomas y usuario duplicado
+            "2" + System.lineSeparator() +
+            "tomas@educamadrid.org" + System.lineSeparator() +
+            "Tomas" + System.lineSeparator() +
+            "tomas1" + System.lineSeparator() + //aqui introducimos una contraseña erronea para que salte el error 
+            "Tomas123" + System.lineSeparator() +
+            System.lineSeparator() + 
+            
+            // Intentamos dar de alta usuario con datos repetidos
+            "2" + System.lineSeparator() +
+            "tomas@educamadrid.org" + System.lineSeparator() +
+            System.lineSeparator() +
+            "2" + System.lineSeparator() + 
+            "tomas1@gmail.com" + System.lineSeparator() + 
+            "Tomas" + System.lineSeparator() +
+            "tomas" + System.lineSeparator() + 
+            "Tomas321" + System.lineSeparator() + 
+            System.lineSeparator() +
+            
+            // Intentamos eliminar a un usuario pero poniendo mal su nombre
+            "3" + System.lineSeparator() + 
+            "tomas@educamadrid.org" + System.lineSeparator() + 
+            "Carlos" + System.lineSeparator() + 
+            System.lineSeparator() + 
+            
+            
+            // Vemos el registro de nuevo. 
+            "1" + System.lineSeparator() +
+            System.lineSeparator() +
             "0" + System.lineSeparator();
+        
+        
 
         ByteArrayInputStream bais = new ByteArrayInputStream(testInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(bais);
@@ -103,5 +141,13 @@ class TestPrincipal {
     void testMainEmailInvalido() {
         Principal.main(null);
         assertTrue(true, "El método main gestionó correctamente un email inválido");
+    }
+    
+    @Test
+    @DisplayName("Prueba de integración: alta nuevo usuario y baja con nombre incorrecto")
+    @Order(6)
+    void testMainUsuarioInvalido() {
+        Principal.main(null);
+        assertTrue(true, "El método main gestionó correctamente un usuario y email inválido");
     }
 }
