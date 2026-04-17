@@ -22,7 +22,7 @@ public class Gestion {
 	}
 	
 	public static boolean removeUser(Registro registro, Usuario usuario) {
-		boolean removed = true;
+		boolean removed = false;
 		
 		int posicion = Utilidad.posicionUsuario(registro, usuario);
 		

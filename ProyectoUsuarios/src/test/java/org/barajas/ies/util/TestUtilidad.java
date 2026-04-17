@@ -26,7 +26,7 @@ public class TestUtilidad {
 	// Declaramos las variables como indicas en la tarea: 
 	private final String NOMBRE = "Ismael";
 	private final String EMAIL = "icem27@educa.madrid.org";
-	private final String PASSWORD = "Isma1";
+	private final String PASSWORD = "Isma123";
 
 	@BeforeAll
 	@DisplayName("Ejecuta método anotado con \"@BeforeAll\"")
@@ -105,8 +105,12 @@ public class TestUtilidad {
 	@Test
 	@Order(5)
 	void testUsuarioRepetido() {
-		registro.setUsuario(usuario,0);
-		assertTrue(Utilidad.usuarioRepetido(registro, usuario));
+	    // Caso: usuario NO repetido (registro vacío → emailUnico devuelve true → repetido = false)
+	    assertFalse(Utilidad.usuarioRepetido(registro, usuario));
+
+	    // Añadimos el usuario y comprobamos que SÍ está repetido (mismo email)
+	    registro.setUsuario(usuario, 0);
+	    assertTrue(Utilidad.usuarioRepetido(registro, usuario));
 	}
 
 	@Test
@@ -129,15 +133,46 @@ public class TestUtilidad {
 	@Test
 	@Order(7)
 	void testPasswordValido() {
-		assertTrue(Utilidad.passwordValido(PASSWORD));
-		assertTrue(Utilidad.passwordValido("PassMal1"));
+	    // Caso válido: longitud 5, mayúscula, minúscula y número
+	    assertTrue(Utilidad.passwordValido("Isma1"));
+
+	    // Caso válido: longitud máxima (8)
+	    assertTrue(Utilidad.passwordValido("Isma1234"));
+
+	    // Caso inválido: demasiado corta (menos de 5)
+	    assertFalse(Utilidad.passwordValido("Is1"));
+
+	    // Caso inválido: demasiado larga (más de 8)
+	    assertFalse(Utilidad.passwordValido("Ismael123"));
+
+	    // Caso inválido: sin mayúsculas
+	    assertFalse(Utilidad.passwordValido("isma1"));
+
+	    // Caso inválido: sin minúsculas
+	    assertFalse(Utilidad.passwordValido("ISMA1"));
+
+	    // Caso inválido: sin números
+	    assertFalse(Utilidad.passwordValido("Ismaeel"));
 	}
 
 	@Test
 	@Order(8)
 	void testEmailValido() {
-		assertTrue(Utilidad.emailValido(EMAIL));
-		assertFalse(Utilidad.emailValido("ismael@educa.madrid.es"));
+	    // Caso inválido: sin @
+	    assertFalse(Utilidad.emailValido("ismaeleduca.madrid.org"));
+
+	    // Caso inválido: extensión demasiado larga (>4 chars)
+	    assertFalse(Utilidad.emailValido("ismael@gmail.espana"));
+
+	    // Caso inválido: cadena vacía / sin dominio
+	    assertFalse(Utilidad.emailValido("ismael@"));
+	    
+	    // Caso válido: email simple con un punto (lo que acepta el regex)
+	    assertTrue(Utilidad.emailValido("ismael@gmail.com"));
+
+	    // Caso válido: otro email con un punto
+	    assertTrue(Utilidad.emailValido("icem27@educamadrid.org"));
+
 	}
 
 }

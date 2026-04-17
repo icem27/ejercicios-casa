@@ -29,7 +29,7 @@ public class TestGestion {
 	
 	// Declaramos las variables como indicas en la tarea: 
 	private final String NOMBRE = "Ismael";
-	private final String EMAIL = "icem27@educa.madrid.org";
+	private final String EMAIL = "icem27@educa.org";
 	private final String PASSWORD = "Isma1";
 	
 	@BeforeAll
@@ -162,9 +162,23 @@ public class TestGestion {
 	@Test
 	@Order(4)
 	void testMockRemoveUser() {
-		// Esto lo tengo que revisar, no esta de todo correcto
-		Registro mockRegistro = Mockito.mock(Registro.class);
-		Gestion.addUser(mockRegistro, usuario);
-		assertTrue(Gestion.removeUser(mockRegistro, usuario));
+	    Registro mockRegistro = Mockito.mock(Registro.class);
+	    MockedStatic<Utilidad> mockUtilidad = Mockito.mockStatic(Utilidad.class);
+
+	    // Cuando se llame a posicionUsuario, devolvemos posición 0
+	    mockUtilidad.when(new Verification() {
+	        @Override
+	        public void apply() throws Throwable {
+	            Utilidad.posicionUsuario(mockRegistro, usuario);
+	        }
+	    }).thenReturn(0);
+
+	    // Ejecutamos removeUser con el mock
+	    assertTrue(Gestion.removeUser(mockRegistro, usuario));
+
+	    // Verificamos que se llamó a setUsuario(null, 0) en el mock
+	    Mockito.verify(mockRegistro).setUsuario(null, 0);
+
+	    mockUtilidad.close();
 	}
 }

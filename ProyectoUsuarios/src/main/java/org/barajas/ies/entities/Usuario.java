@@ -48,9 +48,9 @@ public class Usuario {
 		// Sobreecritura del método "toString"
 		// utilizado para mostrar los valores de un
 		// "Usuario" en concreto
-		@Override
-		public String toString() {
-			return "Usuario [nombre=" + nombre + ", email=" + email + ", password=" + password + "]";
-		}
+//		@Override
+//		public String toString() {
+//			return "Usuario [nombre=" + nombre + ", email=" + email + ", password=" + password + "]";
+//		}
 		
 	}
