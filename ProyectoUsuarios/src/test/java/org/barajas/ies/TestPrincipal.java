@@ -20,7 +20,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 class TestPrincipal {
 	
 	private static Scanner entrada;
-	private static InputStream entradaStandar; //input stream flujo de entrada de datos a mi proceso
+	private static InputStream entradaStandar;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -49,7 +49,6 @@ class TestPrincipal {
 		// El cuál se colocará en un flujo de entrada (la entrada se refiere a entrada de datos al proceso en ejecución)
 		// , siendo el proceso en ejecución este Test.
                 ByteArrayInputStream bais = new ByteArrayInputStream(testInput.getBytes(StandardCharsets.UTF_8));
-                //Flujo de entrada de datos.....
 
                 // 2. Redirect System.in (temporarily) - Redirigir System.in (temporalmente)
                 // Y con este flujo de datos de entrada en formato de array de bytes
@@ -92,7 +91,7 @@ class TestPrincipal {
 	
 	@Test
 	@DisplayName("Prueba para ver los usurios registrados")
-	@Order(1) //para usar lo del order hay que poner arriba esto: @TestMethodOrder(org.junit.jupiter.api.MethodOrderer.OrderAnnotation.class)
+	@Order(1)
 	void testMainVerUsuarios() {
 		Principal.main(null);
 		assertTrue(true, "No terminó el método main de mostrar el registro de usuarios");
