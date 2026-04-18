@@ -39,6 +39,15 @@ public class TestGestion {
 		// métodos de prueba
 		// Antes de la ejecución de cualquier método
 		registro = Registro.getInstance();
+		
+		// Cubre setUsuarios() usando el objeto real
+	    Usuario[] array = new Usuario[10];
+	    registro.setUsuarios(array);
+		
+		 // Limpiar por si otros tests dejaron datos en el Singleton
+        for (int index = 0; index < registro.getUsuarios().length; index++) {
+            registro.setUsuario(null, index);
+        }
 	}
 
 	@AfterAll

@@ -134,7 +134,7 @@ public class TestUtilidad {
 	@Order(7)
 	void testPasswordValido() {
 	    // Caso válido: longitud 5, mayúscula, minúscula y número
-	    assertTrue(Utilidad.passwordValido("Isma1"));
+	    assertTrue(Utilidad.passwordValido(NOMBRE));
 
 	    // Caso válido: longitud máxima (8)
 	    assertTrue(Utilidad.passwordValido("Isma1234"));
@@ -171,8 +171,30 @@ public class TestUtilidad {
 	    assertTrue(Utilidad.emailValido("ismael@gmail.com"));
 
 	    // Caso válido: otro email con un punto
-	    assertTrue(Utilidad.emailValido("icem27@educamadrid.org"));
-
+	    assertTrue(Utilidad.emailValido(EMAIL));
+	}
+	
+	@Test
+	@Order(9)
+	@DisplayName("Noveno método: comprobar getters y setters de Usuario")
+	void testUsuarioGettersSetters() {
+	    // Cubrimos getPassword() y el resto de getters/setters
+	    assertEquals(PASSWORD, usuario.getPassword());
+	    assertEquals(NOMBRE, usuario.getNombre());
+	    assertEquals(EMAIL, usuario.getEmail());
+	    
+	    // Cubrimos los setters
+	    usuario.setPassword(PASSWORD);
+	    assertEquals(PASSWORD, usuario.getPassword());
+	    
+	    usuario.setNombre(NOMBRE);
+	    assertEquals(NOMBRE, usuario.getNombre());
+	    
+	    usuario.setEmail(EMAIL);
+	    assertEquals(EMAIL, usuario.getEmail());
+	    
+	    // Cubrimos toString()
+	    assertNotNull(usuario.toString());
 	}
 
 }
