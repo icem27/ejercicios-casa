@@ -109,7 +109,8 @@ public class Utilidad {
 				}
 			}
 
-			repetido = !emailUnico(registro, nuevo.getEmail());
+			repetido = repetido || !emailUnico(registro, nuevo.getEmail());
+
 
 			return repetido;
 		}

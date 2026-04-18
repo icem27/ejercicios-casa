@@ -61,6 +61,7 @@ class TestPrincipal {
             "tomas1" + System.lineSeparator() + //aqui introducimos una contraseña erronea para que salte el error 
             "Tomas123" + System.lineSeparator() +
             System.lineSeparator() + 
+            "0" + System.lineSeparator() + 
             
             // Intentamos dar de alta usuario con datos repetidos
             "2" + System.lineSeparator() +
@@ -68,7 +69,12 @@ class TestPrincipal {
             System.lineSeparator() +
             "2" + System.lineSeparator() + 
             "tomas1@gmail.com" + System.lineSeparator() + 
-            "Tomas" + System.lineSeparator() +
+            "Tomas" + System.lineSeparator() + System.lineSeparator() +
+            "2" + System.lineSeparator() +
+            "tomas@educamadrid.org" + System.lineSeparator() +
+            System.lineSeparator() +
+            "2" + System.lineSeparator() + 
+            "tomas1@gmail.com" + System.lineSeparator() + 
             "tomas" + System.lineSeparator() + 
             "Tomas321" + System.lineSeparator() + 
             System.lineSeparator() +
