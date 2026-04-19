@@ -5,7 +5,7 @@ public class ConvCadena05 {
 	public static void main(String[] args) {
 		int a=0;
 		try {
-			String letra = "1";
+			String letra = "a";
 			a = Integer.parseInt(letra);
 		} catch (NumberFormatException x) {
 			System.out.println("El valor introducido no es correcto");

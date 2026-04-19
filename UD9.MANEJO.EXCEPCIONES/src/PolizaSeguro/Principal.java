@@ -24,7 +24,7 @@ public class Principal {
 //		}
 		int num = introducirNumClientes();
 		System.out.println("vas a introducir " + num + " clientes");
-		Cliente[] clientes = new Cliente[num];
+		ClienteMio[] clientes = new ClienteMio[num];
 		cargarListaClientes(clientes);
 		System.out.println("La media de edad es de:  " + calcularMedia(clientes));
 		mayorYmenor(clientes);
@@ -87,18 +87,18 @@ public class Principal {
 		return edad;
 	}
 	
-	public static void cargarListaClientes(Cliente[] clientes) {
+	public static void cargarListaClientes(ClienteMio[] clientes) {
 		for(int i=0;i<clientes.length;i++) {
 			System.out.println("Introduce el clientes número " + (i+1));
 			String nombre=capturarNombre();
 			int edad = capturarEdad();
 			String nie = sc.nextLine();
-			clientes[i] = new Cliente(nombre, edad, nie);
+			clientes[i] = new ClienteMio(nombre, edad, nie);
 			System.out.println("La cuota es de: " + clientes[i].cuotasClientes());;
 		}
 	}
 	
-	public static double calcularMedia(Cliente[] clientes) {
+	public static double calcularMedia(ClienteMio[] clientes) {
 		double media=0;
 		for(int i=0;i<clientes.length;i++) {
 			media+=clientes[i].getEdad();
@@ -106,7 +106,7 @@ public class Principal {
 		return (media/clientes.length);
 	}
 	
-	public static void mayorYmenor(Cliente[] clientes) {
+	public static void mayorYmenor(ClienteMio[] clientes) {
 		int max=clientes[0].getEdad();
 		int min=clientes[0].getEdad();
 		for(int i=0;i<clientes.length;i++) {
