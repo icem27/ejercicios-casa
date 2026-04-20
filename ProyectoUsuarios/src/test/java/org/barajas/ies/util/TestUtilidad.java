@@ -134,7 +134,7 @@ public class TestUtilidad {
 	@Order(7)
 	void testPasswordValido() {
 	    // Caso válido: longitud 5, mayúscula, minúscula y número
-	    assertTrue(Utilidad.passwordValido(NOMBRE));
+	    assertTrue(Utilidad.passwordValido(PASSWORD));
 
 	    // Caso válido: longitud máxima (8)
 	    assertTrue(Utilidad.passwordValido("Isma1234"));

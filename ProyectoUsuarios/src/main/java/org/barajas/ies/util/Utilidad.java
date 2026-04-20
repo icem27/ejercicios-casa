@@ -108,10 +108,8 @@ public class Utilidad {
 					}
 				}
 			}
-			// he tenido que cambiado esta comprobación por que la que estaba antes siempre modificaba
-			// el for superior, osea no servia para nada el for, ya que repetido si era true 
-			// aqui abajo lo cambiaba a false
-			repetido = repetido || !emailUnico(registro, nuevo.getEmail());
+
+			repetido = !emailUnico(registro, nuevo.getEmail());
 
 
 			return repetido;

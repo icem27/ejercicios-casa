@@ -75,7 +75,7 @@ class TestPrincipal {
             System.lineSeparator() +
             "2" + System.lineSeparator() + 
             "tomas1@gmail.com" + System.lineSeparator() + 
-            "tomas" + System.lineSeparator() + 
+            "tomas" + System.lineSeparator() +
             "Tomas321" + System.lineSeparator() + 
             System.lineSeparator() +
             
