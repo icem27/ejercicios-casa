@@ -11,6 +11,7 @@ public class EjemploArrayListPersona {
 		personas.add(new Persona("Juan", "Gonzalez"));
 		personas.add(new Persona("Carlos", "Perez"));
 		personas.add(new Persona("Sara", "Lopez"));
+		personas.add(new Persona("Carla", "Alto"));
 		
 		for(Persona personitas:personas) {
 			System.out.println(personitas);
