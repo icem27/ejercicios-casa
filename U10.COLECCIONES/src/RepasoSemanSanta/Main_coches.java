@@ -2,7 +2,7 @@ package RepasoSemanSanta;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main_coches {
 
     private static final Scanner sc = new Scanner(System.in);
 
