@@ -138,7 +138,7 @@ public class TestUtilidad {
 
 	    // Caso válido: longitud máxima (8)
 	    assertTrue(Utilidad.passwordValido("Isma1234"));
-
+	    
 	    // Caso inválido: demasiado corta (menos de 5)
 	    assertFalse(Utilidad.passwordValido("Is1"));
 
@@ -153,6 +153,7 @@ public class TestUtilidad {
 
 	    // Caso inválido: sin números
 	    assertFalse(Utilidad.passwordValido("Ismaeel"));
+	
 	}
 
 	@Test
