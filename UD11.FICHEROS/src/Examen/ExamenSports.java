@@ -6,8 +6,6 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import HashSet.Producto;
-
 public class ExamenSports {
 
     static Scanner leer = new Scanner(System.in);
