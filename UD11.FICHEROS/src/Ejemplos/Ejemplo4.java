@@ -8,7 +8,8 @@ public class Ejemplo4 {
 		Scanner sc = new Scanner(System.in);
 		try {
 			File fichero = new File("./src/ejemplos/Fichero1.txt");
-			FileWriter fw = new FileWriter(fichero, true);
+//			FileWriter fw = new FileWriter(fichero);
+			PrintWriter fw = new PrintWriter(fichero);
 			BufferedWriter bw=new BufferedWriter(fw);
 			System.out.println("Añade un texto: ");
 			String texto = sc.nextLine();
