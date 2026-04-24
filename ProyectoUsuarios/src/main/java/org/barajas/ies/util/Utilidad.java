@@ -109,7 +109,9 @@ public class Utilidad {
 				}
 			}
 
-			repetido = !emailUnico(registro, nuevo.getEmail());
+			//He tenido que cambiar la logica, ya que anteriormente daba igual lo que se hacia en el 
+			//if superior, ya que siempre se sobrescribe por el metodo de emailUnico. 
+			repetido = repetido || !emailUnico(registro, nuevo.getEmail());
 
 
 			return repetido;

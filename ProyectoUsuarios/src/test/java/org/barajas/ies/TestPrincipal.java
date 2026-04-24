@@ -29,6 +29,11 @@ class TestPrincipal {
             "Ismael" + System.lineSeparator() +
             "Isma1234" + System.lineSeparator() +
             System.lineSeparator() + 
+            
+            "2" + System.lineSeparator() +
+            "icem2@educamadrid.org" + System.lineSeparator() +
+            "Ismael" + System.lineSeparator() +
+            System.lineSeparator() + 
 
             // Order(3): opción inválida (registro tiene a Ismael, no importa)
             "9" + System.lineSeparator() +
