@@ -168,7 +168,7 @@ public class TestUtilidad {
 	    // Caso inválido: cadena vacía / sin dominio
 	    assertFalse(Utilidad.emailValido("ismael@"));
 	    
-	    // Caso válido: email simple con un punto (lo que acepta el regex)
+	    // Caso válido: email simple con un punto
 	    assertTrue(Utilidad.emailValido("ismael@gmail.com"));
 
 	    // Caso válido: otro email con un punto
