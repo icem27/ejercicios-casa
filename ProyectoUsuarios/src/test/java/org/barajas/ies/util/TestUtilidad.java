@@ -85,7 +85,7 @@ public class TestUtilidad {
 	@Order(2)
 	void testRegistroLleno() {
 		for(int i=0;i<registro.getUsuarios().length;i++) {
-			registro.setUsuario(new Usuario(NOMBRE+i, EMAIL+i, PASSWORD),i);
+			registro.setUsuario(new Usuario(NOMBRE+i, "ismael"+i+"@gmail.com", PASSWORD),i);
 		}
 		assertTrue(Utilidad.registroLleno(registro));
 	}
