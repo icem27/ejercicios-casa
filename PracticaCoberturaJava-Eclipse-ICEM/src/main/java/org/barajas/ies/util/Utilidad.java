@@ -31,14 +31,14 @@ public class Utilidad {
 	
 	// Comprueba si el "Registro" de "Usuario"s que maneja este programa
 	// contiene algún objeto Usuario (instancia creada de la clase "Usuario")
-	public static boolean registroVacio(Registro registro) {
-		boolean vacio = false;
+	public static boolean isRegistroVacio(Registro registro) {
+		boolean icem_vacio = false;
 
 		if ((registro.getUsuarios().length == 0) || (registro.getUsuario(0) == null)) {
-			vacio = true;
+			icem_vacio = true;
 		}
 
-		return vacio;
+		return icem_vacio;
 	}
 
 	// Comprueba si el "Registro" de "Usuario"s que maneja este programa
@@ -47,7 +47,7 @@ public class Utilidad {
 	public static boolean registroLleno(Registro registro) {
 		boolean lleno = true;
 
-		if (!registroVacio(registro)) {
+		if (!isRegistroVacio(registro)) {
 			for (Usuario usuario : registro.getUsuarios()) {
 				if (usuario == null) {
 					lleno = false;
@@ -83,7 +83,7 @@ public class Utilidad {
 	public static boolean emailUnico(Registro registro, String email) {
 		boolean unico = true;
 
-		if (!registroVacio(registro)) {
+		if (!isRegistroVacio(registro)) {
 			for (Usuario usuario : registro.getUsuarios()) {
 				if (usuario!=null && usuario.getEmail().equalsIgnoreCase(email)) {
 					unico = false;
@@ -100,7 +100,7 @@ public class Utilidad {
 	public static boolean usuarioRepetido(Registro registro, Usuario nuevo) {
 		boolean repetido = false;
 
-		if (!registroVacio(registro)) {
+		if (!isRegistroVacio(registro)) {
 			for (Usuario usuario : registro.getUsuarios()) {
 				if (usuario!=null && usuario.getNombre().equalsIgnoreCase(nuevo.getNombre())) {
 					repetido = true;
@@ -174,7 +174,8 @@ public class Utilidad {
 		boolean valido = true;
 
 		// La longitud de la password debe ser de entre 5 y 8 caracteres
-		if (!(password.length() >= 5 && password.length() <= 8)) {
+		boolean icem_longitudValida = password.length() >= 5 && password.length() <= 8;
+		if (!icem_longitudValida) {
 			System.out.println("La longitud de la password debe ser de entre 5 y 8 caracteres");
 			valido = false;
 		}

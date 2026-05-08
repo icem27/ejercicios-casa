@@ -70,7 +70,7 @@ public class TestGestion {
 	void testAddUser() {
 
 		// Si se inserto el usuario...
-		if (Gestion.addUser(registro, usuario)) {
+		if (Gestion.agregarUsuario(registro, usuario)) {
 			// Comprobamos que el usuario insertado sea el de la propiedad
 			assertSame(usuario, registro.getUsuario(0));
 		} else {
@@ -83,7 +83,7 @@ public class TestGestion {
 	@Order(2)
 	@DisplayName("Segundo método en ejecutarse, para comprobar si se elimina el Usuario en el Registro")
 	void testRemoveUser() {
-		Gestion.addUser(registro, usuario);
+		Gestion.agregarUsuario(registro, usuario);
 		assertTrue(Gestion.removeUser(registro, usuario));
 	}
 	
@@ -140,7 +140,7 @@ public class TestGestion {
 		}).thenReturn(0);
 		
 		// Luego ejecutaremos un método con el "mock" (del objetos simulado)
-		assertTrue(Gestion.addUser(mockRegistro, usuario));
+		assertTrue(Gestion.agregarUsuario(mockRegistro, usuario));
 		
 		// *** Confirmamos que se ejecutaron los métodos utilizados por el método "Gestion.addUser(...)" en los objetos simulados
 		// NOTA: Sólo se deben simular los métodos NO estáticos llamados a través de objetos simulados.

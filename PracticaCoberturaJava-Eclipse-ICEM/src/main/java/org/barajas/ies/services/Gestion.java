@@ -6,28 +6,26 @@ import org.barajas.ies.util.Utilidad;
 
 public class Gestion {
 
-	public static boolean addUser(Registro registro, Usuario usuario) {
-		boolean added = false;
+	public static boolean agregarUsuario(Registro registro, Usuario usuario) {
+		boolean icem_aniadido = false;
 
 		if (!Utilidad.registroLleno(registro) && !Utilidad.usuarioRepetido(registro, usuario)) {
-			int posicion = Utilidad.posicionDisponible(registro);
-			if (posicion != -1) {
-				registro.setUsuario(usuario, posicion);
-				added = true;
+			int icem_posicion = Utilidad.posicionDisponible(registro);
+			if (icem_posicion != -1) {
+				registro.setUsuario(usuario, icem_posicion);
+				icem_aniadido = true;
 			}
 			
 		}
 
-		return added;
+		return icem_aniadido;
 	}
 	
 	public static boolean removeUser(Registro registro, Usuario usuario) {
 		boolean removed = false;
 		
-		int posicion = Utilidad.posicionUsuario(registro, usuario);
-		
-		if (posicion != -1) {
-			registro.setUsuario(null, posicion);
+		if (Utilidad.posicionUsuario(registro, usuario) != -1) {
+			registro.setUsuario(null, Utilidad.posicionUsuario(registro, usuario));
 			removed = true;
 		}
 		

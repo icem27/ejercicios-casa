@@ -76,13 +76,13 @@ public class TestUtilidad {
         // fail("Not yet implemented");
 
         // Comprobamos que inicialmente el registro no tiene usuarios
-        assertTrue(Utilidad.registroVacio(registro));
+        assertTrue(Utilidad.isRegistroVacio(registro));
 
         // Añadimos un usuario al registro, para comprobar cuando no está vacío
         registro.setUsuario(usuario, 0);
 
         // Comprobamos que ahora el registro tiene algún usuario
-        assertFalse(Utilidad.registroVacio(registro));
+        assertFalse(Utilidad.isRegistroVacio(registro));
     }
 
     @Test
@@ -128,7 +128,7 @@ public class TestUtilidad {
         // fail("Not yet implemented");
 
         // Si se inserto el usuario...
-        if (Gestion.addUser(registro, usuario)) {
+        if (Gestion.agregarUsuario(registro, usuario)) {
             // comprobaremos que la posición de nuestro "Usuario"
             // es la primera
             assertEquals(Utilidad.posicionUsuario(registro, usuario), 0);

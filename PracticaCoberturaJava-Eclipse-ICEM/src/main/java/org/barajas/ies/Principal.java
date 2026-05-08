@@ -50,7 +50,7 @@ public class Principal {
 	
 	private static void verRegistro() {
 		
-		if (Utilidad.registroVacio(registro)) {
+		if (Utilidad.isRegistroVacio(registro)) {
 			System.out.println("\t\tNo hay usuarios registrados");
 		} else {
 			for (Usuario usuario: registro.getUsuarios()) {
@@ -68,7 +68,7 @@ public class Principal {
 		boolean fallo = false;
 		
 		System.out.println("\t*** Introduzca el EMAIL del nuevo Usuario y después pulse ENTER ***");
-		String campo = entrada.nextLine();
+		String campo = leerCampo();
 		if (!Utilidad.emailValido(campo)) {
 			System.out.println("\n\t\tEmail NO válido");
 			fallo=true;
@@ -99,11 +99,16 @@ public class Principal {
 		}
 		
 		if (!fallo) {
-			Gestion.addUser(registro, nuevo);
+			Gestion.agregarUsuario(registro, nuevo);
 		}
 		
 		finOpcion();
 		
+	}
+
+	private static String leerCampo() {
+		String campo = entrada.nextLine();
+		return campo;
 	}
 	
 	private static void bajaUsuario() {
@@ -111,7 +116,7 @@ public class Principal {
 		boolean fallo = false;
 		
 		System.out.println("\t*** Introduzca el EMAIL del Usuario a borrar y después pulse ENTER ***");
-		String campo = entrada.nextLine();
+		String campo = leerCampo();
 		if (!Utilidad.emailValido(campo)) {
 			System.out.println("\n\t\tEmail NO válido");
 			fallo=true;
